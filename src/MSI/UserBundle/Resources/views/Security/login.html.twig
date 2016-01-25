@@ -1,0 +1,65 @@
+{% extends "MSIUserBundle::loginlayout.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block fos_user_content %}          
+
+    <div class="login-content">
+        <h1>Metronic Admin Login</h1>
+        <p> Lorem ipsum dolor sit amet, coectetuer adipiscing elit sed diam nonummy et nibh euismod aliquam erat volutpat. Lorem ipsum dolor sit amet, coectetuer adipiscing. </p>
+
+        <form action="{{ path("fos_user_security_check") }}" class="login-form" method="post">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />    
+
+                {# On affiche les messages flash que définissent les contrôleurs du bundle #}
+                {% for key, message in app.session.flashbag.all() %}
+            <div class="alert alert-{{ key }}">
+                <button class="close" data-close="alert"></button>
+                <span>{{ message|trans({}, 'FOSUserBundle') }}</span>
+            </div>
+                {% endfor %}
+
+                {% if error %}
+            <div class="alert alert-danger">
+                <button class="close" data-close="alert"></button>
+                <span>{{ error.messageKey|trans(error.messageData, 'security') }}</span>
+            </div>
+                {% endif %}
+
+            <div class="row">
+                <div class="col-xs-6">
+                    <input class="form-control form-control-solid placeholder-no-fix form-group" type="text" autocomplete="off" placeholder="{{ 'security.login.username'|trans }}" id="username" name="_username" value="{{ last_username }}" required/> </div>
+                <div class="col-xs-6">
+                    <input class="form-control form-control-solid placeholder-no-fix form-group" type="password" autocomplete="off" placeholder="{{ 'security.login.password'|trans }}" id="password" name="_password" required/> </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="rem-password">
+                        <p>{{ 'security.login.remember_me'|trans }}
+                            <input type="checkbox" class="rem-checkbox"  id="remember_me" name="_remember_me" value="on"/>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-sm-8 text-right">
+                    <div class="forgot-password">
+                        <a href="javascript:;" id="forget-password" class="forget-password">Forgot Password?</a>
+                    </div>
+                    <button class="btn blue" type="submit" id="_submit" name="_submit" >{{ 'security.login.submit'|trans }}</button>
+                </div>
+            </div>
+        </form>
+
+
+        <!-- BEGIN FORGOT PASSWORD FORM -->
+        <form class="forget-form" action="javascript:;" method="post">
+            <h3 class="font-green">Forgot Password ?</h3>
+            <p> Enter your e-mail address below to reset your password. </p>
+            <div class="form-group">
+                <input class="form-control placeholder-no-fix form-group" type="text" autocomplete="off" placeholder="Email" name="email" /> </div>
+            <div class="form-actions">
+                <button type="button" id="back-btn" class="btn grey btn-default">Back</button>
+                <button type="submit" class="btn blue btn-success uppercase pull-right">Submit</button>
+            </div>
+        </form>
+        <!-- END FORGOT PASSWORD FORM -->
+    </div>
+
+{% endblock fos_user_content %}

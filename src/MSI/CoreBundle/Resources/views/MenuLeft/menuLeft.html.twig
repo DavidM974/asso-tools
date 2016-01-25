@@ -1,0 +1,98 @@
+<!-- BEGIN SIDEBAR MENU -->
+<!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+<!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+<!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+<!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+<!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+<ul class="page-sidebar-menu page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+    <li class="nav-item start active open">
+        <a href="{{ path('msi_core_homepage')}}" class="nav-link nav-toggle">
+            <i class="icon-home"></i>
+            <span class="title">Dashboard</span>
+            <span class="selected"></span>
+            <span class="arrow open"></span>
+        </a>
+    </li>
+    {% if is_granted('ROLE_ADMIN') %}
+        <li class="nav-item  ">        
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="fa fa-cogs"></i>
+                <span class="title">Administration</span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">
+                <li class="nav-item  ">
+                    <a href="ui_colors.html" class="nav-link ">
+                        <span class="title">Utilisateurs</span>
+                    </a>
+                </li>
+                <li class="nav-item  ">
+                    <a href="ui_general.html" class="nav-link ">
+                        <span class="title">Paramètres</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    {% endif %}
+    
+    <li class="nav-item  ">
+        <a href="javascript:;" class="nav-link nav-toggle">
+            <i class="fa fa-users"></i>
+            <span class="title">Gestion de membres</span>
+            <span class="arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li class="nav-item  ">
+                <a href="components_date_time_pickers.html" class="nav-link ">
+                    <span class="title">Liste des membres</span>
+                </a>
+            </li>
+            <li class="nav-item  ">
+                <a href="components_color_pickers.html" class="nav-link ">
+                    <span class="title">Ajouter un membre</span>
+                </a>
+            </li>
+            <li class="nav-item  ">
+                <a href="components_select2.html" class="nav-link ">
+                    <span class="title">Importer un membre</span>
+                </a>
+            </li>
+            <li class="nav-item  ">
+                <a href="components_bootstrap_select.html" class="nav-link ">
+                    <span class="title">Statistiques</span>
+                </a>
+            </li>
+            <li class="nav-item  ">
+                <a href="components_multi_select.html" class="nav-link ">
+                    <span class="title">Communication</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-item  ">
+        <a href="javascript:;" class="nav-link nav-toggle">
+            <i class="fa fa-book"></i>
+            <span class="title">Pastorale</span>
+            <span class="arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li class="nav-item  ">
+                <a href="form_controls.html" class="nav-link ">
+                    <span class="title">Liste des suivis</span>
+                </a>
+            </li>
+            <li class="nav-item  ">
+                <a href="form_controls_md.html" class="nav-link ">
+                    <span class="title">Nouveau compte rendu</span>
+                </a>
+            </li>
+            <li class="nav-item  ">
+                <a href="form_validation.html" class="nav-link ">
+                    <span class="title">Mes suivis</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>
+<!-- END SIDEBAR MENU -->

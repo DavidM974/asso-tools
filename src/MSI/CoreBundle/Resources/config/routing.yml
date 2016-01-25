@@ -1,0 +1,7 @@
+msi_core_homepage:
+    path:     /
+    defaults: { _controller: MSICoreBundle:Default:index }
+    
+msi_core_administration_index:
+    path:     /admin
+    defaults: { _controller: MSICoreBundle:Administration:index }

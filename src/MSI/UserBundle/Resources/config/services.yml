@@ -1,0 +1,12 @@
+services:
+    msi_user.registration.form.type:
+        class: MSI\UserBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: msi_user_registration }
+             
+    msi_user.profile.form.type:
+        class: MSI\UserBundle\Form\Type\ProfileFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: msi_user_profile }

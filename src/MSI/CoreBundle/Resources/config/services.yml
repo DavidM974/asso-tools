@@ -1,0 +1,4 @@
+services:
+#    msi_core.example:
+#        class: MSI\CoreBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

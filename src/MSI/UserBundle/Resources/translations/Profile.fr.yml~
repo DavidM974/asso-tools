@@ -1,0 +1,8 @@
+msi:
+    user:
+        edit:
+            formtitle:  Edition de votre profil
+            lastname: Nom
+            firstname: Prénom
+
+            
