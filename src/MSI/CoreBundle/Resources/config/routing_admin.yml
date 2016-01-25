@@ -1,0 +1,3 @@
+msi_core_admin_index:
+    path:     /
+    defaults: { _controller: MSICoreBundle:Administration:index }

@@ -5,6 +5,9 @@ msi_user:
 msi_core:
     resource: "@MSICoreBundle/Resources/config/routing.yml"
     prefix:   /
+msi_core_administration:
+    resource: "@MSICoreBundle/Resources/config/routing_admin.yml"
+    prefix:   /admin
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"

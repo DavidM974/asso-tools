@@ -16,9 +16,9 @@
     </li>
     {% if is_granted('ROLE_ADMIN') %}
         <li class="nav-item  ">        
-            <a href="javascript:;" class="nav-link nav-toggle">
+            <a href="{{ path('msi_core_admin_index')}}" class="nav-link nav-toggle">
                 <i class="fa fa-cogs"></i>
-                <span class="title">Administration</span>
+                <span class="title">{{ 'msi.core.menu.admin'|trans({}, 'Menu') }}</span>
                 <span class="arrow"></span>
             </a>
             <ul class="sub-menu">
