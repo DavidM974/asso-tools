@@ -10,8 +10,8 @@
                                 <ul class="dropdown-menu">
                                     <li class="external">
                                         <h3>
-                                            <span class="bold">12 pending</span> notifications</h3>
-                                        <a href="page_user_profile_1.html">view all</a>
+                                            <span class="bold">12 {{ 'msi.core.header.notifications'|trans }} </span>{{ 'msi.core.header.pending'|trans }}</h3>
+                                        <a href="page_user_profile_1.html">{{ 'msi.core.header.viewall'|trans }}</a>
                                     </li>
                                     <li>
                                         <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
@@ -118,16 +118,16 @@
                                 <ul class="dropdown-menu dropdown-menu-default">
                                     <li>
                                         <a href="{{ path('fos_user_profile_edit')}}">
-                                            <i class="icon-user"></i> Mon Profil </a>
+                                            <i class="icon-user"></i>{{ 'msi.core.header.profile'|trans }}</a>
                                     </li>
                                     <li class="divider"> </li>
                                     <li>
                                         <a href="page_user_lock_1.html">
-                                            <i class="icon-lock"></i> Verrouillage écran </a>
+                                            <i class="icon-lock"></i>{{ 'msi.core.header.screenlock'|trans }}</a>
                                     </li>
                                     <li>
                                         <a href="{{ path('fos_user_security_logout')}}">
-                                            <i class="icon-key"></i> Se déconnecter </a>
+                                            <i class="icon-key"></i>{{ 'msi.core.header.logout'|trans }}</a>
                                     </li>
                                 </ul>
                             </li>

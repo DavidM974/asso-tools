@@ -20,4 +20,16 @@ class AdministrationController extends Controller {
     public function indexAction() {       
         return $this->render('MSICoreBundle:Administration:index.html.twig');
     }
+    
+    public function usersAction() {
+        return $this->render('MSICoreBundle:Administration:users.html.twig');
+    }
+    
+    public function addUserAction() {
+        return $this->render('MSICoreBundle:Administration:addUser.html.twig');
+    }
+    
+    public function settingsAction() {
+        return $this->render('MSICoreBundle:Administration:settings.html.twig');
+    }
 }

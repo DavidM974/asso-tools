@@ -18,54 +18,59 @@
         <li class="nav-item  ">        
             <a href="{{ path('msi_core_admin_index')}}" class="nav-link nav-toggle">
                 <i class="fa fa-cogs"></i>
-                <span class="title">{{ 'msi.core.menu.admin'|trans({}, 'Menu') }}</span>
+                <span class="title">{{ 'msi.core.menu.admin'|trans }}</span>
                 <span class="arrow"></span>
             </a>
             <ul class="sub-menu">
                 <li class="nav-item  ">
-                    <a href="ui_colors.html" class="nav-link ">
-                        <span class="title">Utilisateurs</span>
+                    <a href="{{ path('msi_core_admin_users')}}" class="nav-link ">
+                        <span class="title">{{ 'msi.core.menu.admin.users'|trans }}</span>
                     </a>
                 </li>
                 <li class="nav-item  ">
-                    <a href="ui_general.html" class="nav-link ">
-                        <span class="title">Paramètres</span>
+                    <a href="{{ path('msi_core_admin_add_user')}}" class="nav-link ">
+                        <span class="title">{{ 'msi.core.menu.admin.add.user'|trans }}</span>
+                    </a>
+                </li>
+                <li class="nav-item  ">
+                    <a href="{{ path('msi_core_admin_settings')}}" class="nav-link ">
+                        <span class="title">{{ 'msi.core.menu.admin.settings'|trans }}</span>
                     </a>
                 </li>
             </ul>
         </li>
     {% endif %}
-    
+
     <li class="nav-item  ">
         <a href="javascript:;" class="nav-link nav-toggle">
             <i class="fa fa-users"></i>
-            <span class="title">Gestion de membres</span>
+            <span class="title">{{ 'msi.core.menu.management'|trans }}</span>
             <span class="arrow"></span>
         </a>
         <ul class="sub-menu">
             <li class="nav-item  ">
                 <a href="components_date_time_pickers.html" class="nav-link ">
-                    <span class="title">Liste des membres</span>
+                    <span class="title">{{ 'msi.core.menu.management.list'|trans }}</span>
                 </a>
             </li>
             <li class="nav-item  ">
                 <a href="components_color_pickers.html" class="nav-link ">
-                    <span class="title">Ajouter un membre</span>
+                    <span class="title">{{ 'msi.core.menu.management.add'|trans }}</span>
                 </a>
             </li>
             <li class="nav-item  ">
                 <a href="components_select2.html" class="nav-link ">
-                    <span class="title">Importer un membre</span>
+                    <span class="title">{{ 'msi.core.menu.management.import'|trans }}</span>
                 </a>
             </li>
             <li class="nav-item  ">
                 <a href="components_bootstrap_select.html" class="nav-link ">
-                    <span class="title">Statistiques</span>
+                    <span class="title">{{ 'msi.core.menu.management.statistics'|trans }}</span>
                 </a>
             </li>
             <li class="nav-item  ">
                 <a href="components_multi_select.html" class="nav-link ">
-                    <span class="title">Communication</span>
+                    <span class="title">{{ 'msi.core.menu.management.communication'|trans }}</span>
                 </a>
             </li>
         </ul>
@@ -73,23 +78,23 @@
     <li class="nav-item  ">
         <a href="javascript:;" class="nav-link nav-toggle">
             <i class="fa fa-book"></i>
-            <span class="title">Pastorale</span>
+            <span class="title">{{ 'msi.core.menu.pastoral'|trans }}</span>
             <span class="arrow"></span>
         </a>
         <ul class="sub-menu">
             <li class="nav-item  ">
                 <a href="form_controls.html" class="nav-link ">
-                    <span class="title">Liste des suivis</span>
+                    <span class="title">{{ 'msi.core.menu.pastoral.followed.list'|trans }}</span>
                 </a>
             </li>
             <li class="nav-item  ">
                 <a href="form_controls_md.html" class="nav-link ">
-                    <span class="title">Nouveau compte rendu</span>
+                    <span class="title">{{ 'msi.core.menu.pastoral.report'|trans }}</span>
                 </a>
             </li>
             <li class="nav-item  ">
                 <a href="form_validation.html" class="nav-link ">
-                    <span class="title">Mes suivis</span>
+                    <span class="title">{{ 'msi.core.menu.pastoral.followed.mine'|trans }}</span>
                 </a>
             </li>
         </ul>
