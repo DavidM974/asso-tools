@@ -1,0 +1,7 @@
+msi.core.admin.users: 'Users'
+msi.core.admin.add.user: 'Add an user'
+msi.core.admin.settings: 'Settings'
+msi.core.admin.users.comment: 'List of all users'
+msi.core.admin.users.new.comment: 'Add a new user'
+msi.core.admin.settings.comment: 'Administration settings'
+msi.core.admin.title: 'Menu administration'

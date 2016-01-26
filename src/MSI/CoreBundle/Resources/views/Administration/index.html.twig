@@ -1,41 +1,47 @@
 {% extends "MSICoreBundle::layout.html.twig" %}
 
 {% block body %}
-<div class="row">
-    <div class="col-md-12">
-        <div class="portlet light portlet-fit ">
-            <div class="portlet-title">
-                <div class="caption">
-                    <i class=" icon-layers font-green"></i>
-                    <span class="caption-subject font-green bold uppercase">No Background 50%</span>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light portlet-fit ">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class=" icon-layers font-green"></i>
+                        <span class="caption-subject font-green bold uppercase">{{ 'msi.core.admin.title'|trans({}, 'Admin') }}</span>
+                    </div>
                 </div>
-            </div>
-            <div class="portlet-body">
-                <div class="mt-element-step">
-                    <div class="row step-no-background">
-                        <div class="col-lg-4 mt-step-col active">
-                                <button type="button" class="btn btn-circle default btn-lg-fat"> <i class="fa fa-users big-ico"></i></button>
-                             <p></p>
-                            <div class="mt-step-title uppercase font-grey-cascade">{{ 'msi.core.admin.users'|trans({}, 'Admin') }}</div>
-                            <div class="mt-step-content font-grey-cascade">Purchasing the item</div>
-                        </div>
-                        <div class="col-lg-4 mt-step-col active">
-                            <button type="button" class="btn btn-circle default btn-lg-fat"><i class="fa fa-user-plus big-ico"></i></button>
-                             <p></p>
-                            <div class="mt-step-title uppercase font-grey-cascade">{{ 'msi.core.admin.users'|trans({}, 'Admin') }}</div>
-                            <div class="mt-step-content font-grey-cascade">Complete your payment</div>
-                        </div>
-                        <div class="col-lg-4 mt-step-col active">
-                            <button type="button" class="btn btn-circle default btn-lg-fat"><i class="fa fa-cogs big-ico"></i></button>
-                            <p></p>
-                            <div class="mt-step-title uppercase font-grey-cascade">{{ 'msi.core.admin.users'|trans({}, 'Admin') }}</div>
-                            <div class="mt-step-content font-grey-cascade">Receive item integration</div>
+                <div class="portlet-body">
+                    <div class="mt-element-step">
+                        <div class="row step-no-background">
+                            <div class="col-lg-4 mt-step-col active">
+                                <a href="{{ path('msi_core_admin_users')}}" class="nav-link ">
+                                    <button type="button" class="btn btn-circle default btn-lg-fat"> <i class="fa fa-users big-ico"></i></button>
+                                    <p></p>
+                                </a>
+                                <div class="mt-step-title uppercase font-grey-cascade">{{ 'msi.core.admin.users'|trans({}, 'Admin') }}</div>
+                                <div class="mt-step-content font-grey-cascade">{{ 'msi.core.admin.users.comment'|trans({}, 'Admin') }}</div>
+                            </div>
+                            <div class="col-lg-4 mt-step-col active">
+                                <a href="{{ path('msi_core_admin_add_user')}}" class="nav-link ">
+                                    <button type="button" class="btn btn-circle default btn-lg-fat"><i class="fa fa-user-plus big-ico"></i></button>
+                                    <p></p>
+                                </a>
+                                <div class="mt-step-title uppercase font-grey-cascade">{{ 'msi.core.admin.add.user'|trans({}, 'Admin') }}</div>
+                                <div class="mt-step-content font-grey-cascade">{{ 'msi.core.admin.users.new.comment'|trans({}, 'Admin') }}</div>
+                            </div>
+                            <div class="col-lg-4 mt-step-col active">
+                                <a href="{{ path('msi_core_admin_settings')}}" class="nav-link ">
+                                    <button type="button" class="btn btn-circle default btn-lg-fat"href="{{ path('msi_core_admin_settings')}}"><i class="fa fa-gears big-ico"></i></button>
+                                    <p></p>
+                                </a>
+                                <div class="mt-step-title uppercase font-grey-cascade">{{ 'msi.core.admin.settings'|trans({}, 'Admin') }}</div>
+                                <div class="mt-step-content font-grey-cascade">{{ 'msi.core.admin.settings.comment'|trans({}, 'Admin') }}</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 {% endblock %}

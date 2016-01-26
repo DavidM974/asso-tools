@@ -1,0 +1,20 @@
+msi:
+    user:
+        edit:
+            formTitle:  Edit your profile
+            lastname: Last name
+            firstname: First name
+            civility: Civility
+            birth: Birth date
+            phone: Phone
+            mobile: Mobile
+            address: Address
+            m: Mr
+            mme: Mrs
+            mlle: Ms
+            personalInfo: Personal information
+            avatar: Change the avatar
+            changePassword: Change password
+            accountSetting: Settings account
+
+            
