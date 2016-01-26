@@ -11,10 +11,10 @@ class DefaultController extends Controller {
         $user = $this->getUser();
 
         if (null === $user) {
-          // Ici, l'utilisateur est anonyme ou l'URL n'est pas derrière un pare-feu
+          // @todo Ici, l'utilisateur est anonyme ou l'URL n'est pas derrière un pare-feu
           //throw new AccessDeniedException('Accès limité aux personne authentifié.');
         } else {
-          // Ici, stocker donner dans la session si première authentification
+          // @todo Ici, stocker donner dans la session si première authentification
             
         }
         return $this->render('MSICoreBundle:Default:dashboard.html.twig');
