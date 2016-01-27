@@ -15,10 +15,17 @@
 namespace MSI\CoreBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class AdministrationController extends Controller {
-
-    public function indexAction() {
+  
+    public function indexAction(Request $request) {
+        //Init ariane path
+        $session = $request->getSession();
+        $translator = $this->get('translator');
+        $ariane = $translator->trans('msi.core.admin.fil.index',  array() , 'Admin');
+        $session->set('fileAriane', $ariane);
+        
         return $this->render('MSICoreBundle:Administration:index.html.twig');
     }
 
@@ -32,9 +39,11 @@ class AdministrationController extends Controller {
         ));
     }
 
+
     public function addUserAction() {
         return $this->render('MSICoreBundle:Administration:addUser.html.twig');
     }
+
 
     public function settingsAction() {
         return $this->render('MSICoreBundle:Administration:settings.html.twig');
