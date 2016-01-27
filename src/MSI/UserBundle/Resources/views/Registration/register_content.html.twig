@@ -1,7 +1,10 @@
 {% trans_default_domain 'FOSUserBundle' %}
+
+{% for message in app.session.flashbag.get('info_user_add') %}
+  <p>Message flash : {{ message }}</p>
+{% endfor %}
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
     {{ form_widget(form) }}
----TEST---
     <div>
         <input type="submit" value="{{ 'registration.submit'|trans }}" />
     </div>

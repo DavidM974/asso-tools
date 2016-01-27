@@ -1,1 +1,3 @@
-
+msi_user_admin_add_user:
+    path:     /admin/addUser
+    defaults: { _controller: MSIUserBundle:Registration:register }
