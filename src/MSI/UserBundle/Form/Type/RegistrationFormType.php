@@ -13,10 +13,11 @@ class RegistrationFormType extends BaseType
             'multiple' => true,
             'expanded' => false,
             'choices' =>  array(
-                        'ROLE_SECRETAIRE' => 'ROLE_SECRETAIRE',
-                        'ROLE_PASTEUR' => 'ROLE_PASTEUR',
-                        'ROLE_ADMIN' => 'ROLE_ADMIN'
+                        'ROLE_SECRETAIRE' => 'msi.user.register.secretary', 
+                        'ROLE_PASTEUR' => 'msi.user.register.pastor', 
+                        'ROLE_ADMIN' => 'msi.user.register.admin', 
                     ),
+            'required'=> true
         ));
  
         // add your custom field
