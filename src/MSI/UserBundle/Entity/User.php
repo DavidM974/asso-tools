@@ -28,7 +28,7 @@ class User extends BaseUser {
     /**
      * @var string
      *
-     * @ORM\Column(name="firstname", type="string", length=255)
+     * @ORM\Column(name="firstname", type="string", length=255, nullable=true)
      * @Assert\Length(
      *      min = 3,
      *      max = 50,
@@ -36,12 +36,12 @@ class User extends BaseUser {
      *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
      * )
      */
-    protected $firstname;
+    protected $firstname = null;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="lastname", type="string", length=255)
+     * @ORM\Column(name="lastname", type="string", length=255, nullable=true)
      * @Assert\Length(
      *      min = 3,
      *      max = 50,
@@ -49,15 +49,15 @@ class User extends BaseUser {
      *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
      * )
      */
-    protected $lastname;
+    protected $lastname = null;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="birth", type="datetime")
+     * @ORM\Column(name="birth", type="datetime", nullable=true)
      * @Assert\Date()
      */
-    protected $birth;
+    protected $birth = null;
 
     /**
      * @var string
@@ -68,30 +68,30 @@ class User extends BaseUser {
 
     /**
      * @var string
-     * @ORM\Column(name="phone", type="string", length=16)
+     * @ORM\Column(name="phone", type="string", length=16, nullable=true)
      * @Assert\Length(
      *      min = 10,
      *      minMessage = "Your number must be at least {{ limit }} characters long",
      * )
      */
-    protected $phone;
+    protected $phone = null;
 
     /**
      * @var string
-     * @ORM\Column(name="mobile", type="string", length=16)
+     * @ORM\Column(name="mobile", type="string", length=16, nullable=true)
      * @Assert\Length(
      *      min = 10,
      *      minMessage = "Your number must be at least {{ limit }} characters long",
      * )
      */
-    protected $mobile;
+    protected $mobile = null;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="address", type="string", length=255)
+     * @ORM\Column(name="address", type="string", length=255, nullable=true)
      */
-    protected $address;
+    protected $address = null;
     
     /**
      * @ORM\OneToOne(targetEntity="MSI\CoreBundle\Entity\Image", cascade={"persist"})
@@ -107,7 +107,7 @@ class User extends BaseUser {
     /**
     * @ORM\Column(name="locale", type="string", length=16)
     */
-  protected $locale;
+  protected $locale = 'fr';
     
 
     /**
