@@ -1,0 +1,7 @@
+msi.user.register.roles: User roles
+msi.user.register.secretary: Secretary
+msi.user.register.pastor: Pastot
+msi.user.register.admin: Administrator
+msi.user.register.title: Add a new user
+msi.user.register.tab.title: Basic infomations
+msi.user.register.flash: 'Flash message : '
