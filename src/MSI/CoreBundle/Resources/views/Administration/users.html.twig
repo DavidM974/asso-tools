@@ -22,7 +22,7 @@
                         <th>{{ 'msi.core.admin.users.address'|trans({}, 'Admin') }}</th>
                         <th>{{ 'msi.core.admin.users.email'|trans({}, 'Admin') }}</th>
                         <th>{{ 'msi.core.admin.users.phone'|trans({}, 'Admin') }}</th>
-                        <th>{{ 'msi.core.admin.users.action'|trans({}, 'Admin') }}</th>
+                        <th style ="text-align:center;" >{{ 'msi.core.admin.users.action'|trans({}, 'Admin') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,15 +60,20 @@
                                 </a>
                                 {% endif %}
                             </td>
-                            <td>                                
-                                <a href="{{ path('msi_core_admin_users')}}" class="nav-link ">
-                                    <a href="javascript:;" class="btn btn-circle btn-icon-only blue">
+                            <td style ="text-align:center;">                                
+                                <a href="javascript:;" class="nav-link ">
+                                    <a href="javascript:;" class="btn btn-circle btn-icon-only grey-cascade">
                                         <i class="fa fa-eye"></i>
                                     </a>
                                 </a>
-                                <a href="{{ path('msi_core_admin_users')}}" class="nav-link ">
-                                    <a href="javascript:;" class="btn btn-circle btn-icon-only red">
+                                <a href="" class="nav-link ">
+                                    <a href="{{ path('msi_user_admin_edit_user',{'id' : user.id} ) }}" class="btn btn-circle btn-icon-only blue">
                                         <i class="fa fa-edit"></i>
+                                    </a>
+                                </a>
+                                <a href="javascript:;" class="nav-link ">
+                                    <a href="javascript:;" class="btn btn-circle btn-icon-only red ">
+                                        <i class="icon-trash"></i>
                                     </a>
                                 </a>
                             </td>
