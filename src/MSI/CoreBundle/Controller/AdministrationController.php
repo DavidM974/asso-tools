@@ -18,18 +18,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 class AdministrationController extends Controller {
-  
+
     public function indexAction(Request $request) {
         //Init ariane path
         $session = $request->getSession();
         $translator = $this->get('translator');
-        $ariane = $translator->trans('msi.core.admin.fil.index',  array() , 'Admin');
+        $ariane = $translator->trans('msi.core.admin.fil.index', array(), 'Admin');
         $session->set('fileAriane', $ariane);
-        
         return $this->render('MSICoreBundle:Administration:index.html.twig');
     }
 
-    public function usersAction() {
+    public function usersAction(Request $request) {
+        $session = $request->getSession();
+        $translator = $this->get('translator');
+        $ariane = $translator->trans('msi.core.admin.fil.users', array(), 'Admin');
+        $session->set('fileAriane', $ariane);
         $listUsers = $this->getDoctrine()
                 ->getManager()
                 ->getRepository('MSIUserBundle:User')
@@ -39,13 +42,11 @@ class AdministrationController extends Controller {
         ));
     }
 
-
-    public function addUserAction() {
-        return $this->render('MSICoreBundle:Administration:addUser.html.twig');
-    }
-
-
-    public function settingsAction() {
+    public function settingsAction(Request $request) {
+        $session = $request->getSession();
+        $translator = $this->get('translator');
+        $ariane = $translator->trans('msi.core.admin.fil.settings', array(), 'Admin');
+        $session->set('fileAriane', $ariane);
         return $this->render('MSICoreBundle:Administration:settings.html.twig');
     }
 
