@@ -87,3 +87,6 @@ fos_user:
     registration:
         form:
             type: MSI\UserBundle\Form\Type\RegistrationFormType
+            
+vich_uploader:
+    db_driver: orm
