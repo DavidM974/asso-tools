@@ -3,12 +3,15 @@
 namespace MSI\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Image
  *
  * @ORM\Table(name="image")
  * @ORM\Entity(repositoryClass="MSI\CoreBundle\Repository\ImageRepository")
+ * @Vich\Uploadable
  */
 class Image
 {
@@ -22,11 +25,29 @@ class Image
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="url", type="string", length=255)
+     * @Assert\File(
+     *     mimeTypes = {"image/jpeg", "image/png","image/jpg", "image/gif"},
+     *     mimeTypesMessage = "Only .jpeg .png .jpg and .gif Extension valide"
+     * )
+     * @Vich\UploadableField(mapping="user_image", fileNameProperty="imageName")
+     * 
+     * @var File
      */
-    protected $url;
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $imageName;
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt;
 
     /**
      * @var string
@@ -46,27 +67,51 @@ class Image
         return $this->id;
     }
 
-    /**
-     * Set url
+     /**
      *
-     * @param string $url
-     * @return Image
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
+     *
+     * @return Product
      */
-    public function setUrl($url)
+    public function setImageFile(File $image = null)
     {
-        $this->url = $url;
+        $this->imageFile = $image;
+
+        if ($image) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTime('now');
+        }
 
         return $this;
     }
 
     /**
-     * Get url
-     *
-     * @return string 
+     * @return File
      */
-    public function getUrl()
+    public function getImageFile()
     {
-        return $this->url;
+        return $this->imageFile;
+    }
+
+    /**
+     * @param string $imageName
+     *
+     * @return Product
+     */
+    public function setImageName($imageName)
+    {
+        $this->imageName = $imageName;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImageName()
+    {
+        return $this->imageName;
     }
 
     /**

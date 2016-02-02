@@ -6,4 +6,8 @@ msi_user_admin_edit_user:
     defaults: { _controller: MSIUserBundle:EditUser:edit}
     requirements: 
         id: \d+
-    
+msi_user_admin_edit_avatar_user:
+    path:     /admin/avatarUser/{id}
+    defaults: { _controller: MSIUserBundle:EditUser:editAvatar}
+    requirements: 
+        id: \d+

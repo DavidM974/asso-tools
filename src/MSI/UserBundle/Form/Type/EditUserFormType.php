@@ -3,6 +3,7 @@
 namespace MSI\UserBundle\Form\Type;
 use Symfony\Component\Form\FormBuilderInterface;
 use FOS\UserBundle\Form\Type\ProfileFormType as BaseType;
+use \MSI\CoreBundle\Form\ImageType;
  
 class EditUserFormType extends BaseType
 {
