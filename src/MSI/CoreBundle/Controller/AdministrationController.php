@@ -14,8 +14,11 @@
 
 namespace MSI\CoreBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use MSI\CoreBundle\Entity\Parameter;
+use MSI\CoreBundle\Form\ParameterType;
 
 class AdministrationController extends Controller {
 
@@ -47,7 +50,26 @@ class AdministrationController extends Controller {
         $translator = $this->get('translator');
         $ariane = $translator->trans('msi.core.admin.fil.settings', array(), 'Admin');
         $session->set('fileAriane', $ariane);
-        return $this->render('MSICoreBundle:Administration:settings.html.twig');
+        $resultParameter = $this->getDoctrine()
+                ->getManager()
+                ->getRepository('MSICoreBundle:Parameter')
+                ->findAll();
+        if (empty($resultParameter)) {
+            $parameter = new Parameter();
+        } else {
+            $parameter = array_shift($resultParameter);
+        }
+        $form = $this->createForm(new ParameterType(), $parameter);
+
+        if ($form->handleRequest($request)->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($parameter);
+            $em->flush();
+        }
+
+        return $this->render('MSICoreBundle:Administration:settings.html.twig', array(
+                    'form' => $form->createView(),
+        ));
     }
 
 }

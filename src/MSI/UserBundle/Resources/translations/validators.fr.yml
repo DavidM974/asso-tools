@@ -1,1 +1,25 @@
 msi.user.profile.phone.not_blank: Veuillez saisir un numéro à au moins 10 chiffres
+msi.core.parameter.logofile.size: Le poids limite de l'image est de {{ limit }}kb
+msi.core.parameter.logofile.type: Seul les fichiers de type .jpeg .png ou .jpg sont acceptés
+msi.core.parameter.logofile.height.max: La hauteur limite est de {{ max_height }}px
+msi.core.parameter.logofile.width.max: La largeur limite est de {{ max_width }}px
+msi.core.parameter.logofile.height.min: La hauteur minimum est de {{ min_height }}px
+msi.core.parameter.logofile.width.min: La largeur minimum est de {{ min_width }}px
+msi.core.parameter.imagelogin1.size: Le poids limite de l'image est de {{ limit }}kb
+msi.core.parameter.imagelogin1.type: Seul les fichiers de type .jpeg .png ou .jpg sont acceptés
+msi.core.parameter.imagelogin1.height.max: La hauteur limite est de {{ max_height }}px
+msi.core.parameter.imagelogin1.width.max: La largeur limite est de {{ max_width }}px
+msi.core.parameter.imagelogin1.height.min: La hauteur minimum est de {{ min_height }}px
+msi.core.parameter.imagelogin1.width.min: La largeur minimum est de {{ min_width }}px
+msi.core.parameter.imagelogin2.size: Le poids limite de l'image est de {{ limit }}kb
+msi.core.parameter.imagelogin2.type: Seul les fichiers de type .jpeg .png ou .jpg sont acceptés
+msi.core.parameter.imagelogin2.height.max: La hauteur limite est de {{ max_height }}px
+msi.core.parameter.imagelogin2.width.max: La largeur limite est de {{ max_width }}px
+msi.core.parameter.imagelogin2.height.min: La hauteur minimum est de {{ min_height }}px
+msi.core.parameter.imagelogin2.width.min: La largeur minimum est de {{ min_width }}px
+msi.core.parameter.imagelogin3.size: Le poids limite de l'image est de {{ limit }}kb
+msi.core.parameter.imagelogin3.type: Seul les fichiers de type .jpeg .png ou .jpg sont acceptés
+msi.core.parameter.imagelogin3.height.max: La hauteur limite est de {{ max_height }}px
+msi.core.parameter.imagelogin3.width.max: La largeur limite est de {{ max_width }}px
+msi.core.parameter.imagelogin3.height.min: La hauteur minimum est de {{ min_height }}px
+msi.core.parameter.imagelogin3.width.min: La largeur minimum est de {{ min_width }}px

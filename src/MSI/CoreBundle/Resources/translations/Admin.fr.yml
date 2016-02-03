@@ -22,4 +22,6 @@ msi.core.admin.fil.settings: '<li><span>Administration</span><i class="fa fa-ang
 msi.core.admin.fil.editUser: '<li><span>Administration</span><i class="fa fa-angle-right"></i></li><li><span>Listes des utilisateur</span><i class="fa fa-angle-right"></i></li><li><span>Modifier un utilisateur</span></li>'
 msi.core.admin.users.show: 'Voir'
 msi.core.admin.settings.logo: 'Changer le logo du site'
-msi.core.admin.settings.image: 'Changer l''image de la page de connection'
+msi.core.admin.settings.image.1: 'Changer l''image n°1 de la page de connection'
+msi.core.admin.settings.image.2: 'Changer l''image n°2 de la page de connection'
+msi.core.admin.settings.image.3: 'Changer l''image n°3 de la page de connection'

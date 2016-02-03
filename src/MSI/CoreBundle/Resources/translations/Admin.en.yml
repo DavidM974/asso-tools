@@ -22,3 +22,6 @@ msi.core.admin.fil.settings: '<li><span>Administration</span><i class="fa fa-ang
 msi.core.admin.fil.editUser: '<li><span>Administration</span><i class="fa fa-angle-right"></i></li><li><span>Users</span><i class="fa fa-angle-right"></i></li><li><span>Edit an user</span></li>'
 msi.core.admin.users.show: 'Show'
 msi.core.admin.settings.logo: 'Change the site logo'
+msi.core.admin.settings.image.1: 'Change the image # 1 of login page'
+msi.core.admin.settings.image.1: 'change the image # 2 of login page'
+msi.core.admin.settings.image.1: 'Change the image # 3 of login page'
