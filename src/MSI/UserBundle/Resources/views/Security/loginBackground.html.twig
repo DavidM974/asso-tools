@@ -1,0 +1,17 @@
+{% if setting == false %}
+<script type="text/javascript">
+    var image = {
+        bg1 : '/workspace/intranet/web/public/pages/img/login/bg1.jpg',
+        bg2 : '/workspace/intranet/web/public/pages/img/login/bg2.jpg',
+        bg3 : '/workspace/intranet/web/public/pages/img/login/bg3.jpg',
+    }
+</script>
+{% else %}
+<script type="text/javascript">
+    var image = {
+        bg1 : '{{ vich_uploader_asset(setting, 'imageLogin1File') }}',
+        bg2 : '{{ vich_uploader_asset(setting, 'imageLogin2File') }}',
+        bg3 : '{{ vich_uploader_asset(setting, 'imageLogin3File') }}',
+        }
+</script>
+{% endif %}

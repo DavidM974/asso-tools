@@ -1,0 +1,200 @@
+<?php
+
+namespace MSI\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
+/**
+ * Parameter
+ *
+ * @ORM\Table(name="parameter")
+ * @ORM\Entity(repositoryClass="MSI\CoreBundle\Repository\ParameterRepository")
+ * @Vich\Uploadable
+ */
+class Parameter {
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @Vich\UploadableField(mapping="product_image", fileNameProperty="logo")
+     * 
+     * @var File
+     */
+    private $logoFile;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $logoName;
+
+    /**
+     * @Vich\UploadableField(mapping="product_image", fileNameProperty="imagelogin1")
+     * 
+     * @var File
+     */
+    private $imageLogin1File;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $imageLogin1Name;
+
+    /**
+     * @Vich\UploadableField(mapping="product_image", fileNameProperty="imagelogin2")
+     * 
+     * @var File
+     */
+    private $imagelogin2File;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $imageLogin2Name;
+
+    /**
+     * @Vich\UploadableField(mapping="product_image", fileNameProperty="imagelogin3")
+     * 
+     * @var File
+     */
+    private $imagelogin3File;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $imageLogin3Name;
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId() {
+        return $this->id;
+    }
+
+    /**
+     * Set logo
+     *
+     * @param \MSI\CoreBundle\Entity\Image $logo
+     * @return Parameter
+     */
+    public function setLogo(\MSI\CoreBundle\Entity\Image $logo = null) {
+        $this->logo = $logo;
+        return $this;
+    }
+
+    /**
+     * Get logo
+     *
+     * @return \MSI\CoreBundle\Entity\Image 
+     */
+    public function getLogo() {
+        return $this->logo;
+    }
+
+    /**
+     * Set image_login_1
+     *
+     * @param \MSI\CoreBundle\Entity\Image $imageLogin1
+     * @return Parameter
+     */
+    public function setImageLogin1(\MSI\CoreBundle\Entity\Image $imageLogin1 = null) {
+        $this->image_login_1 = $imageLogin1;
+        return $this;
+    }
+
+    /**
+     * Get image_login_1
+     *
+     * @return \MSI\CoreBundle\Entity\Image 
+     */
+    public function getImageLogin1() {
+        return $this->image_login_1;
+    }
+
+    /**
+     * Set image_login_2
+     *
+     * @param \MSI\CoreBundle\Entity\Image $imageLogin2
+     * @return Parameter
+     */
+    public function setImageLogin2(\MSI\CoreBundle\Entity\Image $imageLogin2 = null) {
+        $this->image_login_2 = $imageLogin2;
+        return $this;
+    }
+
+    /**
+     * Get image_login_2
+     *
+     * @return \MSI\CoreBundle\Entity\Image 
+     */
+    public function getImageLogin2() {
+        return $this->image_login_2;
+    }
+
+    /**
+     * Set image_login_3
+     *
+     * @param \MSI\CoreBundle\Entity\Image $imageLogin3
+     * @return Parameter
+     */
+    public function setImageLogin3(\MSI\CoreBundle\Entity\Image $imageLogin3 = null) {
+        $this->image_login_3 = $imageLogin3;
+        return $this;
+    }
+
+    /**
+     * Get image_login_3
+     *
+     * @return \MSI\CoreBundle\Entity\Image 
+     */
+    public function getImageLogin3() {
+        return $this->image_login_3;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return Parameter
+     */
+    public function setUpdatedAt($updatedAt) {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt() {
+        return $this->updatedAt;
+    }
+
+}

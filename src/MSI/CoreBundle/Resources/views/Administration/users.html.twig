@@ -49,15 +49,15 @@
                             <td>{{ user.email }}</td>
                             <td>
                                 {% if user.phone %}
-                                <a href="javascript:;" class="btn btn-circle btn-xs blue"> {{ user.phone }}
-                                    <i class="fa fa-phone"></i>
-                                </a>
+                                    <a href="javascript:;" class="btn btn-circle btn-xs blue"> {{ user.phone }}
+                                        <i class="fa fa-phone"></i>
+                                    </a>
                                 {% endif %}
                                 &nbsp;
                                 {% if user.mobile %}
-                                <a href="javascript:;" class="btn btn-circle btn-xs purple"> {{ user.mobile }}
-                                    <i class="fa fa-mobile"></i>
-                                </a>
+                                    <a href="javascript:;" class="btn btn-circle btn-xs purple"> {{ user.mobile }}
+                                        <i class="fa fa-mobile"></i>
+                                    </a>
                                 {% endif %}
                             </td>
                             <td>                                
@@ -66,8 +66,8 @@
                                         <i class="fa fa-eye"></i>
                                     </a>
                                 </a>
-                                <a href="{{ path('msi_core_admin_users')}}" class="nav-link ">
-                                    <a href="javascript:;" class="btn btn-circle btn-icon-only red">
+                                <a class="nav-link ">
+                                    <a href="{{ path('msi_user_admin_user_edit', {'id':  user.id} ) }}" class="btn btn-circle btn-icon-only red">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                 </a>
@@ -78,4 +78,9 @@
             </table>
         </div>
     </div>
+    <script type="text/javascript">
+        var translations = {
+            showNumberLigne : '{{ 'msi.core.admin.users.show' | trans({}, 'Admin') }}',
+        }
+    </script>
 {% endblock %}
