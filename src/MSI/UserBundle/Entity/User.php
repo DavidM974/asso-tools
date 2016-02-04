@@ -96,6 +96,7 @@ class User extends BaseUser {
     
     /**
      * @ORM\OneToOne(targetEntity="MSI\CoreBundle\Entity\Image", cascade={"persist"})
+     * @Assert\Valid()
      */
     protected $image;
     

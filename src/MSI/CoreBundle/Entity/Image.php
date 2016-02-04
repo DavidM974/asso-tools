@@ -25,9 +25,16 @@ class Image
     private $id;
 
     /**
-     * @Assert\File(
+     * @Assert\Image(
+     *     maxSize="50k",
+     *     maxSizeMessage = "El tamaño maximo de la imagen es de {{ limit }}kb",
+     *     maxWidth = 500,
+     *     maxHeight = 400,
+     *     maxWidthMessage = "message max {{ max_width }}px .",
+     *     maxHeightMessage = "message min{{ max_height }}px ",
      *     mimeTypes = {"image/jpeg", "image/png","image/jpg", "image/gif"},
      *     mimeTypesMessage = "Only .jpeg .png .jpg and .gif Extension valide"
+     * 
      * )
      * @Vich\UploadableField(mapping="user_image", fileNameProperty="imageName")
      * 
@@ -40,8 +47,12 @@ class Image
      *
      * @var string
      */
-    private $imageName;
-
+    
+     private $imageName;
+ 
+     
+     
+    
     /**
      * @ORM\Column(type="datetime")
      *
