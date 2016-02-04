@@ -46,7 +46,8 @@
             <div class="row bs-reset">
                 <div class="col-md-6 bs-reset">
                     <div class="login-bg" style="background-image:url('{{ asset('public/pages/img/login/bg1.jpg') }}')">
-                        <img class="login-logo" src="{{ asset('public/pages/img/login/logo.png') }}" /> </div>
+                        {{ render(controller("MSIUserBundle:Setting:loginLogo")) }} 
+                    </div>
                 </div>
             <div class="col-md-6 login-container bs-reset">
             {% block fos_user_content %}

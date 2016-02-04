@@ -49,15 +49,15 @@
                             <td>{{ user.email }}</td>
                             <td>
                                 {% if user.phone %}
-                                <a href="javascript:;" class="btn btn-circle btn-xs blue"> {{ user.phone }}
-                                    <i class="fa fa-phone"></i>
-                                </a>
+                                    <a href="javascript:;" class="btn btn-circle btn-xs blue"> {{ user.phone }}
+                                        <i class="fa fa-phone"></i>
+                                    </a>
                                 {% endif %}
                                 &nbsp;
                                 {% if user.mobile %}
-                                <a href="javascript:;" class="btn btn-circle btn-xs purple"> {{ user.mobile }}
-                                    <i class="fa fa-mobile"></i>
-                                </a>
+                                    <a href="javascript:;" class="btn btn-circle btn-xs purple"> {{ user.mobile }}
+                                        <i class="fa fa-mobile"></i>
+                                    </a>
                                 {% endif %}
                             </td>
                             <td style ="text-align:center;">                                
@@ -83,4 +83,9 @@
             </table>
         </div>
     </div>
+    <script type="text/javascript">
+        var translations = {
+            showNumberLigne : '{{ 'msi.core.admin.users.show' | trans({}, 'Admin') }}',
+        }
+    </script>
 {% endblock %}

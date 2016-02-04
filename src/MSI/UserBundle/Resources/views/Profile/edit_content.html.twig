@@ -1,6 +1,6 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-        <link href="{{ asset('public/pages/css/profile.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('public/pages/css/profile.min.css') }}" rel="stylesheet" type="text/css" />
 
 
 <div class="row">
@@ -66,71 +66,71 @@
                                 <!-- PERSONAL INFO TAB -->
                                 <div class="tab-pane active" id="tab_1_1">
                                     {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'role': 'form' } }, form_enctype(form)) }}
-                                        <div class="form-group">
-                                            {{ form_errors(form.username) }}
-                                            {{ form_label(form.username, null , {'label_attr': {'class': 'control-label'}}) }}
-                                            {{ form_widget(form.username, {'attr': {'class': 'form-control '}}) }}
-                                        </div>
-                                        <div class="form-group">
-                                            {{ form_errors(form.email) }}
-                                            {{ form_label(form.email, null , {'label_attr': {'class': 'control-label'}}) }}
-                                            {{ form_widget(form.email, {'attr': {'class': 'form-control '}}) }}
-                                        </div>
-                                        <div class="form-group">
-                                            {{ form_errors(form.lastname) }}
-                                            {{ form_label(form.lastname, null , {'label_attr': {'class': 'control-label'}}) }}
-                                            {{ form_widget(form.lastname, {'attr': {'class': 'form-control '}}) }}
-                                        </div>
-                                        <div class="form-group">
-                                            {# les erreurs du formulaire #}
-                                            {{ form_errors(form.firstname) }}
-                                             {# Génération du label. #}
-                                            {{ form_label(form.firstname, null , {'label_attr': {'class': 'control-label'}}) }}
-                                            {{ form_widget(form.firstname, {'attr': {'class': 'form-control '}}) }}
-                                        </div>
-                                        <div class="form-group">
-                                            {{ form_errors(form.civility) }}
-                                            {{ form_label(form.civility, null , {'label_attr': {'class': 'control-label'}}) }}
-                                            {{ form_widget(form.civility, {'attr': {'class': 'form-control '}}) }}
-                                        </div>
-                                        <div class="form-group">
-                                            {{ form_errors(form.birth) }}
-                                            {{ form_label(form.birth, null , {'label_attr': {'class': 'control-label'}}) }}
-                                            {{ form_widget(form.birth, {'attr': {'class': 'form-control '}}) }}
-                                        </div>
-                                        <div class="form-group">
-                                            {{ form_errors(form.address) }}
-                                            {{ form_label(form.address, null , {'label_attr': {'class': 'control-label'}}) }}
-                                            {{ form_widget(form.address, {'attr': {'class': 'form-control ','rows': '3'}}) }}
-                                        </div>
-                                        <div class="form-group {% if not form.phone.vars.valid %} has-error{% endif %}">
-                                            {{ form_label(form.phone, null , {'label_attr': {'class': 'control-label'}}) }}
-                                            {% if not form.phone.vars.valid %}
-                                                <div class="input-icon right">
-                                                    <i class="fa fa-exclamation tooltips" data-original-title="{{ 'msi.user.profile.phone.not_blank'|trans({}, 'validators') }}" data-container="body"></i>
-                                                    {{ form_widget(form.phone, {'attr': {'class': 'form-control '}}) }} 
-                                                </div>
-                                                <span class="help-block">
-                                                    {{ form_errors(form.phone) }}
-                                                </span>
-                                            {% else %}
-                                                    {{ form_widget(form.phone, {'attr': {'class': 'form-control '}}) }}
-                                            {% endif %}
-                                            
-                                        </div>
-                                        <div class="form-group">
-                                            {{ form_errors(form.mobile) }}
-                                            {{ form_label(form.mobile, null , {'label_attr': {'class': 'control-label'}}) }}
-                                            {{ form_widget(form.mobile, {'attr': {'class': 'form-control '}}) }}
-                                        </div>
-                                        <div class="form-group">
-                                            {{ form_errors(form.current_password) }}
-                                            {{ form_label(form.current_password, null , {'label_attr': {'class': 'control-label'}}) }}
-                                            {{ form_widget(form.current_password, {'attr': {'class': 'form-control '}}) }}
-                                        </div>
-                                        <div class="margiv-top-10">
-                                            {{ form_widget(form.update, {'attr': {'class': 'btn green '}}) }}
-                                        </div>
+                                    <div class="form-group">
+                                        {{ form_errors(form.username) }}
+                                        {{ form_label(form.username, null , {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_widget(form.username, {'attr': {'class': 'form-control '}}) }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form_errors(form.email) }}
+                                        {{ form_label(form.email, null , {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_widget(form.email, {'attr': {'class': 'form-control '}}) }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form_errors(form.lastname) }}
+                                        {{ form_label(form.lastname, null , {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_widget(form.lastname, {'attr': {'class': 'form-control '}}) }}
+                                    </div>
+                                    <div class="form-group">
+                                        {# les erreurs du formulaire #}
+                                        {{ form_errors(form.firstname) }}
+                                        {# Génération du label. #}
+                                        {{ form_label(form.firstname, null , {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_widget(form.firstname, {'attr': {'class': 'form-control '}}) }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form_errors(form.civility) }}
+                                        {{ form_label(form.civility, null , {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_widget(form.civility, {'attr': {'class': 'form-control '}}) }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form_errors(form.birth) }}
+                                        {{ form_label(form.birth, null , {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_widget(form.birth, {'attr': {'class': 'form-control '}}) }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form_errors(form.address) }}
+                                        {{ form_label(form.address, null , {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_widget(form.address, {'attr': {'class': 'form-control ','rows': '3'}}) }}
+                                    </div>
+                                    <div class="form-group {% if not form.phone.vars.valid %} has-error{% endif %}">
+                                        {{ form_label(form.phone, null , {'label_attr': {'class': 'control-label'}}) }}
+                                        {% if not form.phone.vars.valid %}
+                                            <div class="input-icon right">
+                                                <i class="fa fa-exclamation tooltips" data-original-title="{{ 'msi.user.profile.phone.not_blank'|trans({}, 'validators') }}" data-container="body"></i>
+                                                {{ form_widget(form.phone, {'attr': {'class': 'form-control '}}) }} 
+                                            </div>
+                                            <span class="help-block">
+                                                {{ form_errors(form.phone) }}
+                                            </span>
+                                        {% else %}
+                                            {{ form_widget(form.phone, {'attr': {'class': 'form-control '}}) }}
+                                        {% endif %}
+
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form_errors(form.mobile) }}
+                                        {{ form_label(form.mobile, null , {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_widget(form.mobile, {'attr': {'class': 'form-control '}}) }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form_errors(form.current_password) }}
+                                        {{ form_label(form.current_password, null , {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_widget(form.current_password, {'attr': {'class': 'form-control '}}) }}
+                                    </div>
+                                    <div class="margiv-top-10">
+                                        {{ form_widget(form.update, {'attr': {'class': 'btn green '}}) }}
+                                    </div>
                                     {{ form_end(form) }}
                                 </div>
                                 <!-- END PERSONAL INFO TAB -->
@@ -193,5 +193,5 @@
     </div>
 </div>
 
-              <script src="{{ asset('public/global/scripts/app.min.js') }}" type="text/javascript"></script>  
-        <script src="{{ asset('public/pages/scripts/profile.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('public/global/scripts/app.min.js') }}" type="text/javascript"></script>  
+<script src="{{ asset('public/pages/scripts/profile.min.js') }}" type="text/javascript"></script>
