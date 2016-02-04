@@ -35,7 +35,9 @@ class ParameterType extends AbstractType {
                     'download_link' => true, // not mandatory, default is true
                     'label' => ' '
                 ))
-                ->add('Envoyer', 'submit')
+                ->add('Envoyer', 'submit', array(
+                    'label' => 'msi.core.submit',
+                ))
         ;
     }
 

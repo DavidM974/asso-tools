@@ -14,40 +14,40 @@
                 <div class="portlet-body form">
                     <!-- BEGIN FORM-->
                     {{ form_start(form, { 'action': path('msi_core_administration_settings'), 'attr': {'class': 'form-horizontal form-bordered'} }, form_enctype(form)) }}
-                        <div class="form-body">
-                            {{ form_errors(form) }}
-                            <div class="form-group">
-                                <label class="control-label col-md-3">{{ 'msi.core.admin.settings.logo'|trans({}, 'Admin') }}</label>
-                                <div class="col-md-9">
-                                    {{ form_row(form.logoFile) }}
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">{{ 'msi.core.admin.settings.image.1'|trans({}, 'Admin') }}</label>
-                                <div class="col-md-9">
-                                    {{ form_row(form.imageLogin1File) }}
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">{{ 'msi.core.admin.settings.image.2'|trans({}, 'Admin') }}</label>
-                                <div class="col-md-9">
-                                    {{ form_row(form.imageLogin2File) }}
-                                </div>
-                            </div>
-                            <div class="form-group last">
-                                <label class="control-label col-md-3">{{ 'msi.core.admin.settings.image.3'|trans({}, 'Admin') }}</label>
-                                <div class="col-md-9">
-                                    {{ form_row(form.imageLogin3File) }}
-                                </div>
+                    <div class="form-body">
+                        {{ form_errors(form) }}
+                        <div class="form-group">
+                            <label class="control-label col-md-3">{{ 'msi.core.admin.settings.logo'|trans({}, 'Admin') }}</label>
+                            <div class="col-md-9">
+                                {{ form_row(form.logoFile) }}
                             </div>
                         </div>
-                        <div class="form-actions">
-                            <div class="row">
-                                <div class="col-md-offset-3 col-md-9">
-                                    {{ form_widget(form.Envoyer, {'attr': {'class': 'btn green '}}) }}
-                                </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">{{ 'msi.core.admin.settings.image.1'|trans({}, 'Admin') }}</label>
+                            <div class="col-md-9">
+                                {{ form_row(form.imageLogin1File) }}
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">{{ 'msi.core.admin.settings.image.2'|trans({}, 'Admin') }}</label>
+                            <div class="col-md-9">
+                                {{ form_row(form.imageLogin2File) }}
+                            </div>
+                        </div>
+                        <div class="form-group last">
+                            <label class="control-label col-md-3">{{ 'msi.core.admin.settings.image.3'|trans({}, 'Admin') }}</label>
+                            <div class="col-md-9">
+                                {{ form_row(form.imageLogin3File) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-9">
+                                {{ form_widget(form.Envoyer, {'attr': {'class': 'btn green '}}) }}
+                            </div>
+                        </div>
+                    </div>
                     {{ form_end(form) }}
                     <!-- END FORM-->
                 </div>

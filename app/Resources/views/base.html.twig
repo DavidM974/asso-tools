@@ -59,7 +59,8 @@
                 <!-- BEGIN LOGO -->
                 <div class="page-logo">
                     <a href="index.html">
-                        <img src="{{ asset('public/layouts/layout2/img/logo-default.png') }}" alt="logo" class="logo-default" /></a>
+                        {{ render(controller("MSIUserBundle:Setting:loginLogo")) }}
+                    </a>
                     <div class="menu-toggler sidebar-toggler">
                         <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
                     </div>

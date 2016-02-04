@@ -87,12 +87,15 @@ var Login = function() {
         init: function() {
 
             handleLogin();
-
+            //si au moins 1 background alors on l'affiche, sinon on affiche ceux par d�faut
             // init background slide images
+            if(image.bg1 == '')
+            alert(image.bg1);
             $('.login-bg').backstretch([
-                "../assets/pages/img/login/bg1.jpg",
-                "../assets/pages/img/login/bg2.jpg",
-                "../assets/pages/img/login/bg3.jpg"
+                //"../assets/pages/img/login/bg1.jpg",
+                image.bg1,
+                image.bg2,
+                image.bg3
                 ], {
                   fade: 1000,
                   duration: 8000

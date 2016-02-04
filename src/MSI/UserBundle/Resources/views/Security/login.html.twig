@@ -47,7 +47,6 @@
             </div>
         </form>
 
-
         <!-- BEGIN FORGOT PASSWORD FORM -->
         <form class="forget-form" action="javascript:;" method="post">
             <h3 class="font-green">Forgot Password ?</h3>
@@ -60,6 +59,8 @@
             </div>
         </form>
         <!-- END FORGOT PASSWORD FORM -->
-    </div>
+    </div>    
+                    
+{{ render(controller("MSIUserBundle:Setting:loginBackground")) }}
 
 {% endblock fos_user_content %}

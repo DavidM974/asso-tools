@@ -1,0 +1,5 @@
+{% if setting == false %}
+    <img class="login-logo" src="{{ asset('public/pages/img/login/logo.png') }}" />
+{% else %}
+    <img class="login-logo" style="max-height: 50px;" src="{{ vich_uploader_asset(setting, 'logoFile') }}" />
+{% endif %}
