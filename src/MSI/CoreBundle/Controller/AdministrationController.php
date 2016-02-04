@@ -50,14 +50,10 @@ class AdministrationController extends Controller {
         $translator = $this->get('translator');
         $ariane = $translator->trans('msi.core.admin.fil.settings', array(), 'Admin');
         $session->set('fileAriane', $ariane);
-        $resultParameter = $this->getDoctrine()
-                ->getManager()
-                ->getRepository('MSICoreBundle:Parameter')
-                ->findAll();
-        if (empty($resultParameter)) {
+        $em = $this->getDoctrine()->getManager();
+        $parameter = $em->getRepository('MSICoreBundle:Parameter')->getSetting();
+        if (!$parameter) {
             $parameter = new Parameter();
-        } else {
-            $parameter = array_shift($resultParameter);
         }
         $form = $this->createForm(new ParameterType(), $parameter);
 
