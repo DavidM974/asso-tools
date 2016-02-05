@@ -28,6 +28,7 @@ class AdministrationController extends Controller {
         $translator = $this->get('translator');
         $ariane = $translator->trans('msi.core.admin.fil.index', array(), 'Admin');
         $session->set('fileAriane', $ariane);
+        $session->set('module','admin');
         return $this->render('MSICoreBundle:Administration:index.html.twig');
     }
 
@@ -36,6 +37,8 @@ class AdministrationController extends Controller {
         $translator = $this->get('translator');
         $ariane = $translator->trans('msi.core.admin.fil.users', array(), 'Admin');
         $session->set('fileAriane', $ariane);
+        $session->set('module','admin');
+        $session->set('menu','users');
         $listUsers = $this->getDoctrine()
                 ->getManager()
                 ->getRepository('MSIUserBundle:User')
@@ -50,6 +53,8 @@ class AdministrationController extends Controller {
         $translator = $this->get('translator');
         $ariane = $translator->trans('msi.core.admin.fil.settings', array(), 'Admin');
         $session->set('fileAriane', $ariane);
+        $session->set('module','admin');
+        $session->set('menu','settings');
         $em = $this->getDoctrine()->getManager();
         $parameter = $em->getRepository('MSICoreBundle:Parameter')->getSetting();
         if (!$parameter) {
