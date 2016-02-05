@@ -12,7 +12,8 @@ class DefaultController extends Controller {
         $session = $request->getSession();
         $ariane = "<li><span>Dashboard</span></li>";
         $session->set('fileAriane', $ariane);
-        
+        $session->set('module','Dashboard');
+        $session->set('menu','');
         return $this->render('MSICoreBundle:Default:dashboard.html.twig');
     }
     
@@ -26,7 +27,7 @@ class DefaultController extends Controller {
         return $this->render('MSICoreBundle:Header:fileAriane.html.twig', array('fileAriane' => $session->get('fileAriane')));
     }
 
-    public function menuLeftAction() {
+    public function menuLeftAction(Request $request) {
         return $this->render('MSICoreBundle:MenuLeft:menuLeft.html.twig');
     }
 }
