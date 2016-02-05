@@ -20,6 +20,7 @@ msi.core.admin.fil.addUser: '<li><span>Administration</span><i class="fa fa-angl
 msi.core.admin.fil.users: '<li><span>Administration</span><i class="fa fa-angle-right"></i></li><li><span>Users</span></li>'
 msi.core.admin.fil.settings: '<li><span>Administration</span><i class="fa fa-angle-right"></i></li><li><span>Settings</span></li>'
 msi.core.admin.fil.editUser: '<li><span>Administration</span><i class="fa fa-angle-right"></i></li><li><span>Users</span><i class="fa fa-angle-right"></i></li><li><span>Edit an user</span></li>'
+msi.core.admin.fil.profile.edit: '<li><span>Profile</span></li>'
 msi.core.admin.users.show: 'Show'
 msi.core.admin.settings.logo: 'Change the site logo'
 msi.core.admin.settings.image.1: 'Change the image # 1 of login page'
