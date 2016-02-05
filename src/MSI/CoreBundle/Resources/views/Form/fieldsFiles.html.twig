@@ -24,8 +24,8 @@
 
 {% block vich_image_widget %}
     {% spaceless %}
-        <div class="vich-image form-group">
-            <div>            
+
+                  
                 <div class="fileinput fileinput-new" data-provides="fileinput">
                     <div class="fileinput-new thumbnail" style="width: 200px; height: 160px;">
                         {% if download_uri is defined and download_uri %}
@@ -40,7 +40,7 @@
                 </span>&nbsp;
                 {% if form.delete is defined %}
                     <a href="javascript:;" class="btn default fileinput-exists" data-dismiss="fileinput">{{ form_row(form.delete) }}</a>
-                </div>
+                
             {% endif %}
             {% if show_download_link and download_uri is defined and download_uri%}
                 <div>
@@ -49,6 +49,6 @@
                     </span>
                 </div>
             {% endif %}
-        </div>
+        
     {% endspaceless %}
 {% endblock %}

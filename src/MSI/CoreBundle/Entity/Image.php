@@ -46,8 +46,7 @@ class Image
      * @ORM\Column(type="string", length=255)
      *
      * @var string
-     */
-    
+     */   
      private $imageName;
  
      
