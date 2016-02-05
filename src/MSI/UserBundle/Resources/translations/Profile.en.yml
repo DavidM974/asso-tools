@@ -16,5 +16,6 @@ msi:
             avatar: Change the avatar
             changePassword: Change password
             accountSetting: Settings account
+            avatar: 'User''s avatar'
 
             

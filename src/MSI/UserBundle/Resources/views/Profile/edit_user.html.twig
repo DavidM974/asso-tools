@@ -15,8 +15,8 @@
             <div class="portlet light profile-sidebar-portlet ">
                 <!-- SIDEBAR USERPIC -->
                 <div class="profile-userpic">
-                    {% if userToEdit.image is defined and userToEdit.image %}
-                        <img src="{{ vich_uploader_asset(userToEdit.image, 'imageFile') }}" alt="{{ userToEdit.image.imageName }}" class="img-responsive"  />
+                    {% if userToEdit.imageName %}
+                        <img src="{{ vich_uploader_asset(userToEdit, 'imageFile') }}" alt="{{ userToEdit.imageName }}" class="img-responsive"  />
                     {% else %}
                         <img src="" alt="" class="img-responsive"  />
                     {% endif %}
@@ -166,9 +166,9 @@
                                      {{ form_start(formAvatar, { 'action': path('msi_user_admin_edit_avatar_user', {'id': userToEdit.id}) }, form_enctype(formAvatar)) }}
                                     {{ form_errors(formAvatar) }}
                                         <div class="form-group">
-                                            {{ form_errors(formAvatar.image) }}
-                                            {{ form_label(formAvatar.image) }}
-                                            {{ form_widget(formAvatar.image) }}
+                                            {{ form_errors(formAvatar.imageFile) }}
+                                            {{ form_label(formAvatar.imageFile) }}
+                                            {{ form_widget(formAvatar.imageFile) }}
                                         </div>
                                         <div class="margin-top-10">
                                             {{ form_widget(formAvatar.update, {'attr': {'class': 'btn green '}}) }}

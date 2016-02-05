@@ -11,3 +11,6 @@ msi_user_admin_edit_avatar_user:
     defaults: { _controller: MSIUserBundle:EditUser:editAvatar}
     requirements: 
         id: \d+
+msi_user_profile_edit_avatar:
+    path:     /profile/edit/avatar
+    defaults: { _controller: MSIUserBundle:ProfileUser:editProfileAvatar}
