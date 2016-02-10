@@ -16,31 +16,28 @@ class ProfileUserController extends BaseController
     
 
     // path msi_user_profile_edit_avatar
-    public function editProfileAvatarAction(Request $request)
+    public function editProfileAvatarAction($avatarActif, Request $request)
     {
           $user = $this->get('security.context')->getToken()->getUser();
             
-
+            //init the globale user edit form
             $formUser = $this->container->get('msi_user.edit.form.factory')->createForm();
             $formUser->setData($user);
-            
+            //init the user avatar edit form
             $formAvatar = $this->container->get('msi_user.avatar.form.factory')->createForm();
             $formAvatar->setData($user);
             if($formAvatar->handleRequest($request)->isValid())
             {
                 $userManager = $this->container->get('fos_user.user_manager');
                 $userManager->updateUser($user);
-                  // Move the file to the directory where brochures are stored
-                $url = $this->generateUrl('fos_user_profile_edit');
+                $url = $this->generateUrl('fos_user_profile_edit');            
                 $session = $request->getSession();
-                $session->getFlashBag()->add('info_user_edit', 
-                        $this->get('translator')->trans('msi.core.admin.edit.user.info',  array('%username%' => $user->getUsername()) , 'Admin')
+                $session->getFlashBag()->add('avatar_user_edit', 
+                        $this->get('translator')->trans('msi.core.admin.edit.user.avatar.info',  array('%username%' => $user->getUsername()) , 'Admin')
                 );
- 
                 return $this->redirect($url);
             }
-            return $this->render('MSIUserBundle:Profile:edit_avatar.html.twig', array('formAvatar' => $formAvatar->createView(), 
-                                                                                        'edit_avatar' => true));
+            return $this->render('MSIUserBundle:Profile:edit_avatar.html.twig', array('formAvatar' => $formAvatar->createView(),'avatarActif' => $avatarActif));
     }
     
 }

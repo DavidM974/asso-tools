@@ -1,5 +1,5 @@
-<div class="tab-pane {% if edit_avatar is defined and edit_avatar %} active{% endif %}" id="tab_1_2">
-     {{ form_start(formAvatar, { 'action': path('msi_user_profile_edit_avatar' ) }, form_enctype(formAvatar)) }}
+<div class="tab-pane {% if avatarActif  %} active {% endif %}" id="tab_1_2">
+     {{ form_start(formAvatar, { 'action': path('msi_user_profile_edit_avatar') }, form_enctype(formAvatar)) }}
     {{ form_errors(formAvatar) }}
         <div class="form-group">
             {{ form_errors(formAvatar.imageFile) }}

@@ -54,6 +54,9 @@
             <!-- END PORTLET MAIN -->
         </div>
         <!-- END BEGIN PROFILE SIDEBAR -->
+        
+        {% set avatarSave = app.session.flashbag.get('avatar_user_edit') %}
+        
         <!-- BEGIN PROFILE CONTENT -->
         <div class="profile-content">
             <div class="row">
@@ -65,10 +68,10 @@
                                 <span class="caption-subject font-blue-madison bold uppercase">{{ 'msi.user.edit.formTitle'|trans({}, 'Profile') }}</span>
                             </div>
                             <ul class="nav nav-tabs">
-                                <li class="active">
+                                <li {% if (avatarSave is empty) %} class="active" {% endif %}>
                                     <a href="#tab_1_1" data-toggle="tab">{{ 'msi.user.edit.personalInfo'|trans({}, 'Profile') }}</a>
                                 </li>
-                                <li>
+                                <li {% if (avatarSave is not empty) %} class="active" {% endif %}>
                                     <a href="#tab_1_2" data-toggle="tab">{{ 'msi.user.edit.avatar'|trans({}, 'Profile') }}</a>
                                 </li>
                                 <li>
@@ -76,10 +79,28 @@
                                 </li>
                             </ul>
                         </div>
+                        {% for message in app.session.flashbag.get('info_user_edit') %}
+                            <div class="col-md-6">
+                                <div class="alert alert-success alert-dismissable">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                                    <strong>{{ 'msi.user.register.flash'|trans({}, 'Register') }}</strong> {{ message }}
+                                </div>
+                            </div>
+                        {% endfor %}
+                                             
+                        {% for message in avatarSave %}
+                            <div class="col-md-6">
+                                <div class="alert alert-success alert-dismissable">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                                    <strong>{{ 'msi.user.register.flash'|trans({}, 'Register') }}</strong> {{ message }}
+                                </div>
+                            </div>
+                        {% endfor %}
+
                         <div class="portlet-body">
                             <div class="tab-content">
                                 <!-- PERSONAL INFO TAB -->
-                                <div class="tab-pane active" id="tab_1_1">
+                                <div class="tab-pane  {% if (avatarSave is empty) %} active {% endif %}" id="tab_1_1">
                                     {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'role': 'form' } }, form_enctype(form)) }}
                                     <div class="form-group">
                                         {{ form_errors(form.username) }}
@@ -150,7 +171,11 @@
                                 </div>
                                 <!-- END PERSONAL INFO TAB -->
                                 <!-- CHANGE AVATAR TAB -->
-                                {{ render(controller("MSIUserBundle:ProfileUser:editProfileAvatar")) }}
+                                {% if (avatarSave is not empty) %}
+                                    {{ render(controller("MSIUserBundle:ProfileUser:editProfileAvatar" , {'avatarActif': true})) }}
+                                {% else %}
+                                    {{ render(controller("MSIUserBundle:ProfileUser:editProfileAvatar" , {'avatarActif': false})) }}
+                                {% endif %}
                                 <!-- END CHANGE AVATAR TAB -->
                                 <!-- CHANGE PASSWORD TAB -->
                                 <div class="tab-pane" id="tab_1_3">
