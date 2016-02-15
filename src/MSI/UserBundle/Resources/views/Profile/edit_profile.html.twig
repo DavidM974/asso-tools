@@ -15,10 +15,10 @@
             <div class="portlet light profile-sidebar-portlet ">
                 <!-- SIDEBAR USERPIC -->
                 <div class="profile-userpic">
-                    {% if userToEdit.imageName %}
-                        <img src="{{ vich_uploader_asset(userToEdit, 'imageFile') }}" alt="{{ userToEdit.imageName }}" class="img-responsive"  />
+                    {% if user.imageName %}
+                        <img src="{{ vich_uploader_asset(user, 'imageFile') }}" alt="{{ user.imageName }}" class="img-responsive"  />
                     {% else %}
-                        <img src="{{asset('public/layouts/layout2/img/avatar_default.png')}}" alt="" class="img-responsive"  />
+                        <img src="{{ asset('public/layouts/layout2/img/avatar_default.png')}}" alt="" class="img-responsive"  />
                     {% endif %}
                 </div>
                 <!-- END SIDEBAR USERPIC -->
@@ -26,13 +26,15 @@
                 <div class="profile-usertitle">
                     <div class="profile-usertitle-name">  </div>
                     <div class="profile-usertitle-job">
-                    {% for role in userToEdit.roles %}
+                    {% for role in user.roles %}
                         {% if role == 'ROLE_SECRETAIRE'  %}
                             {{ 'msi.user.register.secretary'|trans({}, 'Register') }}
                         {% elseif role == 'ROLE_PASTEUR' %}
                             {{ 'msi.user.register.pastor' |trans({}, 'Register') }}
                         {% elseif role == 'ROLE_ADMIN' %}
                             {{ 'msi.user.register.admin'|trans({}, 'Register') }}
+                        {% elseif role == 'ROLE_SUPER_ADMIN' %}
+                            {{ 'msi.user.register.superadmin'|trans({}, 'Register') }}
                         {% endif %}
                     {% endfor %}
                     </div>
@@ -69,7 +71,7 @@
                                 <span class="caption-subject font-blue-madison bold uppercase">{{ 'msi.user.edit.formTitle'|trans({}, 'Profile') }}</span>
                             </div>
                             <ul class="nav nav-tabs">
-                                <li {% if edit_user is defined and edit_user %} class="active" {% endif %}>
+                                <li {% if edit_profile is defined and edit_profile %} class="active" {% endif %}>
                                     <a href="#tab_1_1" data-toggle="tab">{{ 'msi.user.edit.personalInfo'|trans({}, 'Profile') }}</a>
                                 </li>
                                 <li {% if edit_avatar is defined and edit_avatar %} class="active" {% endif %}>
@@ -91,8 +93,8 @@
                         <div class="portlet-body">
                             <div class="tab-content">
                                 <!-- PERSONAL INFO TAB -->
-                                <div class="tab-pane {% if edit_user is defined and edit_user %} active {% endif %}" id="tab_1_1">
-                                    {{ form_start(form, { 'action': path('msi_user_admin_edit_user', {'id': userToEdit.id}), 'attr': { 'role': 'form' } }, form_enctype(form)) }}
+                                <div class="tab-pane {% if edit_profile is defined and edit_profile %} active {% endif %}" id="tab_1_1">
+                                    {{ form_start(form, { 'action': path('msi_user_edit_user'), 'attr': { 'role': 'form' } }, form_enctype(form)) }}
                                         <div class="form-group">
                                             {{ form_errors(form.username) }}
                                             {{ form_label(form.username, null , {'label_attr': {'class': 'control-label'}}) }}
@@ -163,7 +165,7 @@
                                 <!-- END PERSONAL INFO TAB -->
                                 <!-- CHANGE AVATAR TAB -->
                                 <div class="tab-pane {% if edit_avatar is defined and edit_avatar %} active{% endif %}" id="tab_1_2">
-                                     {{ form_start(formAvatar, { 'action': path('msi_user_admin_edit_avatar_user', {'id': userToEdit.id}) }, form_enctype(formAvatar)) }}
+                                     {{ form_start(formAvatar, { 'action': path('msi_user_edit_avatar_user') }, form_enctype(formAvatar)) }}
                                     {{ form_errors(formAvatar) }}
                                         <div class="form-group">
                                             {{ form_errors(formAvatar.imageFile) }}
@@ -178,7 +180,7 @@
                                 <!-- END CHANGE AVATAR TAB -->
                                 <!-- CHANGE PASSWORD TAB -->
                                 <div class="tab-pane {% if edit_pwd is defined and edit_pwd  %} active {% endif %}" id="tab_1_3">
-                                {{ form_start(formPwd, { 'action': path('msi_user_admin_edit_pwd_user', {'id': userToEdit.id}) }, form_enctype(formPwd)) }}
+                                {{ form_start(formPwd, { 'action': path('msi_user_edit_pwd_user') }, form_enctype(formPwd)) }}
                                {{ form_errors(formPwd) }}
                                <div class="form-group">
                                        {{ form_errors(formPwd.current_password) }}

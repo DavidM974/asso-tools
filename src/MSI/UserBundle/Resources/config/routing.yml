@@ -11,6 +11,18 @@ msi_user_admin_edit_avatar_user:
     defaults: { _controller: MSIUserBundle:EditUser:editAvatar}
     requirements: 
         id: \d+
-msi_user_profile_edit_avatar:
-    path:     /profile/edit/avatar/{avatarActif}
-    defaults: { _controller: MSIUserBundle:ProfileUser:editProfileAvatar, avatarActif: false}
+msi_user_admin_edit_pwd_user:
+    path:     /admin/pwdUser/{id}
+    defaults: { _controller: MSIUserBundle:EditUser:editPassword}
+    requirements: 
+        id: \d+
+ # Profile utilisateur connecté       
+msi_user_edit_user:
+    path:     /myprofile/edit
+    defaults: { _controller: MSIUserBundle:ProfileUser:edit}
+msi_user_edit_avatar_user:
+    path:     /myprofile/avatar
+    defaults: { _controller: MSIUserBundle:ProfileUser:editAvatar}
+msi_user_edit_pwd_user:
+    path:     /myprofile/pwd
+    defaults: { _controller: MSIUserBundle:ProfileUser:editPassword}
