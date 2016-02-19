@@ -1,0 +1,3 @@
+msi_members_homepage:
+    path:     /members
+    defaults: { _controller: MSIMembersBundle:Default:index }
