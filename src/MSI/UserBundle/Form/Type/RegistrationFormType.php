@@ -1,6 +1,8 @@
 <?php
 
 namespace MSI\UserBundle\Form\Type;
+
+use FOS\UserBundle\Util\LegacyFormHelper;
 use Symfony\Component\Form\FormBuilderInterface;
 use FOS\UserBundle\Form\Type\RegistrationFormType as BaseType;
  
