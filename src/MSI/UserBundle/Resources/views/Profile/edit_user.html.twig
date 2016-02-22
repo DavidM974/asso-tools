@@ -4,95 +4,95 @@
 
 {% block fos_user_content %}
 
-        <link href="{{ asset('public/pages/css/profile.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/pages/css/profile.min.css') }}" rel="stylesheet" type="text/css" />
 
 
-<div class="row">
-    <div class="col-md-12">
-        <!-- BEGIN PROFILE SIDEBAR -->
-        <div class="profile-sidebar">
-            <!-- PORTLET MAIN -->
-            <div class="portlet light profile-sidebar-portlet ">
-                <!-- SIDEBAR USERPIC -->
-                <div class="profile-userpic">
-                    {% if userToEdit.imageName %}
-                        <img src="{{ vich_uploader_asset(userToEdit, 'imageFile') }}" alt="{{ userToEdit.imageName }}" class="img-responsive"  />
-                    {% else %}
-                        <img src="{{asset('public/layouts/layout2/img/avatar_default.png')}}" alt="" class="img-responsive"  />
-                    {% endif %}
-                </div>
-                <!-- END SIDEBAR USERPIC -->
-                <!-- SIDEBAR USER TITLE -->
-                <div class="profile-usertitle">
-                    <div class="profile-usertitle-name">  </div>
-                    <div class="profile-usertitle-job">
-                    {% for role in userToEdit.roles %}
-                        {% if role == 'ROLE_SECRETAIRE'  %}
-                            {{ 'msi.user.register.secretary'|trans({}, 'Register') }}
-                        {% elseif role == 'ROLE_PASTEUR' %}
-                            {{ 'msi.user.register.pastor' |trans({}, 'Register') }}
-                        {% elseif role == 'ROLE_ADMIN' %}
-                            {{ 'msi.user.register.admin'|trans({}, 'Register') }}
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN PROFILE SIDEBAR -->
+            <div class="profile-sidebar">
+                <!-- PORTLET MAIN -->
+                <div class="portlet light profile-sidebar-portlet ">
+                    <!-- SIDEBAR USERPIC -->
+                    <div class="profile-userpic">
+                        {% if userToEdit.imageName %}
+                            <img src="{{ vich_uploader_asset(userToEdit, 'imageFile') }}" alt="{{ userToEdit.imageName }}" class="img-responsive"  />
+                        {% else %}
+                            <img src="{{asset('public/layouts/layout2/img/avatar_default.png')}}" alt="" class="img-responsive"  />
                         {% endif %}
-                    {% endfor %}
                     </div>
-                </div>
-                <!-- END SIDEBAR USER TITLE -->
-                <!-- SIDEBAR BUTTONS -->
-                <div class="profile-userbuttons">
-                    <button type="button" class="btn btn-circle green btn-sm">Follow</button>
-                    <button type="button" class="btn btn-circle red btn-sm">Message</button>
-                </div>
-                <!-- END SIDEBAR BUTTONS -->
-                <!-- SIDEBAR MENU -->
-                <div class="profile-usermenu">
-                    <ul class="nav">
-                        <li class="active">
-                            <a href="page_user_profile_1_account.html">
-                                <i class="icon-settings"></i> {{ 'msi.user.edit.accountSetting'|trans({}, 'Profile') }} </a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- END MENU -->
-            </div>
-            <!-- END PORTLET MAIN -->
-        </div>
-        <!-- END BEGIN PROFILE SIDEBAR -->
-        <!-- BEGIN PROFILE CONTENT -->
-        <div class="profile-content">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="portlet light ">
-                        <div class="portlet-title tabbable-line">
-                            <div class="caption caption-md">
-                                <i class="icon-globe theme-font hide"></i>
-                                <span class="caption-subject font-blue-madison bold uppercase">{{ 'msi.user.edit.formTitle'|trans({}, 'Profile') }}</span>
-                            </div>
-                            <ul class="nav nav-tabs">
-                                <li {% if edit_user is defined and edit_user %} class="active" {% endif %}>
-                                    <a href="#tab_1_1" data-toggle="tab">{{ 'msi.user.edit.personalInfo'|trans({}, 'Profile') }}</a>
-                                </li>
-                                <li {% if edit_avatar is defined and edit_avatar %} class="active" {% endif %}>
-                                    <a href="#tab_1_2" data-toggle="tab">{{ 'msi.user.edit.avatar'|trans({}, 'Profile') }}</a>
-                                </li>
-                                <li {% if edit_pwd is defined and edit_pwd %} class="active" {% endif %}>
-                                    <a href="#tab_1_3" data-toggle="tab">{{ 'msi.user.edit.changePassword'|trans({}, 'Profile') }}</a>
-                                </li>
-                            </ul>
+                    <!-- END SIDEBAR USERPIC -->
+                    <!-- SIDEBAR USER TITLE -->
+                    <div class="profile-usertitle">
+                        <div class="profile-usertitle-name">  </div>
+                        <div class="profile-usertitle-job">
+                            {% for role in userToEdit.roles %}
+                                {% if role == 'ROLE_SECRETAIRE'  %}
+                                    {{ 'msi.user.register.secretary'|trans({}, 'Register') }}
+                                {% elseif role == 'ROLE_PASTEUR' %}
+                                    {{ 'msi.user.register.pastor' |trans({}, 'Register') }}
+                                {% elseif role == 'ROLE_ADMIN' %}
+                                    {{ 'msi.user.register.admin'|trans({}, 'Register') }}
+                                {% endif %}
+                            {% endfor %}
                         </div>
-                        {% for message in app.session.flashbag.get('info_user_edit') %}
-                            <div class="col-md-6">
-                                <div class="alert alert-success alert-dismissable">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-                                    <strong>{{ 'msi.user.register.flash'|trans({}, 'Register') }}</strong> {{ message }}
+                    </div>
+                    <!-- END SIDEBAR USER TITLE -->
+                    <!-- SIDEBAR BUTTONS -->
+                    <div class="profile-userbuttons">
+                        <button type="button" class="btn btn-circle green btn-sm">Follow</button>
+                        <button type="button" class="btn btn-circle red btn-sm">Message</button>
+                    </div>
+                    <!-- END SIDEBAR BUTTONS -->
+                    <!-- SIDEBAR MENU -->
+                    <div class="profile-usermenu">
+                        <ul class="nav">
+                            <li class="active">
+                                <a href="page_user_profile_1_account.html">
+                                    <i class="icon-settings"></i> {{ 'msi.user.edit.accountSetting'|trans({}, 'Profile') }} </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- END MENU -->
+                </div>
+                <!-- END PORTLET MAIN -->
+            </div>
+            <!-- END BEGIN PROFILE SIDEBAR -->
+            <!-- BEGIN PROFILE CONTENT -->
+            <div class="profile-content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="portlet light ">
+                            <div class="portlet-title tabbable-line">
+                                <div class="caption caption-md">
+                                    <i class="icon-globe theme-font hide"></i>
+                                    <span class="caption-subject font-blue-madison bold uppercase">{{ 'msi.user.edit.formTitle'|trans({}, 'Profile') }}</span>
                                 </div>
+                                <ul class="nav nav-tabs">
+                                    <li {% if edit_user is defined and edit_user %} class="active" {% endif %}>
+                                        <a href="#tab_1_1" data-toggle="tab">{{ 'msi.user.edit.personalInfo'|trans({}, 'Profile') }}</a>
+                                    </li>
+                                    <li {% if edit_avatar is defined and edit_avatar %} class="active" {% endif %}>
+                                        <a href="#tab_1_2" data-toggle="tab">{{ 'msi.user.edit.avatar'|trans({}, 'Profile') }}</a>
+                                    </li>
+                                    <li {% if edit_pwd is defined and edit_pwd %} class="active" {% endif %}>
+                                        <a href="#tab_1_3" data-toggle="tab">{{ 'msi.user.edit.changePassword'|trans({}, 'Profile') }}</a>
+                                    </li>
+                                </ul>
                             </div>
-                        {% endfor %}
-                        <div class="portlet-body">
-                            <div class="tab-content">
-                                <!-- PERSONAL INFO TAB -->
-                                <div class="tab-pane {% if edit_user is defined and edit_user %} active {% endif %}" id="tab_1_1">
-                                    {{ form_start(form, { 'action': path('msi_user_admin_edit_user', {'id': userToEdit.id}), 'attr': { 'role': 'form' } }, form_enctype(form)) }}
+                            {% for message in app.session.flashbag.get('info_user_edit') %}
+                                <div class="col-md-6">
+                                    <div class="alert alert-success alert-dismissable">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                                        <strong>{{ 'msi.user.register.flash'|trans({}, 'Register') }}</strong> {{ message }}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            <div class="portlet-body">
+                                <div class="tab-content">
+                                    <!-- PERSONAL INFO TAB -->
+                                    <div class="tab-pane {% if edit_user is defined and edit_user %} active {% endif %}" id="tab_1_1">
+                                        {{ form_start(form, { 'action': path('msi_user_admin_edit_user', {'id': userToEdit.id}), 'attr': { 'role': 'form' } }, form_enctype(form)) }}
                                         <div class="form-group">
                                             {{ form_errors(form.username) }}
                                             {{ form_label(form.username, null , {'label_attr': {'class': 'control-label'}}) }}
@@ -111,7 +111,7 @@
                                         <div class="form-group">
                                             {# les erreurs du formulaire #}
                                             {{ form_errors(form.firstname) }}
-                                             {# Génération du label. #}
+                                            {# Génération du label. #}
                                             {{ form_label(form.firstname, null , {'label_attr': {'class': 'control-label'}}) }}
                                             {{ form_widget(form.firstname, {'attr': {'class': 'form-control '}}) }}
                                         </div>
@@ -146,9 +146,9 @@
                                                     {{ form_errors(form.phone) }}
                                                 </span>
                                             {% else %}
-                                                    {{ form_widget(form.phone, {'attr': {'class': 'form-control '}}) }}
+                                                {{ form_widget(form.phone, {'attr': {'class': 'form-control '}}) }}
                                             {% endif %}
-                                            
+
                                         </div>
                                         <div class="form-group">
                                             {{ form_errors(form.mobile) }}
@@ -158,13 +158,13 @@
                                         <div class="margiv-top-10">
                                             {{ form_widget(form.update, {'attr': {'class': 'btn green '}}) }}
                                         </div>
-                                    {{ form_end(form) }}
-                                </div>
-                                <!-- END PERSONAL INFO TAB -->
-                                <!-- CHANGE AVATAR TAB -->
-                                <div class="tab-pane {% if edit_avatar is defined and edit_avatar %} active{% endif %}" id="tab_1_2">
-                                     {{ form_start(formAvatar, { 'action': path('msi_user_admin_edit_avatar_user', {'id': userToEdit.id}) }, form_enctype(formAvatar)) }}
-                                    {{ form_errors(formAvatar) }}
+                                        {{ form_end(form) }}
+                                    </div>
+                                    <!-- END PERSONAL INFO TAB -->
+                                    <!-- CHANGE AVATAR TAB -->
+                                    <div class="tab-pane {% if edit_avatar is defined and edit_avatar %} active{% endif %}" id="tab_1_2">
+                                        {{ form_start(formAvatar, { 'action': path('msi_user_admin_edit_avatar_user', {'id': userToEdit.id}) }, form_enctype(formAvatar)) }}
+                                        {{ form_errors(formAvatar) }}
                                         <div class="form-group">
                                             {{ form_errors(formAvatar.imageFile) }}
                                             {{ form_label(formAvatar.imageFile) }}
@@ -173,44 +173,44 @@
                                         <div class="margin-top-10">
                                             {{ form_widget(formAvatar.update, {'attr': {'class': 'btn green '}}) }}
                                         </div>
-                                    {{ form_end(formAvatar) }}
+                                        {{ form_end(formAvatar) }}
+                                    </div>
+                                    <!-- END CHANGE AVATAR TAB -->
+                                    <!-- CHANGE PASSWORD TAB -->
+                                    <div class="tab-pane {% if edit_pwd is defined and edit_pwd  %} active {% endif %}" id="tab_1_3">
+                                        {{ form_start(formPwd, { 'action': path('msi_user_admin_edit_pwd_user', {'id': userToEdit.id}) }, form_enctype(formPwd)) }}
+                                        {{ form_errors(formPwd) }}
+                                        <div class="form-group">
+                                            {{ form_errors(formPwd.current_password) }}
+                                            {{ form_label(formPwd.current_password, null , {'label_attr': {'class': 'control-label'}}) }}
+                                            {{ form_widget(formPwd.current_password, {'attr': {'class': 'form-control '}}) }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form_errors(formPwd.plainPassword.first) }}
+                                            {{ form_label(formPwd.plainPassword.first, null , {'label_attr': {'class': 'control-label'}}) }}
+                                            {{ form_widget(formPwd.plainPassword.first, {'attr': {'class': 'form-control '}}) }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ form_errors(formPwd.plainPassword.second) }}
+                                            {{ form_label(formPwd.plainPassword.second, null , {'label_attr': {'class': 'control-label'}}) }}
+                                            {{ form_widget(formPwd.plainPassword.second, {'attr': {'class': 'form-control '}}) }}
+                                        </div>
+                                        <div class="margin-top-10">
+                                            {{ form_widget(formPwd.update, {'attr': {'class': 'btn green '}}) }}
+                                        </div>
+                                        {{ form_end(formPwd) }}
+                                    </div>
+                                    <!-- END CHANGE PASSWORD TAB -->
                                 </div>
-                                <!-- END CHANGE AVATAR TAB -->
-                                <!-- CHANGE PASSWORD TAB -->
-                                <div class="tab-pane {% if edit_pwd is defined and edit_pwd  %} active {% endif %}" id="tab_1_3">
-                                {{ form_start(formPwd, { 'action': path('msi_user_admin_edit_pwd_user', {'id': userToEdit.id}) }, form_enctype(formPwd)) }}
-                               {{ form_errors(formPwd) }}
-                               <div class="form-group">
-                                       {{ form_errors(formPwd.current_password) }}
-                                       {{ form_label(formPwd.current_password, null , {'label_attr': {'class': 'control-label'}}) }}
-                                       {{ form_widget(formPwd.current_password, {'attr': {'class': 'form-control '}}) }}
-                               </div>
-                               <div class="form-group">
-                                       {{ form_errors(formPwd.plainPassword.first) }}
-                                       {{ form_label(formPwd.plainPassword.first, null , {'label_attr': {'class': 'control-label'}}) }}
-                                       {{ form_widget(formPwd.plainPassword.first, {'attr': {'class': 'form-control '}}) }}
-                               </div>
-                               <div class="form-group">
-                                       {{ form_errors(formPwd.plainPassword.second) }}
-                                       {{ form_label(formPwd.plainPassword.second, null , {'label_attr': {'class': 'control-label'}}) }}
-                                       {{ form_widget(formPwd.plainPassword.second, {'attr': {'class': 'form-control '}}) }}
-                               </div>
-                               <div class="margin-top-10">
-                                       {{ form_widget(formPwd.update, {'attr': {'class': 'btn green '}}) }}
-                               </div>
-                               {{ form_end(formPwd) }}
-                           </div>
-                                <!-- END CHANGE PASSWORD TAB -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- END PROFILE CONTENT -->
         </div>
-        <!-- END PROFILE CONTENT -->
     </div>
-</div>
 
-              <script src="{{ asset('public/global/scripts/app.min.js') }}" type="text/javascript"></script>  
-        <script src="{{ asset('public/pages/scripts/profile.min.js') }}" type="text/javascript"></script>
-        {% endblock fos_user_content %}
+    <script src="{{ asset('public/global/scripts/app.min.js') }}" type="text/javascript"></script>  
+    <script src="{{ asset('public/pages/scripts/profile.min.js') }}" type="text/javascript"></script>
+{% endblock fos_user_content %}
