@@ -19,7 +19,6 @@ class RegistrationFormType extends BaseType
                         'ROLE_PASTEUR' => 'msi.user.register.pastor', 
                         'ROLE_ADMIN' => 'msi.user.register.admin', 
                     ),
-            'required'=> true
         ));
  
         // add your custom field

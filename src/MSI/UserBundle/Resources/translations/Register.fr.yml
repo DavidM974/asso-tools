@@ -8,3 +8,5 @@ msi.user.register.tab.title: Information basique
 msi.user.register.flash: 'Message flash : '
 msi.user.register.checkusername.valid: 'Le nom d''utilisateur <b> %username% </b> est disponible!'
 msi.user.register.checkusername.error: 'Le nom d''utilisateur <b>%username%</b> est déjà utilisé. Veuillez en choisir un autre'
+msi.user.register.email.error: 'L''adresse e-mail est invalide'
+msi.user.register.username.error: 'Ce nom d''utilisateur est déjà utilisé'

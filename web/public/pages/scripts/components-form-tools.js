@@ -34,7 +34,7 @@ var ComponentsFormTools = function () {
     
     var handlePasswordStrengthChecker = function () {
         var initialized = false;
-        var input = $("#fos_user_registration_form_plainPassword_second");
+        var input = $("#fos_user_registration_form_plainPassword_first");
 
         input.keydown(function () {
             if (initialized === false) {
