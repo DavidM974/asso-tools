@@ -2,3 +2,7 @@ msi.user.register.roles: Rôles de l'utilisateur
 msi.user.register.secretary: Secrétaire
 msi.user.register.pastor: Pasteur
 msi.user.register.admin: Administrateur
+msi.user.register.superadmin: Super Admin
+msi.user.register.title: Ajout d'un nouvel utilisateur
+msi.user.register.tab.title: Information basique
+msi.user.register.flash: 'Message flash : '

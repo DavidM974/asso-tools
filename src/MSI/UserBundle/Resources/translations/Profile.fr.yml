@@ -16,5 +16,10 @@ msi:
             avatar: Changer l'avatar
             changePassword: Changer mot de passe
             accountSetting: Paramètre du compte
-
+            avatar: 'Avatar de l''utilisateur'
+            Profile: Profil
+            username: Nom d'utilisateur
+            email: Adresse email
+            roles: Rôle
+            back: Retour
             

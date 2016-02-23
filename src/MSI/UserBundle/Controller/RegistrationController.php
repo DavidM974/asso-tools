@@ -14,6 +14,12 @@ class RegistrationController extends BaseController
 {
     public function registerAction(Request $request)
     {
+        $session = $request->getSession();
+        $translator = $this->get('translator');
+        $ariane = $translator->trans('msi.core.admin.fil.addUser',  array() , 'Admin');
+        $session->set('fileAriane', $ariane);
+        $session->set('module','admin');
+        $session->set('menu','register');
         /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
         $formFactory = $this->get('fos_user.registration.form.factory');
         /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */

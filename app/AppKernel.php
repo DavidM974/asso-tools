@@ -19,7 +19,9 @@ class AppKernel extends Kernel
             new MSI\UserBundle\MSIUserBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new FOS\UserBundle\FOSUserBundle(), //user gest bundle
-            new Vich\UploaderBundle\VichUploaderBundle(), // upload fil bundle
+            new Vich\UploaderBundle\VichUploaderBundle(), // upload fil bundle,
+            new MSI\MembersBundle\MSIMembersBundle(),
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

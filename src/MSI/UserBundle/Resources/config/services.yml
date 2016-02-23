@@ -10,3 +10,27 @@ services:
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: msi_user_profile }
+    msi_user.edit.user.form.type:
+        class: MSI\UserBundle\Form\Type\EditUserFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: msi_edit_user }
+    msi_user.avatar.user.form.type:
+        class: MSI\UserBundle\Form\Type\avatarUserFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: msi_edit_avatar_user }
+    msi_user.password.type:
+        class: MSI\UserBundle\Form\Type\PasswordType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: msi_user_edit_password }
+    msi_user.edit.form.factory:
+      class: FOS\UserBundle\Form\Factory\FormFactory
+      arguments: ['@form.factory', 'msi_edit_user', @msi_user.edit.user.form.type, %fos_user.profile.form.validation_groups%]
+    msi_user.avatar.form.factory:
+      class: FOS\UserBundle\Form\Factory\FormFactory
+      arguments: ['@form.factory', 'msi_edit_user', @msi_user.avatar.user.form.type, %fos_user.profile.form.validation_groups%]
+    msi_user.password.form.factory:
+      class: FOS\UserBundle\Form\Factory\FormFactory
+      arguments: ['@form.factory', 'msi_edit_user', @msi_user.password.type, %fos_user.profile.form.validation_groups%]

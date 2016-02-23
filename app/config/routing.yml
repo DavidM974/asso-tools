@@ -1,3 +1,7 @@
+msi_members:
+    resource: "@MSIMembersBundle/Resources/config/routing.yml"
+    prefix:   /
+
 msi_user:
     resource: "@MSIUserBundle/Resources/config/routing.yml"
     prefix:   /

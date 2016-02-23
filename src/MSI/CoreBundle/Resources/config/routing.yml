@@ -10,10 +10,6 @@ msi_core_administration_users:
     path:     /users
     defaults: { _controller: MSICoreBundle:Administration:users }
 
-msi_core_administration_add_user:
-    path:     /addUser
-    defaults: { _controller: MSICoreBundle:Administration:addUser }
-
 msi_core_administration_settings:
     path:     /settings
     defaults: { _controller: MSICoreBundle:Administration:settings }

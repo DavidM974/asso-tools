@@ -16,5 +16,11 @@ msi:
             avatar: Change the avatar
             changePassword: Change password
             accountSetting: Settings account
+            avatar: 'User''s avatar'
+            Profile: Profile
+            username: Username
+            email: Email
+            roles: Role
+            back: Back
 
             

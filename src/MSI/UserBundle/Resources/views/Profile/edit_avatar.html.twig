@@ -1,0 +1,13 @@
+<div class="tab-pane {% if avatarActif  %} active {% endif %}" id="tab_1_2">
+     {{ form_start(formAvatar, { 'action': path('msi_user_profile_edit_avatar') }, form_enctype(formAvatar)) }}
+    {{ form_errors(formAvatar) }}
+        <div class="form-group">
+            {{ form_errors(formAvatar.imageFile) }}
+            {{ form_label(formAvatar.imageFile) }}
+            {{ form_widget(formAvatar.imageFile) }}
+        </div>
+        <div class="margin-top-10">
+            {{ form_widget(formAvatar.update, {'attr': {'class': 'btn green '}}) }}
+        </div>
+    {{ form_end(formAvatar) }}
+</div>

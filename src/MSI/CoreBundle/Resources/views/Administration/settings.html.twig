@@ -1,5 +1,61 @@
 {% extends "MSICoreBundle::layout.html.twig" %}
 
 {% block body %}
-    
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN PORTLET-->
+            <div class="portlet light form-fit ">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-gears font-green"></i>
+                        <span class="caption-subject font-green sbold uppercase">{{ 'msi.core.admin.settings.comment'|trans({}, 'Admin') }}</span>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    <!-- BEGIN FORM-->
+                    {{ form_start(form, { 'action': path('msi_core_administration_settings'), 'attr': {'class': 'form-horizontal form-bordered'} }, form_enctype(form)) }}
+                    <div class="form-body">
+                        {{ form_errors(form) }}
+                        <div class="form-group">
+                            <label class="control-label col-md-3">{{ 'msi.core.admin.settings.logo'|trans({}, 'Admin') }}</label>
+                            <div class="col-md-9">
+                                {{ form_row(form.logoFile) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">{{ 'msi.core.admin.settings.image.1'|trans({}, 'Admin') }}</label>
+                            <div class="col-md-9">
+                                {{ form_row(form.imageLogin1File) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">{{ 'msi.core.admin.settings.image.2'|trans({}, 'Admin') }}</label>
+                            <div class="col-md-9">
+                                {{ form_row(form.imageLogin2File) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">{{ 'msi.core.admin.settings.image.3'|trans({}, 'Admin') }}</label>
+                            <div class="col-md-9">
+                                {{ form_row(form.imageLogin3File) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group last">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-9">
+                                {{ form_widget(form.Envoyer, {'attr': {'class': 'btn green '}}) }}
+                            </div>
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
+                    <!-- END FORM-->
+                </div>
+            </div>
+            <!-- END PORTLET-->
+        </div>
+    </div>
 {% endblock %}
+{% block add_js %}
+    <script src="{{ asset('public/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js') }}" type="text/javascript"></script>
+{% endblock%}
