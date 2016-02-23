@@ -1,6 +1,8 @@
 <?php
 
 namespace MSI\UserBundle\Form\Type;
+
+use FOS\UserBundle\Util\LegacyFormHelper;
 use Symfony\Component\Form\FormBuilderInterface;
 use FOS\UserBundle\Form\Type\RegistrationFormType as BaseType;
  
@@ -17,7 +19,6 @@ class RegistrationFormType extends BaseType
                         'ROLE_PASTEUR' => 'msi.user.register.pastor', 
                         'ROLE_ADMIN' => 'msi.user.register.admin', 
                     ),
-            'required'=> true
         ));
  
         // add your custom field

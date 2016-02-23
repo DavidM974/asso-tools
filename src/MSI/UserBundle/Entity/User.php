@@ -127,7 +127,7 @@ class User extends BaseUser {
     private $imageFile;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      *
      * @var string
      */   
@@ -418,7 +418,8 @@ class User extends BaseUser {
 
     public function __construct() {
         parent::__construct();
-        // your own logic
+        // set a default value to updateAt
+        $this->updatedAt = new \DateTime('now');
     }
 
 }

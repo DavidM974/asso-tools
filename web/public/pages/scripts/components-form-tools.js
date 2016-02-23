@@ -34,7 +34,7 @@ var ComponentsFormTools = function () {
     
     var handlePasswordStrengthChecker = function () {
         var initialized = false;
-        var input = $("#password_strength");
+        var input = $("#fos_user_registration_form_plainPassword_first");
 
         input.keydown(function () {
             if (initialized === false) {
@@ -133,7 +133,7 @@ var ComponentsFormTools = function () {
     }
 
     var handleUsernameAvailabilityChecker2 = function () {
-        $("#username2_input").change(function () {
+        $("#fos_user_registration_form_username").change(function () {
             var input = $(this);
 
             if (input.val() === "") {
@@ -147,7 +147,7 @@ var ComponentsFormTools = function () {
             attr("disabled", true).
             addClass("spinner");
 
-            $.post('../demo/username_checker.php', {
+            $.post('./checkUsername', {
                 username: input.val()
             }, function (res) {
                 input.attr("readonly", false).
