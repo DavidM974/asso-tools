@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="pro_social_categories")
  * @ORM\Entity(repositoryClass="MSI\MembersBundle\Repository\Pro_social_categoriesRepository")
  */
-class Pro_social_categories
-{
+class Pro_social_categories {
+
     /**
      * @var int
      *
@@ -21,14 +21,43 @@ class Pro_social_categories
      */
     private $id;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="label", type="string", length=255)
+     */
+    protected $label;
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
+    }
+
+
+    /**
+     * Set label
+     *
+     * @param string $label
+     * @return Pro_social_categories
+     */
+    public function setLabel($label)
+    {
+        $this->label = $label;
+
+        return $this;
+    }
+
+    /**
+     * Get label
+     *
+     * @return string 
+     */
+    public function getLabel()
+    {
+        return $this->label;
     }
 }
