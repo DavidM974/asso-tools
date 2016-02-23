@@ -6,3 +6,7 @@ msi.user.register.superadmin: Super Admin
 msi.user.register.title: Add a new user
 msi.user.register.tab.title: Basic infomations
 msi.user.register.flash: 'Flash message : '
+msi.user.register.checkusername: 'Username <b> %username% </b> is available. You can just pick it up!'
+msi.user.register.checkusername.error: 'Username <b>%username%</b> is not available. Please choose another one.'
+msi.user.register.email.error: 'Bad email format'
+msi.user.register.username.error: 'This username is already use !'
