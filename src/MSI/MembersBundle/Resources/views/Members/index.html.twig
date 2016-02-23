@@ -1,0 +1,69 @@
+{% extends "MSICoreBundle::layout.html.twig" %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light portlet-fit ">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class=" icon-layers font-green"></i>
+                        <span class="caption-subject font-green bold uppercase">{{ 'msi.members.members.title'|trans({}, 'Members') }}</span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="mt-element-step">
+                        <div class="row step-no-background">
+                            <div class="col-lg-4 mt-step-col active">
+                                <a href="{{ path('msi_members_list')}}" class="nav-link ">
+                                    <button type="button" class="btn btn-circle default btn-lg-fat"> <i class="fa fa-users big-ico"></i></button>
+                                    <p></p>
+                                </a>
+                                <div class="mt-step-title uppercase font-grey-cascade">{{ 'msi.members.members.list'|trans({}, 'Members') }}</div>
+                                <div class="mt-step-content font-grey-cascade">{{ 'msi.members.members.list.comment'|trans({}, 'Members') }}</div>
+                            </div>
+                            <div class="col-lg-4 mt-step-col active">
+                                <a href="{{ path('msi_members_add')}}" class="nav-link ">
+                                    <button type="button" class="btn btn-circle default btn-lg-fat"><i class="fa fa-user-plus big-ico"></i></button>
+                                    <p></p>
+                                </a>
+                                <div class="mt-step-title uppercase font-grey-cascade">{{ 'msi.members.members.add'|trans({}, 'Members') }}</div>
+                                <div class="mt-step-content font-grey-cascade">{{ 'msi.members.members.add.comment'|trans({}, 'Members') }}</div>
+                            </div>
+                            <div class="col-lg-4 mt-step-col active">
+                                <a href="{{ path('msi_members_import')}}" class="nav-link ">
+                                    <button type="button" class="btn btn-circle default btn-lg-fat"><i class="fa fa-download big-ico"></i></button>
+                                    <p></p>
+                                </a>
+                                <div class="mt-step-title uppercase font-grey-cascade">{{ 'msi.members.members.import'|trans({}, 'Members') }}</div>
+                                <div class="mt-step-content font-grey-cascade">{{ 'msi.members.members.import.comment'|trans({}, 'Members') }}</div>
+                            </div>
+                            <div class="col-lg-2">
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="col-lg-6 mt-step-col active">
+                                    <a href="{{ path('msi_members_stat')}}" class="nav-link ">
+                                        <button type="button" class="btn btn-circle default btn-lg-fat"><i class="fa fa-line-chart big-ico"></i></button>
+                                        <p></p>
+                                    </a>
+                                    <div class="mt-step-title uppercase font-grey-cascade">{{ 'msi.members.members.stat'|trans({}, 'Members') }}</div>
+                                    <div class="mt-step-content font-grey-cascade">{{ 'msi.members.members.stat.comment'|trans({}, 'Members') }}</div>
+                                </div>
+                                <div class="col-lg-6 mt-step-col active">
+                                    <a href="{{ path('msi_members_com')}}" class="nav-link ">
+                                        <button type="button" class="btn btn-circle default btn-lg-fat"><i class="fa fa-comments-o big-ico"></i></button>
+                                        <p></p>
+                                    </a>
+                                    <div class="mt-step-title uppercase font-grey-cascade">{{ 'msi.members.members.com'|trans({}, 'Members') }}</div>
+                                    <div class="mt-step-content font-grey-cascade">{{ 'msi.members.members.com.comment'|trans({}, 'Members') }}</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

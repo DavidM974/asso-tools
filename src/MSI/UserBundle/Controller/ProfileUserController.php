@@ -5,7 +5,6 @@ namespace MSI\UserBundle\Controller;
 use FOS\UserBundle\Controller\RegistrationController as BaseController;
 use Symfony\Component\HttpFoundation\Request;
 
-
 class ProfileUserController extends BaseController {
 
     public function editAction(Request $request) {
@@ -34,11 +33,11 @@ class ProfileUserController extends BaseController {
             return $this->redirect($url);
         }
 
-        return $this->render('MSIUserBundle:Profile:edit_profile.html.twig', array('form' => $form->createView(), 
-            'formAvatar' => $formAvatar->createView(), 
-            'formPwd' => $formPwd->createView(), 
-            'user' => $user, 
-            'edit_profile' => true));
+        return $this->render('MSIUserBundle:Profile:edit_profile.html.twig', array('form' => $form->createView(),
+                    'formAvatar' => $formAvatar->createView(),
+                    'formPwd' => $formPwd->createView(),
+                    'user' => $user,
+                    'edit_profile' => true));
     }
 
     public function editAvatarAction(Request $request) {
@@ -71,7 +70,7 @@ class ProfileUserController extends BaseController {
     }
 
     public function editPasswordAction(Request $request) {
-       $user = $this->get('security.context')->getToken()->getUser();
+        $user = $this->get('security.context')->getToken()->getUser();
 
         $formUser = $this->container->get('msi_user.edit.form.factory')->createForm();
         $formUser->remove('roles');
@@ -97,6 +96,12 @@ class ProfileUserController extends BaseController {
                     'formPwd' => $formPwd->createView(),
                     'user' => $user,
                     'edit_pwd' => true));
+    }
+
+    public function viewAction($id) {
+        $userManager = $this->container->get('fos_user.user_manager');
+        $viewUser = $userManager->findUserBy(array('id' => $id));
+        return $this->render('MSIUserBundle:Profile:view_user.html.twig', array('viewUser' => $viewUser));
     }
 
 }

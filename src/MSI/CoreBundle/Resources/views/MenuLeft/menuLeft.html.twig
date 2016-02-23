@@ -8,106 +8,111 @@
 <ul class="page-sidebar-menu page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
     <li class="nav-item start {% if app.session.get('module') == 'Dashboard' or 
                                     app.session.get('module') == 'profilEdit' %}
-                              active open
-                              {% endif %}">
+        active open
+        {% endif %}">
             <a href="{{ path('msi_core_homepage')}}" class="nav-link nav-toggle">
                 <i class="icon-home"></i>
                 <span class="title">Dashboard</span>
                 {% if app.session.get('module') == 'Dashboard' %}
-                <span class="selected"></span>
-                {% endif %}
-                    <span class="arrow open"></span>
-                </a>
-            </li>
-            {% if is_granted('ROLE_ADMIN') %}
-                <li class="nav-item {% if app.session.get('module') == 'admin' %}
-                                    active open
-                                    {% endif %}">        
-                <a href="{{ path('msi_core_admin_index')}}" class="nav-link nav-toggle">
-                    <i class="fa fa-cogs"></i>
-                    <span class="title">{{ 'msi.core.menu.admin'|trans }}</span>
-                    {% if app.session.get('module') == 'admin' %}
                     <span class="selected"></span>
-                    {% endif %}
+                {% endif %}
+                <span class="arrow open"></span>
+            </a>
+        </li>
+        {% if is_granted('ROLE_ADMIN') %}
+            <li class="nav-item {% if app.session.get('module') == 'admin' %}
+                active open
+            {% endif %}">        
+            <a href="{{ path('msi_core_admin_index')}}" class="nav-link nav-toggle">
+                <i class="fa fa-cogs"></i>
+                <span class="title">{{ 'msi.core.menu.admin'|trans }}</span>
+                {% if app.session.get('module') == 'admin' %}
+                    <span class="selected"></span>
+                {% endif %}
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">
+                <li class="nav-item {% if app.session.get('menu') == 'users' %}active open{% endif %} ">
+                    <a href="{{ path('msi_core_admin_users')}}" class="nav-link ">
+                        <span class="title">{{ 'msi.core.menu.admin.users'|trans }}</span>
+                    </a>
+                </li>
+                <li class="nav-item {% if app.session.get('menu') == 'register' %}active open{% endif %} ">
+                    <a href="{{ path('msi_user_admin_add_user')}}" class="nav-link ">
+                        <span class="title">{{ 'msi.core.menu.admin.add.user'|trans }}</span>
+                    </a>
+                </li>
+                <li class="nav-item {% if app.session.get('menu') == 'settings' %}active open{% endif %} ">
+                    <a href="{{ path('msi_core_admin_settings')}}" class="nav-link ">
+                        <span class="title">{{ 'msi.core.menu.admin.settings'|trans }}</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        {% endif %}
+
+            <li class="nav-item {% if app.session.get('module') == 'members' %}
+                active open
+                {% endif %}">
+                    <a href="{{ path('msi_members_index')}}" class="nav-link nav-toggle">
+                        <i class="fa fa-users"></i>
+                        <span class="title">{{ 'msi.core.menu.management'|trans }}</span>
+                        {% if app.session.get('module') == 'members' %}
+                            <span class="selected"></span>
+                            {% endif %}
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
-                        <li class="nav-item {% if app.session.get('menu') == 'users' %}active open{% endif %} ">
-                            <a href="{{ path('msi_core_admin_users')}}" class="nav-link ">
-                                <span class="title">{{ 'msi.core.menu.admin.users'|trans }}</span>
+                        <li class="nav-item {% if app.session.get('menu') == 'list' %}active open{% endif %} ">
+                            <a href="{{ path('msi_members_list')}}" class="nav-link ">
+                                <span class="title">{{ 'msi.core.menu.management.list'|trans }}</span>
                             </a>
                         </li>
-                        <li class="nav-item {% if app.session.get('menu') == 'register' %}active open{% endif %} ">
-                            <a href="{{ path('msi_user_admin_add_user')}}" class="nav-link ">
-                                <span class="title">{{ 'msi.core.menu.admin.add.user'|trans }}</span>
+                        <li class="nav-item {% if app.session.get('menu') == 'add' %}active open{% endif %} ">
+                            <a href="{{ path('msi_members_add')}}" class="nav-link ">
+                                <span class="title">{{ 'msi.core.menu.management.add'|trans }}</span>
                             </a>
                         </li>
-                        <li class="nav-item {% if app.session.get('menu') == 'settings' %}active open{% endif %} ">
-                            <a href="{{ path('msi_core_admin_settings')}}" class="nav-link ">
-                                <span class="title">{{ 'msi.core.menu.admin.settings'|trans }}</span>
+                        <li class="nav-item {% if app.session.get('menu') == 'import' %}active open{% endif %} ">
+                            <a href="{{ path('msi_members_import')}}" class="nav-link ">
+                                <span class="title">{{ 'msi.core.menu.management.import'|trans }}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item {% if app.session.get('menu') == 'stat' %}active open{% endif %} ">
+                            <a href="{{ path('msi_members_stat')}}" class="nav-link ">
+                                <span class="title">{{ 'msi.core.menu.management.statistics'|trans }}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item {% if app.session.get('menu') == 'com' %}active open{% endif %} ">
+                            <a href="{{ path('msi_members_com')}}" class="nav-link ">
+                                <span class="title">{{ 'msi.core.menu.management.communication'|trans }}</span>
                             </a>
                         </li>
                     </ul>
                 </li>
-                {% endif %}
-
-                    <li class="nav-item  ">
-                        <a href="javascript:;" class="nav-link nav-toggle">
-                            <i class="fa fa-users"></i>
-                            <span class="title">{{ 'msi.core.menu.management'|trans }}</span>
-                            <span class="arrow"></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="nav-item  ">
-                                <a href="components_date_time_pickers.html" class="nav-link ">
-                                    <span class="title">{{ 'msi.core.menu.management.list'|trans }}</span>
-                                </a>
-                            </li>
-                            <li class="nav-item  ">
-                                <a href="components_color_pickers.html" class="nav-link ">
-                                    <span class="title">{{ 'msi.core.menu.management.add'|trans }}</span>
-                                </a>
-                            </li>
-                            <li class="nav-item  ">
-                                <a href="components_select2.html" class="nav-link ">
-                                    <span class="title">{{ 'msi.core.menu.management.import'|trans }}</span>
-                                </a>
-                            </li>
-                            <li class="nav-item  ">
-                                <a href="components_bootstrap_select.html" class="nav-link ">
-                                    <span class="title">{{ 'msi.core.menu.management.statistics'|trans }}</span>
-                                </a>
-                            </li>
-                            <li class="nav-item  ">
-                                <a href="components_multi_select.html" class="nav-link ">
-                                    <span class="title">{{ 'msi.core.menu.management.communication'|trans }}</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item  ">
-                        <a href="javascript:;" class="nav-link nav-toggle">
-                            <i class="fa fa-book"></i>
-                            <span class="title">{{ 'msi.core.menu.pastoral'|trans }}</span>
-                            <span class="arrow"></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="nav-item  ">
-                                <a href="form_controls.html" class="nav-link ">
-                                    <span class="title">{{ 'msi.core.menu.pastoral.followed.list'|trans }}</span>
-                                </a>
-                            </li>
-                            <li class="nav-item  ">
-                                <a href="form_controls_md.html" class="nav-link ">
-                                    <span class="title">{{ 'msi.core.menu.pastoral.report'|trans }}</span>
-                                </a>
-                            </li>
-                            <li class="nav-item  ">
-                                <a href="form_validation.html" class="nav-link ">
-                                    <span class="title">{{ 'msi.core.menu.pastoral.followed.mine'|trans }}</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                <!-- END SIDEBAR MENU -->
+                <li class="nav-item  ">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="fa fa-book"></i>
+                        <span class="title">{{ 'msi.core.menu.pastoral'|trans }}</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item  ">
+                            <a href="form_controls.html" class="nav-link ">
+                                <span class="title">{{ 'msi.core.menu.pastoral.followed.list'|trans }}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="form_controls_md.html" class="nav-link ">
+                                <span class="title">{{ 'msi.core.menu.pastoral.report'|trans }}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="form_validation.html" class="nav-link ">
+                                <span class="title">{{ 'msi.core.menu.pastoral.followed.mine'|trans }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- END SIDEBAR MENU -->

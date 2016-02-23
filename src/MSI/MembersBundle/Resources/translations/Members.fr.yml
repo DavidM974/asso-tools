@@ -1,0 +1,17 @@
+msi.members.members.title: Menu de la gestion de membres
+msi.members.members.list: Les membres
+msi.members.members.list.comment: Listes de tous les membres
+msi.members.members.add: Ajouter
+msi.members.members.add.comment: Ajouter un nouveau membre
+msi.members.members.import: Importer
+msi.members.members.import.comment: Importer nouveaux membres
+msi.members.members.stat: Statistiques
+msi.members.members.stat.comment: Statistiques membres
+msi.members.members.com: Communication
+msi.members.members.com.comment: Communications membres
+msi.members.members.fil.index: '<li><span>Gestion de membres</span></li>'
+msi.members.members.fil.list: '<li><span>Gestion de membres</span><i class="fa fa-angle-right"></i></li><li><span>Liste des membres</span></li>'
+msi.members.members.fil.add: '<li><span>Gestion de membres</span><i class="fa fa-angle-right"></i></li><li><span>Ajout de membre</span></li>'
+msi.members.members.fil.import: '<li><span>Gestion de membres</span><i class="fa fa-angle-right"></i></li><li><span>Importations de membres</span></li>'
+msi.members.members.fil.stat: '<li><span>Gestion de membres</span><i class="fa fa-angle-right"></i></li><li><span>Statistiques</span></li>'
+msi.members.members.fil.com: '<li><span>Gestion de membres</span><i class="fa fa-angle-right"></i></li><li><span>Communication</span></li>'

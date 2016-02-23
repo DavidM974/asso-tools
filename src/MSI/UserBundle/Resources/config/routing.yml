@@ -26,3 +26,8 @@ msi_user_edit_avatar_user:
 msi_user_edit_pwd_user:
     path:     /myprofile/pwd
     defaults: { _controller: MSIUserBundle:ProfileUser:editPassword}
+msi_user_admin_view_user:
+    path:     /admin/viewUser/{id}
+    defaults: { _controller: MSIUserBundle:ProfileUser:view}
+    requirements: 
+        id: \d+
