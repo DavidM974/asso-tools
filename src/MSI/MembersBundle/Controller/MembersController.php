@@ -2,9 +2,11 @@
 
 namespace MSI\MembersBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+
+use MSI\MembersBundle\Entity\Member;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use MSI\MembersBundle\Form\MembersFormType;
 
 class MembersController extends Controller {
 
@@ -34,7 +36,32 @@ class MembersController extends Controller {
         $session->set('fileAriane', $ariane);
         $session->set('module','members');
         $session->set('menu','add');
-        return $this->render('MSIMembersBundle:Members:add.html.twig');
+        
+       // 1) build the form
+        $member = new Member();
+        $form = $this->createForm(new MembersFormType(), $member);
+
+        // 2) handle the submit (will only happen on POST)
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+
+            $member->setPassword($password);
+
+            // 4) save the User!
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($member);
+            $em->flush();
+
+            // ... do any other work - like send them an email, etc
+            // maybe set a "flash" success message for the user
+
+           // return $this->redirectToRoute('replace_with_some_route');
+        }  
+        
+        
+        
+        return $this->render('MSIMembersBundle:Members:add.html.twig', array('form' => $form->createView()));
     }
 
     public function importAction(Request $request) {

@@ -10,11 +10,11 @@ use Symfony\Component\HttpFoundation\File\File;
 /**
  * Members
  *
- * @ORM\Table(name="members")
+ * @ORM\Table(name="member")
  * @ORM\Entity(repositoryClass="MSI\MembersBundle\Repository\MembersRepository")
  * @Vich\Uploadable
  */
-class Members {
+class Member {
 
     /**
      * @var int
@@ -50,6 +50,19 @@ class Members {
      * )
      */
     protected $lastname = null;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="legalResponsable", type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *      min = 3,
+     *      max = 50,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     * )
+     */
+    protected $legalResponsable = null;
 
     /**
      * @var \DateTime
@@ -62,9 +75,9 @@ class Members {
     /**
      * @var string
      *
-     * @ORM\Column(name="civility", type="string", length=16, columnDefinition="ENUM('M', 'MME', 'MLLE')")
+     * @ORM\Column(name="family_situation", type="string", length=16, columnDefinition="ENUM('S', 'M', 'V', 'D', 'R')")
      */
-    protected $civility;
+    protected $familySituation;
 
     /**
      * @var boolean
@@ -72,6 +85,13 @@ class Members {
      * @ORM\Column(name="sex", type="boolean")
      */
     protected $sex;
+    
+        /**
+     * @var boolean
+     * 
+     * @ORM\Column(name="image_grant", type="boolean")
+     */
+    protected $imageGrant;
 
     /**
      * @var string
@@ -115,6 +135,12 @@ class Members {
      * @ORM\JoinColumn(nullable=false)
      */
     protected $zipcode;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="MSI\CoreBundle\Entity\City", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    protected $city;
 
     /**
      * @var \DateTime
@@ -165,12 +191,6 @@ class Members {
     private $updatedAt;
 
     /**
-     * @ORM\OneToOne(targetEntity="MSI\MembersBundle\Entity\Family_situations", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    protected $situation_familiale;
-
-    /**
      * @ORM\OneToOne(targetEntity="MSI\MembersBundle\Entity\Pro_social_categories", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
@@ -196,11 +216,16 @@ class Members {
      * @ORM\JoinColumn(nullable=true)
      */
     protected $services;
-
+    
     /**
-     * @ORM\OneToOne(targetEntity="MSI\MembersBundle\Entity\Child", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="MSI\MembersBundle\Entity\Member", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
+    protected $marriedTo;
+
+    /**
+    * @ORM\ManyToMany(targetEntity="MSI\MembersBundle\Entity\Child", cascade={"persist"})
+    */
     protected $child;
 
     /**
@@ -231,6 +256,26 @@ class Members {
      */
     public function getFirstname() {
         return $this->firstname;
+    }
+    /**
+     * Set legalResponsable
+     *
+     * @param string $legalResponsable
+     * @return Members
+     */
+    public function setLegalResponsable($legalResponsable) {
+        $this->legalResponsable = $legalResponsable;
+
+        return $this;
+    }
+
+    /**
+     * Get legalResponsable
+     *
+     * @return string 
+     */
+    public function getLegalResponsable() {
+        return $this->legalResponsable;
     }
 
     /**
@@ -276,24 +321,24 @@ class Members {
     }
 
     /**
-     * Set civility
+     * Set family_situation
      *
-     * @param string $civility
+     * @param string $familySituation
      * @return Members
      */
-    public function setCivility($civility) {
-        $this->civility = $civility;
+    public function setFamilySituation($familySituation) {
+        $this->familySituation = $familySituation;
 
         return $this;
     }
 
     /**
-     * Get civility
+     * Get familySituation
      *
      * @return string 
      */
-    public function getCivility() {
-        return $this->civility;
+    public function getFamilySituation() {
+        return $this->familySituation;
     }
 
     /**
@@ -317,6 +362,27 @@ class Members {
         return $this->sex;
     }
 
+    /**
+     * Set sex
+     *
+     * @param boolean $imageGrant
+     * @return Members
+     */
+    public function setImageGrant($imageGrant) {
+        $this->imageGrant = $imageGrant;
+
+        return $this;
+    }
+
+    /**
+     * Get imageGrant
+     *
+     * @return boolean 
+     */
+    public function getImageGrant() {
+        return $this->imageGrant;
+    }
+    
     /**
      * Set phone
      *
@@ -572,26 +638,26 @@ class Members {
     }
 
     /**
-     * Set situation_familiale
+     * Set city
      *
-     * @param \MSI\MembersBundle\Entity\Family_situations $situationFamiliale
+     * @param \MSI\CoreBundle\Entity\City $city
      * @return Members
      */
-    public function setSituationFamiliale(\MSI\MembersBundle\Entity\Family_situations $situationFamiliale) {
-        $this->situation_familiale = $situationFamiliale;
+    public function setCity(\MSI\CoreBundle\Entity\City $city) {
+        $this->city = $city;
 
         return $this;
     }
 
     /**
-     * Get situation_familiale
+     * Get city
      *
-     * @return \MSI\MembersBundle\Entity\Family_situations 
+     * @return \MSI\CoreBundle\Entity\City 
      */
-    public function getSituationFamiliale() {
-        return $this->situation_familiale;
+    public function getCity() {
+        return $this->city;
     }
-
+   
     /**
      * Set professional_social_category
      *
@@ -654,5 +720,27 @@ class Members {
     public function getChild() {
         return $this->child;
     }
+    
+    /**
+     * Set marriedTo
+     *
+     * @param \MSI\MembersBundle\Entity\Child $marriedTo
+     * @return Members
+     */
+    public function setMarriedTo(\MSI\MembersBundle\Entity\Member $marriedTo = null) {
+        $this->marriedTo = $marriedTo;
+
+        return $this;
+    }
+
+    /**
+     * Get marriedTo
+     *
+     * @return \MSI\MembersBundle\Entity\Member 
+     */
+    public function getMarriedTo() {
+        return $this->marriedTo;
+    }
+    
 
 }
