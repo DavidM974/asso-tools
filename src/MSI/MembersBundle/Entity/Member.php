@@ -226,7 +226,7 @@ class Member {
     /**
     * @ORM\ManyToMany(targetEntity="MSI\MembersBundle\Entity\Child", cascade={"persist"})
     */
-    protected $child;
+    protected $childs;
 
     /**
      * Get id
@@ -701,30 +701,30 @@ class Member {
     }
 
     /**
-     * Set child
+     * Set childs
      *
      * @param \MSI\MembersBundle\Entity\Child $child
      * @return Members
      */
-    public function setChild(\MSI\MembersBundle\Entity\Child $child = null) {
-        $this->child = $child;
+    public function setChilds(\MSI\MembersBundle\Entity\Child $childs = null) {
+        $this->childs = $childs;
 
         return $this;
     }
 
     /**
-     * Get child
+     * Get childs
      *
      * @return \MSI\MembersBundle\Entity\Child 
      */
-    public function getChild() {
-        return $this->child;
+    public function getChilds() {
+        return $this->childs;
     }
     
     /**
      * Set marriedTo
      *
-     * @param \MSI\MembersBundle\Entity\Child $marriedTo
+     * @param \MSI\MembersBundle\Entity\Member $marriedTo
      * @return Members
      */
     public function setMarriedTo(\MSI\MembersBundle\Entity\Member $marriedTo = null) {
