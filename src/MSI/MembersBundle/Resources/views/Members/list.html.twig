@@ -1,19 +1,101 @@
 {% extends "MSICoreBundle::layout.html.twig" %}
 
+{% block add_css %}
+    <link href="{{ asset('public/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
 {% block body %}
-    <div class="row">
-        <div class="col-md-12">
-            <div class="portlet light form-fit ">
-                <div class="portlet-title">
-                    <div class="caption">
-                        <i class="fa fa-users font-green"></i>
-                        <span class="caption-subject font-green sbold uppercase">{{ 'msi.members.members.list.comment'|trans({}, 'Members') }}</span>
-                    </div>
-                </div>
-                <div class="portlet-body form">
-                    TEST
-                </div>
+    <div class="portlet light portlet-fit portlet-datatable col-md-12" id="form_wizard_1">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-users font-green"></i>
+                <span class="caption-subject font-green sbold uppercase">{{ 'msi.members.members.list.comment'|trans({}, 'Members') }}</span>
             </div>
+            <div class="action" style="float:right">
+                <a href="{{ path('msi_members_search')}}" class="nav-link">
+                    <i class="fa fa-search-plus btn btn-outline btn-circle green">&nbsp;{{ 'msi.members.members.search'|trans({}, 'Members') }}</i>
+                </a>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_2">
+                <thead>
+                    <tr>
+                        <th class="table-checkbox">
+                            <input type="checkbox" class="group-checkable" data-set="#sample_2 .checkboxes" /> 
+                        </th>
+                        <th> Photo </th>
+                        <th>{{ 'msi.core.admin.users.lastname'|trans({}, 'Admin') }}</th>
+                        <th>{{ 'msi.core.admin.users.firstname'|trans({}, 'Admin') }}</th>
+                        <th>{{ 'msi.core.admin.users.birth'|trans({}, 'Admin') }}</th>
+                        <th>{{ 'msi.core.admin.users.address'|trans({}, 'Admin') }}</th>
+                        <th>{{ 'msi.core.admin.users.email'|trans({}, 'Admin') }}</th>
+                        <th>{{ 'msi.core.admin.users.phone'|trans({}, 'Admin') }}</th>
+                        <th style ="text-align:center;" >{{ 'msi.core.admin.users.action'|trans({}, 'Admin') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for member in listMembers %}
+                        <tr class="odd gradeX">
+                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
+                            <td style="text-align:center;">
+                                {% if  member.imageName %}
+                                    <img class="img-circle" src="{{ vich_uploader_asset( member, 'imageFile') }}" alt="{{  member.imageName }}" />
+                                {% else %}
+                                    <img class="img-circle" src="{{ asset('public/layouts/layout2/img/avatar.png') }}" alt="" class="img-responsive"  />
+                                {% endif %}
+                            </td>
+                            <td>{{ member.lastname }}</td>
+                            <td>{{ member.firstname }}</td> 
+                            <td>{{ member.birth|date('d/m/Y') }}</td>
+                            <td>{{ member.address }}</td>
+                            <td>{{ member.email }}</td>
+                            <td>
+                                {% if member.phone %}
+                                    <a href="javascript:;" class="btn btn-circle btn-xs blue"> {{ member.phone }}
+                                        <i class="fa fa-phone"></i>
+                                    </a>
+                                {% endif %}
+                                &nbsp;
+                                {% if member.mobile %}
+                                    <a href="javascript:;" class="btn btn-circle btn-xs purple"> {{ member.mobile }}
+                                        <i class="fa fa-mobile"></i>
+                                    </a>
+                                {% endif %}
+                            </td>
+                            <td style="text-align:center;">
+                                <a href="javascript:;" class="nav-link ">
+                                    <a href="{{ path('msi_members_view_member',{'id' : member.id})}}" class="btn btn-circle btn-icon-only grey-cascade">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                </a>
+                                <a href="" class="nav-link ">
+                                    <a href="" class="btn btn-circle btn-icon-only blue">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                </a>
+                                <a href="javascript:;" class="nav-link ">
+                                    <a href="javascript:;" class="btn btn-circle btn-icon-only red ">
+                                        <i class="icon-trash"></i>
+                                    </a>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
 {% endblock %}
+{% block add_js %}    
+    <script type="text/javascript">
+        var translations = {
+            showNumberLigne: '{{ 'msi.core.admin.users.show' | trans({}, 'Admin') }}'
+        }
+    </script>
+    <script src="{{ asset('public/global/scripts/datatable.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/global/plugins/datatables/datatables.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/pages/scripts/table-datatables-managed.min.js') }}" type="text/javascript"></script>
+{% endblock%}
+
