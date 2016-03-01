@@ -4,7 +4,7 @@ msi.members.members.list.comment: Listes de tous les membres
 msi.members.members.add: Ajouter
 msi.members.members.add.comment: Ajouter un nouveau membre
 msi.members.members.import: Importer
-msi.members.members.import.comment: Importer nouveaux membres
+msi.members.members.import.comment: Importer de nouveaux membres
 msi.members.members.stat: Statistiques
 msi.members.members.stat.comment: Statistiques membres
 msi.members.members.com: Communication
@@ -15,3 +15,9 @@ msi.members.members.fil.add: '<li><span>Gestion de membres</span><i class="fa fa
 msi.members.members.fil.import: '<li><span>Gestion de membres</span><i class="fa fa-angle-right"></i></li><li><span>Importations de membres</span></li>'
 msi.members.members.fil.stat: '<li><span>Gestion de membres</span><i class="fa fa-angle-right"></i></li><li><span>Statistiques</span></li>'
 msi.members.members.fil.com: '<li><span>Gestion de membres</span><i class="fa fa-angle-right"></i></li><li><span>Communication</span></li>'
+msi.members.members.search: Recherche avancée
+msi.members.members.fil.search: '<li><span>Gestion de membres</span><i class="fa fa-angle-right"></i></li><li><span>Outils de recherche</span></li>'
+msi.members.members.search.broad: Général
+msi.members.members.search.plus: Plus
+msi.members.members.search.updown: Agrandir/Réduire
+msi.members.members.services: Services

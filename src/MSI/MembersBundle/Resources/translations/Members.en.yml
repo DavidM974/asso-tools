@@ -1,2 +1,23 @@
-## YAML Template.
----
+msi.members.members.title: Menu management members
+msi.members.members.list: Members
+msi.members.members.list.comment: Lists of all members
+msi.members.members.add: Add
+msi.members.members.add.comment: Add a new member
+msi.members.members.import: Import
+msi.members.members.import.comment: Import new members
+msi.members.members.stat: Statistics
+msi.members.members.stat.comment: Members statistics
+msi.members.members.com: Communication
+msi.members.members.com.comment: Members Communications
+msi.members.members.fil.index: '<li><span>Management members</span></li>'
+msi.members.members.fil.list: '<li><span>Management members</span><i class="fa fa-angle-right"></i></li><li><span>Members list</span></li>'
+msi.members.members.fil.add: '<li><span>Management members</span><i class="fa fa-angle-right"></i></li><li><span>Add a member</span></li>'
+msi.members.members.fil.import: '<li><span>Management members</span><i class="fa fa-angle-right"></i></li><li><span>Import a member</span></li>'
+msi.members.members.fil.stat: '<li><span>Management members</span><i class="fa fa-angle-right"></i></li><li><span>Statistics</span></li>'
+msi.members.members.fil.com: '<li><span>Management members</span><i class="fa fa-angle-right"></i></li><li><span>Communication</span></li>'
+msi.members.members.search: Search tools
+msi.members.members.fil.search: '<li><span>Management members</span><i class="fa fa-angle-right"></i></li><li><span>Search tools</span></li>'
+msi.members.members.search.broad: Broad
+msi.members.members.search.plus: Plus
+msi.members.members.search.updown: Up/Down
+msi.members.members.services: Services
