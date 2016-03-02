@@ -1,7 +1,7 @@
 {# empty Twig template #}
 
 <div class="form-inline" >
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-2">
         {{ form_label(form.lastname, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
         <div class="col-md-9">
             {{ form_errors(form.lastname) }}
@@ -16,13 +16,13 @@
         </div>
     </div>
 
-    <div class="form-group col-md-5">
+    <div class="form-group col-md-3">
         {{ form_label(form.birth, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
         <div class="col-md-9">
             {{ form_errors(form.birth) }}
-            {{ form_widget(form.birth.day,{'attr':{'class':'bs-select form-control input-small', 'data-style' : 'btn-info', 'tabindex' : '1'}}) }}
-            {{ form_widget(form.birth.month,{'attr':{'class':'bs-select form-control input-small', 'data-style' : 'btn-info', 'tabindex' : '2'}}) }}
-            {{ form_widget(form.birth.year,{'attr':{'class':'bs-select form-control input-small', 'data-style' : 'btn-info', 'tabindex' : '3'}}) }}
+            {{ form_widget(form.birth.day,{'attr':{'class':'bs-select form-control input-xsmall', 'data-style' : 'btn-info', 'tabindex' : '1'}}) }}
+            {{ form_widget(form.birth.month,{'attr':{'class':'bs-select form-control input-xsmall', 'data-style' : 'btn-info', 'tabindex' : '2'}}) }}
+            {{ form_widget(form.birth.year,{'attr':{'class':'bs-select form-control input-xsmall', 'data-style' : 'btn-info', 'tabindex' : '3'}}) }}
         </div>
     </div>
     <div class="form-group col-md-2">
@@ -40,6 +40,13 @@
                 </div>
             {% endfor %}
 
+        </div>
+    </div>
+    <div class="form-group col-md-3">
+        {{ form_label(form.scolar_category, null , {'label_attr': {'class': 'control-label col-md-6 '}}) }}
+        <div class="col-md-6 md-radio-inline">
+            {{ form_errors(form.scolar_category) }}
+            {{ form_widget(form.scolar_category, {'attr': {'class': 'form-control '}}) }}
         </div>
     </div>
 </div>

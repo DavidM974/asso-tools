@@ -45,18 +45,16 @@ class MembersController extends Controller {
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
-
-            $member->setPassword($password);
-
             // 4) save the User!
             $em = $this->getDoctrine()->getManager();
+            $member->setUpdatedAt(new \DateTime());
             $em->persist($member);
             $em->flush();
 
             // ... do any other work - like send them an email, etc
             // maybe set a "flash" success message for the user
 
-           // return $this->redirectToRoute('replace_with_some_route');
+            return $this->redirectToRoute('msi_members_list');
         }  
         
         

@@ -14,6 +14,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 /**
  * Description of ChildType
@@ -41,6 +42,11 @@ class ChildType extends AbstractType {
                     'required' => false,
                     'empty_value' => false // delete the none field
                 ))
+                ->add('scolar_category', EntityType::class, array(
+                    'class' => 'MSIMembersBundle:Scolar_categories',
+                    'choice_label' => 'label'
+                )
+                        )
         ;
     }
 

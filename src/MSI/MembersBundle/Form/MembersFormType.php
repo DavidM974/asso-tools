@@ -67,7 +67,7 @@ class MembersFormType extends AbstractType {
                     'class' => 'MSICoreBundle:City',
                     'choice_label' => 'label'
                 ))
-                ->add('baptism_date', TextType::class, array('label' => 'Baptism_date ', 'required' => false,))
+                ->add('baptism_date',TextType::class, array('label' => 'Baptism_date ', 'required' => false,))
                 ->add('imageFile', 'vich_image', array(
                     'label' => 'msi.user.edit.avatar',
                     'translation_domain' => 'Profile',
@@ -85,13 +85,16 @@ class MembersFormType extends AbstractType {
                     'multiple' => true,
                     'expanded' => false,
                     'class' => 'MSIMembersBundle:Services',
-                    'choice_label' => 'label'
+                    'choice_label' => 'label',
+                     'required' => false
+                    
                 ))
                 ->add('imageGrant', CheckboxType::class, array('label' => 'imageGrant ', 'required' => false,))
                 ->add('add', SubmitType::class, array('label' => 'msi.members.submit', 'translation_domain' => 'Members'))
                 ->add('marriedTo', EntityType::class, array(
                     'class' => 'MSIMembersBundle:Member',
-                    'choice_label' => 'firstname' // prénom et adresse
+                    'choice_label' => 'firstname', // prénom et adresse
+                     'required' => false
                 ))
                 ->add('childs', CollectionType::class, array(
                     'entry_type' => ChildType::class,
