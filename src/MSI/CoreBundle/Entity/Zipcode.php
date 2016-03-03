@@ -28,15 +28,9 @@ class Zipcode
      */
     protected $zipcode;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="city", type="string", length=255)
-     */
-    protected $city;
     
     /**
-     * @ORM\OneToOne(targetEntity="MSI\CoreBundle\Entity\Country", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="MSI\CoreBundle\Entity\Country", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     protected  $country;
