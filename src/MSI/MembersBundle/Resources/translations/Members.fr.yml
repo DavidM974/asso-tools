@@ -45,3 +45,4 @@ msi.members.services: Service(s)
 msi.members.image.grant: Droit à l'image
 msi.members.psc: Profession et catégorie socioprofessionnelle
 msi.members.legalResponsable: Responsable légal
+msi.members.add: Ajouter

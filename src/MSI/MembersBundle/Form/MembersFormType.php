@@ -96,7 +96,7 @@ class MembersFormType extends AbstractType {
                     
                 ))
                 ->add('imageGrant', CheckboxType::class, array('label' => 'msi.members.image.grant', 'translation_domain' => 'Members', 'required' => false,))
-                ->add('add', SubmitType::class, array('label' => 'msi.members', 'translation_domain' => 'Members'))
+                ->add('add', SubmitType::class, array('label' => 'msi.members.add', 'translation_domain' => 'Members'))
                 ->add('marriedTo', EntityType::class, array(
                     'class' => 'MSIMembersBundle:Member',
                     'choice_label' => 'firstname', // prénom et adresse

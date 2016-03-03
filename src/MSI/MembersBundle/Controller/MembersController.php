@@ -27,7 +27,7 @@ class MembersController extends Controller {
         $session->set('menu', 'list');
         $listMembers = $this->getDoctrine()
                 ->getManager()
-                ->getRepository('MSIMembersBundle:Members')
+                ->getRepository('MSIMembersBundle:Member')
                 ->findAll();
         return $this->render('MSIMembersBundle:Members:list.html.twig', array(
                     'listMembers' => $listMembers,
@@ -111,7 +111,7 @@ class MembersController extends Controller {
         $session->set('menu', 'list');
         $viewMember = $this->getDoctrine()
                 ->getManager()
-                ->getRepository('MSIMembersBundle:Members')
+                ->getRepository('MSIMembersBundle:Member')
                 ->findOneBy(array('id' => $id));
         return $this->render('MSIMembersBundle:Members:view.html.twig', array('viewMember' => $viewMember));
     }

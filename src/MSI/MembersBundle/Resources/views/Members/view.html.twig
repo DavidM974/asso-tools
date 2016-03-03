@@ -46,19 +46,36 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <li>
-                                                        <i class="fa fa-{% if viewMember.civility == 'M' %}male{% else %}female{% endif %}"></i> {{ 'msi.user.edit.civility'|trans({}, 'Profile') }} : 
-                                                        {% if viewMember.civility == 'M'  %}
-                                                            {{ 'msi.user.edit.m'|trans({}, 'Profile') }}
-                                                        {% elseif viewMember.civility == 'MME' %}
-                                                            {{ 'msi.user.edit.mme'|trans({}, 'Profile') }}
-                                                        {% elseif viewMember.civility == 'MLLE' %}
-                                                            {{ 'msi.user.edit.mlle'|trans({}, 'Profile') }}
+                                                        <i class="fa fa-{% if viewMember.sex == 1 %}male{% else %}female{% endif %}"></i> {{ 'msi.user.edit.sex'|trans({}, 'Profile') }} : 
+                                                        {% if viewMember.sex== 0  %}
+                                                            {{ 'msi.user.edit.male'|trans({}, 'Profile') }}
+                                                        {% elseif viewMember.sex == 1 %}
+                                                            {{ 'msi.user.edit.female'|trans({}, 'Profile') }}
                                                         {% endif %} 
                                                     </li>
                                                 </div>
                                                 <div class="form-group">
                                                     <li>
-                                                        <i class="fa fa-envelope"></i> {{ 'msi.members.members.services'|trans({}, 'Members') }} :  {{ viewMember.services.label }}
+                                                        <i class="fa fa-home"></i> {{ 'msi.members.family.situation'|trans({}, 'Members') }} : 
+                                                        {% if viewMember.familySituation == 'S'  %}
+                                                            {{ 'msi.members.civility.single'|trans({}, 'Members') }}
+                                                        {% elseif viewMember.familySituation == 'M' %}
+                                                            {{ 'msi.members.civility.maried'|trans({}, 'Members') }}
+                                                        {% elseif viewMember.familySituation == 'V' %}
+                                                            {{ 'msi.members.civility.veuf'|trans({}, 'Members') }}
+                                                        {% elseif viewMember.familySituation == 'D' %}
+                                                            {{ 'msi.members.civility.divorce'|trans({}, 'Members') }}
+                                                        {% elseif viewMember.familySituation == 'R' %}
+                                                            {{ 'msi.members.civility.remaried'|trans({}, 'Members') }}
+                                                        {% endif %} 
+                                                    </li>
+                                                </div>
+                                                <div class="form-group">
+                                                    <li>
+                                                        <i class="fa fa-users"></i> {{ 'msi.members.members.services'|trans({}, 'Members') }} :  
+                                                        {% for service in viewMember.services  %} 
+                                                            <span class="label label-sm label-info"> {{ service.label }}  </span>&nbsp; 
+                                                        {% endfor %}
                                                     </li>
                                                 </div>
                                             </div>
