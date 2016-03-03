@@ -38,15 +38,15 @@ class MembersFormType extends AbstractType {
                     'required' => false,
                     'empty_value' => false // delete the none field
                 ))
-                ->add('birth', BirthdayType::class, array('label' => 'msi.members.birth', 'translation_domain' => 'Membres', 'required' => false, 'placeholder' => array(
-                        'year' => 'Year',
-                        'month' => 'Month',
-                        'day' => 'Day',
+                ->add('birth', BirthdayType::class, array('label' => 'msi.members.birth', 'translation_domain' => 'Members', 'required' => false, 'placeholder' => array(
+                        'year' => 'msi.members.year',
+                        'month' => 'msi.members.month',
+                        'day' => 'msi.members.day',
                     ))
                 )
-                ->add('legalResponsable', TextType::class, array('label' => 'msi.members.legalResponsable', 'translation_domain' => 'Membres', 'required' => false))
-                ->add('phone', NumberType::class, array('label' => 'msi.user.edit.phone', 'translation_domain' => 'Profile', 'required' => false))
-                ->add('mobile', NumberType::class, array('label' => 'msi.user.edit.mobile', 'translation_domain' => 'Profile', 'required' => false))
+                ->add('legalResponsable', TextType::class, array('label' => 'msi.members.legalResponsable', 'translation_domain' => 'Members', 'required' => false))
+                ->add('phone', TextType::class, array('label' => 'msi.user.edit.phone', 'translation_domain' => 'Profile', 'required' => false))
+                ->add('mobile', TextType::class, array('label' => 'msi.user.edit.mobile', 'translation_domain' => 'Profile', 'required' => false))
                 ->add('sex', ChoiceType::class, array('label' => 'Sexe ',
                     'multiple' => false,
                     'expanded' => true,
@@ -65,9 +65,11 @@ class MembersFormType extends AbstractType {
                   )) */
                 ->add('city', EntityType::class, array(
                     'class' => 'MSICoreBundle:City',
-                    'choice_label' => 'label'
+                    'choice_label' => 'label',
+                    'label' => 'msi.members.city',
+                    'required' => false
                 ))
-                ->add('baptism_date',TextType::class, array('label' => 'Baptism_date ', 'required' => false,))
+                ->add('baptism_date',TextType::class, array('label' => 'msi.members.baptism.date', 'translation_domain' => 'Members', 'required' => false,))
                 ->add('imageFile', 'vich_image', array(
                     'label' => 'msi.user.edit.avatar',
                     'translation_domain' => 'Profile',
@@ -77,24 +79,30 @@ class MembersFormType extends AbstractType {
                 ))
                 ->add('professional_social_category', EntityType::class, array(
                     'class' => 'MSIMembersBundle:Pro_social_categories',
-                    'choice_label' => 'label'
+                    'choice_label' => 'label',
+                    'label' => 'msi.members.psc',
+                    'required' => false
                 ))
-                ->add('born_again_date', TextType::class, array('label' => 'born_again ', 'required' => false,))
-                ->add('baptism_localisation', TextType::class, array('label' => 'baptism_localisation', 'translation_domain' => 'Profile', 'required' => false))
+                ->add('born_again_date', TextType::class, array('label' => 'msi.members.born.again', 'translation_domain' => 'Members', 'required' => false,))
+                ->add('baptism_localisation', TextType::class, array('label' => 'msi.members.baptism.localisation', 'translation_domain' => 'Members', 'required' => false))
                 ->add('services', EntityType::class, array(
                     'multiple' => true,
                     'expanded' => false,
                     'class' => 'MSIMembersBundle:Services',
                     'choice_label' => 'label',
-                     'required' => false
+                    'required' => false,
+                    'label' => 'msi.members.services',
+                    'translation_domain' => 'Members'
                     
                 ))
-                ->add('imageGrant', CheckboxType::class, array('label' => 'imageGrant ', 'required' => false,))
-                ->add('add', SubmitType::class, array('label' => 'msi.members.submit', 'translation_domain' => 'Members'))
+                ->add('imageGrant', CheckboxType::class, array('label' => 'msi.members.image.grant', 'translation_domain' => 'Members', 'required' => false,))
+                ->add('add', SubmitType::class, array('label' => 'msi.members', 'translation_domain' => 'Members'))
                 ->add('marriedTo', EntityType::class, array(
                     'class' => 'MSIMembersBundle:Member',
                     'choice_label' => 'firstname', // prénom et adresse
-                     'required' => false
+                    'label' => 'msi.members.marriedTo',
+                    'translation_domain' => 'Members',
+                    'required' => false
                 ))
                 ->add('childs', CollectionType::class, array(
                     'entry_type' => ChildType::class,
