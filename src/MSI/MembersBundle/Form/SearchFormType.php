@@ -96,7 +96,7 @@ class SearchFormType extends AbstractType {
                     'multiple' => false,
                     'expanded' => true,
                     'class' => 'MSIMembersBundle:Scolar_categories',
-                    'empty_value' => 'Tout',
+                    'empty_value' => 'Tous',
                     'choice_label' => 'label',
                     'required' => false,
                         )

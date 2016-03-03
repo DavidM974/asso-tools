@@ -99,6 +99,13 @@ class MembersController extends Controller {
         $ariane = $translator->trans('msi.members.members.fil.search', array(), 'Members');
         $session->set('fileAriane', $ariane);
         $session->set('module', 'members');
+        
+        
+        
+        
+        
+        
+        
         return $this->render('MSIMembersBundle:Members:search.html.twig');
     }
 
