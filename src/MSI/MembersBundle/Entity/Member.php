@@ -36,6 +36,12 @@ class Member {
      *      minMessage = "Your first name must be at least {{ limit }} characters long",
      *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
      * )
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Your name cannot contain a number"
+     * )
+     * @Assert\NotBlank()
      */
     protected $firstname = null;
 
@@ -49,6 +55,12 @@ class Member {
      *      minMessage = "Your first name must be at least {{ limit }} characters long",
      *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
      * )
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Your name cannot contain a number"
+     * )
+     * @Assert\NotBlank()
      */
     protected $lastname = null;
 
@@ -70,6 +82,7 @@ class Member {
      *
      * @ORM\Column(name="birth", type="datetime", nullable=true)
      * @Assert\Date()
+     * @Assert\NotBlank()
      */
     protected $birth = null;
 
@@ -77,6 +90,7 @@ class Member {
      * @var string
      *
      * @ORM\Column(name="family_situation", type="string", length=16, columnDefinition="ENUM('S', 'M', 'V', 'D', 'R')")
+     * @Assert\NotBlank()
      */
     protected $familySituation;
 
@@ -84,6 +98,7 @@ class Member {
      * @var boolean
      * 
      * @ORM\Column(name="sex", type="boolean")
+     * @Assert\NotBlank()
      */
     protected $sex;
 
@@ -91,6 +106,7 @@ class Member {
      * @var boolean
      * 
      * @ORM\Column(name="image_grant", type="boolean")
+     * @Assert\NotBlank()
      */
     protected $imageGrant;
 
@@ -102,6 +118,11 @@ class Member {
      *      min = 10,
      *      minMessage = "Your number must be at least {{ limit }} characters long",
      * )
+     * @Assert\Regex(
+     *     pattern     = "/^[0-9]+$/i",
+     *     message     = "msi.member.message.phone"
+     * )
+     * @Assert\NotBlank()
      */
     protected $phone = null;
 
@@ -112,6 +133,10 @@ class Member {
      * @Assert\Length(
      *      min = 10,
      *      minMessage = "Your number must be at least {{ limit }} characters long",
+     * )
+     * @Assert\Regex(
+     *     pattern     = "/^[0-9]+$/i",
+     *     message     = "Enter only number"
      * )
      */
     protected $mobile = null;
@@ -128,18 +153,21 @@ class Member {
      * @var string
      *
      * @ORM\Column(name="address", type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
      */
     protected $address = null;
 
     /**
      * @ORM\OneToOne(targetEntity="MSI\CoreBundle\Entity\Zipcode", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
+     * @Assert\NotBlank()
      */
     protected $zipcode;
 
     /**
      * @ORM\ManyToOne(targetEntity="MSI\CoreBundle\Entity\City", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank()
      */
     protected $city;
 

@@ -26,10 +26,10 @@ class ChildType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->add('firstname', TextType::class, array('label' => 'msi.user.edit.firstname', 'translation_domain' => 'Profile', 'required' => false))
                 ->add('lastname', TextType::class, array('label' => 'msi.user.edit.lastname', 'translation_domain' => 'Profile', 'required' => false))
-                ->add('birth', BirthdayType::class, array('label' => 'msi.members.birth', 'translation_domain' => 'Membres', 'required' => false, 'placeholder' => array(
-                        'year' => 'Year',
-                        'month' => 'Month',
-                        'day' => 'Day',
+                ->add('birth', BirthdayType::class, array('label' => 'msi.members.birth', 'translation_domain' => 'Members', 'required' => false, 'placeholder' => array(
+                        'year' => 'msi.members.year',
+                        'month' => 'msi.members.month',
+                        'day' => 'msi.members.day',
                     ))
                 )
                 ->add('sex', ChoiceType::class, array('label' => 'Sexe ',
@@ -44,7 +44,9 @@ class ChildType extends AbstractType {
                 ))
                 ->add('scolar_category', EntityType::class, array(
                     'class' => 'MSIMembersBundle:Scolar_categories',
-                    'choice_label' => 'label'
+                    'choice_label' => 'label',
+                    'label' => 'msi.members.scolar.category',
+                    'translation_domain' => 'Members'
                 )
                         )
         ;

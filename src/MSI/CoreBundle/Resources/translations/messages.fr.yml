@@ -22,3 +22,5 @@ msi.core.header.title: 'Dashboard'
 msi.core.header.subtitle: 'Dashboard et statistiques'
 msi.core.header.home: 'Accueil'
 msi.core.submit: 'Envoyer'
+msi.core.yes: Oui
+msi.core.no: Non
