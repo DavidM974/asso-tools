@@ -9,14 +9,13 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
-class MembersFormType extends AbstractType {
+class SearchFormType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
 
@@ -26,7 +25,7 @@ class MembersFormType extends AbstractType {
                 ->add('familySituation', ChoiceType::class, array(
                     'label' => 'msi.members.family.situation',
                     'translation_domain' => 'Members',
-                    'multiple' => false,
+                    'multiple' => true,
                     'expanded' => true,
                     'choices' => array(
                         'S' => 'msi.members.civility.single',
@@ -38,18 +37,11 @@ class MembersFormType extends AbstractType {
                     'required' => false,
                     'empty_value' => false // delete the none field
                 ))
-                ->add('birth', BirthdayType::class, array('label' => 'msi.members.birth', 'translation_domain' => 'Membres', 'required' => false, 'placeholder' => array(
-                        'year' => 'Year',
-                        'month' => 'Month',
-                        'day' => 'Day',
-                    ))
-                )
-                ->add('legalResponsable', TextType::class, array('label' => 'msi.members.legalResponsable', 'translation_domain' => 'Membres', 'required' => false))
                 ->add('phone', NumberType::class, array('label' => 'msi.user.edit.phone', 'translation_domain' => 'Profile', 'required' => false))
                 ->add('mobile', NumberType::class, array('label' => 'msi.user.edit.mobile', 'translation_domain' => 'Profile', 'required' => false))
                 ->add('sex', ChoiceType::class, array('label' => 'Sexe ',
-                    'multiple' => false,
-                    'expanded' => true,
+                    'multiple' => true,
+                    'expanded' => false,
                     'choices' => array(
                         0 => '<i class="fa fa-female" style = "font-size: 24px;"></i>',
                         1 => '<i class="fa fa-male" style = "font-size: 24px;"></i>',
@@ -59,53 +51,78 @@ class MembersFormType extends AbstractType {
                 ))
                 ->add('email', EmailType::class, array('label' => 'Email ', 'required' => false,))
                 ->add('address', TextareaType::class, array('label' => 'msi.user.edit.address', 'translation_domain' => 'Profile', 'required' => false))
-                /* ->add('zipcode', EntityType::class, array(
-                  'class' => 'MSICoreBundle:Zipcode',
-                  'choice_label' => 'zipcode'
-                  )) */
+                ->add('zipcode', EntityType::class, array(
+                    'class' => 'MSICoreBundle:Zipcode',
+                    'choice_label' => 'zipcode'
+                ))
                 ->add('city', EntityType::class, array(
                     'class' => 'MSICoreBundle:City',
                     'choice_label' => 'label'
                 ))
-                ->add('baptism_date',TextType::class, array('label' => 'Baptism_date ', 'required' => false,))
-                ->add('imageFile', 'vich_image', array(
-                    'label' => 'msi.user.edit.avatar',
-                    'translation_domain' => 'Profile',
-                    'required' => false,
-                    'allow_delete' => true, // not mandatory, default is true
-                    'download_link' => true, // not mandatory, default is true
-                ))
+                ->add('activeMember', CheckboxType::class, array('label' => 'msi.member.active', 'required' => false,))
+                ->add('age_start', TextType::class, array('label' => 'msi.members.tranche ', 'required' => false,))
+                ->add('age_end', TextType::class, array('label' => 'msi.members.tranche ', 'required' => false,))
                 ->add('professional_social_category', EntityType::class, array(
+                    'multiple' => true,
+                    'expanded' => true,
                     'class' => 'MSIMembersBundle:Pro_social_categories',
                     'choice_label' => 'label'
                 ))
-                ->add('born_again_date', TextType::class, array('label' => 'born_again ', 'required' => false,))
-                ->add('baptism_localisation', TextType::class, array('label' => 'baptism_localisation', 'translation_domain' => 'Profile', 'required' => false))
+                ->add('date_debut', TextType::class, array('label' => 'msi.members.date_debut ', 'required' => false,))
+                ->add('date_fin', TextType::class, array('label' => 'msi.members.date_fin', 'required' => false,))
                 ->add('services', EntityType::class, array(
                     'multiple' => true,
                     'expanded' => false,
                     'class' => 'MSIMembersBundle:Services',
                     'choice_label' => 'label',
-                     'required' => false
-                    
+                    'required' => false
                 ))
-                ->add('imageGrant', CheckboxType::class, array('label' => 'imageGrant ', 'required' => false,))
-                ->add('add', SubmitType::class, array('label' => 'msi.members.submit', 'translation_domain' => 'Members'))
-                ->add('marriedTo', EntityType::class, array(
-                    'class' => 'MSIMembersBundle:Member',
-                    'choice_label' => 'firstname', // prénom et adresse
-                     'required' => false
+                ->add('baptised', ChoiceType::class, array(
+                    'label' => 'msi.members.isbaptised',
+                    'translation_domain' => 'Members',
+                    'multiple' => false,
+                    'expanded' => true,
+                    'choices' => array(
+                        'ALL' => 'msi.members.civility.single',
+                        'YES' => 'msi.members.civility.maried',
+                        'NO' => 'msi.members.civility.veuf',
+                    ),
+                    'required' => false,
+                    'empty_value' => false // delete the none field
                 ))
-                ->add('childs', CollectionType::class, array(
-                    'entry_type' => ChildType::class,
-                    'allow_add'    => true,
-                    'allow_delete' => true
+                ->add('scolar_category', ChoiceType::class, array(
+                    'label' => 'msi.members.isbaptised',
+                    'translation_domain' => 'Members',
+                    'multiple' => false,
+                    'expanded' => true,
+                    'class' => 'MSIMembersBundle:Scolar_categories',
+                    'empty_value' => 'Tout',
+                    'choice_label' => 'label',
+                    'required' => false,
+                        )
+                )
+                ->add('result_type', ChoiceType::class, array(
+                    'label' => 'msi.members.result_type',
+                    'translation_domain' => 'Members',
+                    'multiple' => false,
+                    'expanded' => true,
+                    'choices' => array(
+                        'list' => 'msi.members.result.list',
+                        'barChart' => 'msi.members.result.bar',
+                        'areaChart' => 'msi.members.result.area',
+                        'lineChart' => 'msi.members.result.line',
+                    ),
+                    'constraints' => array(
+                        new NotBlank(),
+                    ),
+                    'empty_value' => false // delete the none field
                 ))
+                ->add('search', SubmitType::class, array('label' => 'msi.members.submit', 'translation_domain' => 'Members'))
         ;
     }
 
     public function getBlockPrefix() {
-        return 'msi_member_add';
+        return 'msi_member_search';
     }
 
     // For Symfony 2.x
@@ -114,9 +131,7 @@ class MembersFormType extends AbstractType {
     }
 
     public function configureOptions(OptionsResolver $resolver) {
-        $resolver->setDefaults(array(
-            'data_class' => 'MSI\MembersBundle\Entity\Member',
-        ));
+        
     }
 
 }
