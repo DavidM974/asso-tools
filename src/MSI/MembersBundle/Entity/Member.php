@@ -5,16 +5,17 @@ namespace MSI\MembersBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * Members
  *
- * @ORM\Table(name="members")
+ * @ORM\Table(name="member")
  * @ORM\Entity(repositoryClass="MSI\MembersBundle\Repository\MembersRepository")
  * @Vich\Uploadable
  */
-class Members {
+class Member {
 
     /**
      * @var int
@@ -35,6 +36,12 @@ class Members {
      *      minMessage = "Your first name must be at least {{ limit }} characters long",
      *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
      * )
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Your name cannot contain a number"
+     * )
+     * @Assert\NotBlank()
      */
     protected $firstname = null;
 
@@ -48,30 +55,60 @@ class Members {
      *      minMessage = "Your first name must be at least {{ limit }} characters long",
      *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
      * )
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Your name cannot contain a number"
+     * )
+     * @Assert\NotBlank()
      */
     protected $lastname = null;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="legalResponsable", type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *      min = 3,
+     *      max = 50,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     * )
+     */
+    protected $legalResponsable = null;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="birth", type="datetime", nullable=true)
      * @Assert\Date()
+     * @Assert\NotBlank()
      */
     protected $birth = null;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="civility", type="string", length=16, columnDefinition="ENUM('M', 'MME', 'MLLE')")
+     * @ORM\Column(name="family_situation", type="string", length=16, columnDefinition="ENUM('S', 'M', 'V', 'D', 'R')")
+     * @Assert\NotBlank()
      */
-    protected $civility;
+    protected $familySituation;
 
     /**
      * @var boolean
      * 
      * @ORM\Column(name="sex", type="boolean")
+     * @Assert\NotBlank()
      */
     protected $sex;
+
+    /**
+     * @var boolean
+     * 
+     * @ORM\Column(name="image_grant", type="boolean")
+     * @Assert\NotBlank()
+     */
+    protected $imageGrant;
 
     /**
      * @var string
@@ -81,6 +118,11 @@ class Members {
      *      min = 10,
      *      minMessage = "Your number must be at least {{ limit }} characters long",
      * )
+     * @Assert\Regex(
+     *     pattern     = "/^[0-9]+$/i",
+     *     message     = "msi.member.message.phone"
+     * )
+     * @Assert\NotBlank()
      */
     protected $phone = null;
 
@@ -91,6 +133,10 @@ class Members {
      * @Assert\Length(
      *      min = 10,
      *      minMessage = "Your number must be at least {{ limit }} characters long",
+     * )
+     * @Assert\Regex(
+     *     pattern     = "/^[0-9]+$/i",
+     *     message     = "Enter only number"
      * )
      */
     protected $mobile = null;
@@ -107,19 +153,28 @@ class Members {
      * @var string
      *
      * @ORM\Column(name="address", type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
      */
     protected $address = null;
 
     /**
      * @ORM\OneToOne(targetEntity="MSI\CoreBundle\Entity\Zipcode", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
+     * @Assert\NotBlank()
      */
     protected $zipcode;
 
     /**
-     * @var \DateTime
+     * @ORM\ManyToOne(targetEntity="MSI\CoreBundle\Entity\City", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank()
+     */
+    protected $city;
+
+    /**
+     * @var string
      *
-     * @ORM\Column(name="baptism_date", type="datetime", nullable=true)
+     * @ORM\Column(name="baptism_date", type="string", nullable=true)
      * @Assert\Date()
      */
     protected $baptism_date = null;
@@ -151,7 +206,7 @@ class Members {
     private $imageFile;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      *
      * @var string
      */
@@ -165,21 +220,15 @@ class Members {
     private $updatedAt;
 
     /**
-     * @ORM\OneToOne(targetEntity="MSI\MembersBundle\Entity\Family_situations", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    protected $situation_familiale;
-
-    /**
-     * @ORM\OneToOne(targetEntity="MSI\MembersBundle\Entity\Pro_social_categories", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="MSI\MembersBundle\Entity\Pro_social_categories", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     protected $professional_social_category;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="born_again_date", type="datetime", nullable=true)
+     * @ORM\Column(name="born_again_date", type="string", nullable=true)
      * @Assert\Date()
      */
     protected $born_again_date;
@@ -187,21 +236,34 @@ class Members {
     /**
      * @var string
      *
-     * @ORM\Column(name="baptism_localisation", type="string", length=255)
+     * @ORM\Column(name="baptism_localisation", type="string", length=255, nullable=true)
      */
     protected $baptism_localisation;
 
     /**
-     * @ORM\OneToOne(targetEntity="MSI\MembersBundle\Entity\Services", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="MSI\MembersBundle\Entity\Services", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     protected $services;
 
     /**
-     * @ORM\OneToOne(targetEntity="MSI\MembersBundle\Entity\Child", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="MSI\MembersBundle\Entity\Member", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
-    protected $child;
+    protected $marriedTo;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="MSI\MembersBundle\Entity\Child", cascade={"persist"})
+     */
+    protected $childs;
+
+    public function __construct() {
+        $this->childs = new ArrayCollection();
+        $this->services = new ArrayCollection();
+        if ($this->first_register_date == null) {
+            $this->first_register_date = new \DateTime();
+        }
+    }
 
     /**
      * Get id
@@ -231,6 +293,27 @@ class Members {
      */
     public function getFirstname() {
         return $this->firstname;
+    }
+
+    /**
+     * Set legalResponsable
+     *
+     * @param string $legalResponsable
+     * @return Members
+     */
+    public function setLegalResponsable($legalResponsable) {
+        $this->legalResponsable = $legalResponsable;
+
+        return $this;
+    }
+
+    /**
+     * Get legalResponsable
+     *
+     * @return string 
+     */
+    public function getLegalResponsable() {
+        return $this->legalResponsable;
     }
 
     /**
@@ -276,24 +359,24 @@ class Members {
     }
 
     /**
-     * Set civility
+     * Set family_situation
      *
-     * @param string $civility
+     * @param string $familySituation
      * @return Members
      */
-    public function setCivility($civility) {
-        $this->civility = $civility;
+    public function setFamilySituation($familySituation) {
+        $this->familySituation = $familySituation;
 
         return $this;
     }
 
     /**
-     * Get civility
+     * Get familySituation
      *
      * @return string 
      */
-    public function getCivility() {
-        return $this->civility;
+    public function getFamilySituation() {
+        return $this->familySituation;
     }
 
     /**
@@ -315,6 +398,27 @@ class Members {
      */
     public function getSex() {
         return $this->sex;
+    }
+
+    /**
+     * Set sex
+     *
+     * @param boolean $imageGrant
+     * @return Members
+     */
+    public function setImageGrant($imageGrant) {
+        $this->imageGrant = $imageGrant;
+
+        return $this;
+    }
+
+    /**
+     * Get imageGrant
+     *
+     * @return boolean 
+     */
+    public function getImageGrant() {
+        return $this->imageGrant;
     }
 
     /**
@@ -404,7 +508,7 @@ class Members {
     /**
      * Set baptism_date
      *
-     * @param \DateTime $baptismDate
+     * @param \Date $baptismDate
      * @return Members
      */
     public function setBaptismDate($baptismDate) {
@@ -416,7 +520,7 @@ class Members {
     /**
      * Get baptism_date
      *
-     * @return \DateTime 
+     * @return \Date
      */
     public function getBaptismDate() {
         return $this->baptism_date;
@@ -429,6 +533,7 @@ class Members {
      * @return Members
      */
     public function setFirstRegisterDate($firstRegisterDate) {
+
         $this->first_register_date = $firstRegisterDate;
 
         return $this;
@@ -511,7 +616,7 @@ class Members {
     /**
      * Set born_again_date
      *
-     * @param \DateTime $bornAgainDate
+     * @param \Date $bornAgainDate
      * @return Members
      */
     public function setBornAgainDate($bornAgainDate) {
@@ -523,7 +628,7 @@ class Members {
     /**
      * Get born_again_date
      *
-     * @return \DateTime 
+     * @return \Date
      */
     public function getBornAgainDate() {
         return $this->born_again_date;
@@ -572,24 +677,24 @@ class Members {
     }
 
     /**
-     * Set situation_familiale
+     * Set city
      *
-     * @param \MSI\MembersBundle\Entity\Family_situations $situationFamiliale
+     * @param \MSI\CoreBundle\Entity\City $city
      * @return Members
      */
-    public function setSituationFamiliale(\MSI\MembersBundle\Entity\Family_situations $situationFamiliale) {
-        $this->situation_familiale = $situationFamiliale;
+    public function setCity(\MSI\CoreBundle\Entity\City $city) {
+        $this->city = $city;
 
         return $this;
     }
 
     /**
-     * Get situation_familiale
+     * Get city
      *
-     * @return \MSI\MembersBundle\Entity\Family_situations 
+     * @return \MSI\CoreBundle\Entity\City 
      */
-    public function getSituationFamiliale() {
-        return $this->situation_familiale;
+    public function getCity() {
+        return $this->city;
     }
 
     /**
@@ -616,13 +721,17 @@ class Members {
     /**
      * Set services
      *
-     * @param \MSI\MembersBundle\Entity\Services $services
+     * @param \MSI\MembersBundle\Entity\Services $service
      * @return Members
      */
-    public function setServices(\MSI\MembersBundle\Entity\Services $services = null) {
-        $this->services = $services;
+    public function addService(\MSI\MembersBundle\Entity\Services $service = null) {
+        $this->services[] = $service;
 
         return $this;
+    }
+
+    public function removeService(\MSI\MembersBundle\Entity\Services $service) {
+        $this->services->removeElement($service);
     }
 
     /**
@@ -640,19 +749,44 @@ class Members {
      * @param \MSI\MembersBundle\Entity\Child $child
      * @return Members
      */
-    public function setChild(\MSI\MembersBundle\Entity\Child $child = null) {
-        $this->child = $child;
+    public function addChild(\MSI\MembersBundle\Entity\Child $child = null) {
+        $this->childs[] = $child;
+
+        return $this;
+    }
+
+    public function removeChild(\MSI\MembersBundle\Entity\Child $child) {
+        $this->childs->removeElement($child);
+    }
+
+    /**
+     * Get childs
+     *
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getChilds() {
+        return $this->childs;
+    }
+
+    /**
+     * Set marriedTo
+     *
+     * @param \MSI\MembersBundle\Entity\Member $marriedTo
+     * @return Members
+     */
+    public function setMarriedTo(\MSI\MembersBundle\Entity\Member $marriedTo = null) {
+        $this->marriedTo = $marriedTo;
 
         return $this;
     }
 
     /**
-     * Get child
+     * Get marriedTo
      *
-     * @return \MSI\MembersBundle\Entity\Child 
+     * @return \MSI\MembersBundle\Entity\Member 
      */
-    public function getChild() {
-        return $this->child;
+    public function getMarriedTo() {
+        return $this->marriedTo;
     }
 
 }

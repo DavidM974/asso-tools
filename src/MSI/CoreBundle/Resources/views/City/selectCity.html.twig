@@ -1,0 +1,12 @@
+{% set lastZip = null %}
+{% for citie in listCities %}
+    {% if citie['zipcode'] != lastZip  %}
+        {% if lastZip != null %}
+            </optgroup>            
+        {% endif %}
+    <optgroup label="{{ citie['zipcode'] }}">
+    {% endif %}
+    {% set lastZip = citie['zipcode'] %}
+    <option value="{{ citie['id'] }}">{{ citie['label'] }}</option>
+{% endfor %}
+</optgroup>

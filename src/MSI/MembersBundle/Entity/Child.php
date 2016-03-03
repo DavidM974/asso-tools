@@ -64,7 +64,7 @@ class Child {
     protected $sex;
 
     /**
-     * @ORM\OneToOne(targetEntity="MSI\MembersBundle\Entity\Scolar_categories", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="MSI\MembersBundle\Entity\Scolar_categories", cascade={"persist"})
      */
     protected $scolar_category;
 

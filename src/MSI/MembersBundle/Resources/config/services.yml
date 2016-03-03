@@ -1,4 +1,6 @@
 services:
-#    msi_members.example:
-#        class: MSI\MembersBundle\Example
-#        arguments: ["@service_id", "plain_value", %parameter%]
+    msi_members.members.form.type:
+        class: MSI\MembersBundle\Form\Type\MembersFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: msi_edit_avatar_user }
