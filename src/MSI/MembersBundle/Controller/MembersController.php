@@ -25,7 +25,13 @@ class MembersController extends Controller {
         $session->set('fileAriane', $ariane);
         $session->set('module', 'members');
         $session->set('menu', 'list');
-        return $this->render('MSIMembersBundle:Members:list.html.twig');
+        $listMembers = $this->getDoctrine()
+                ->getManager()
+                ->getRepository('MSIMembersBundle:Members')
+                ->findAll();
+        return $this->render('MSIMembersBundle:Members:list.html.twig', array(
+                    'listMembers' => $listMembers,
+        ));
     }
 
     public function addAction(Request $request) {
@@ -35,7 +41,6 @@ class MembersController extends Controller {
         $session->set('fileAriane', $ariane);
         $session->set('module', 'members');
         $session->set('menu', 'add');
-
         // 1) build the form
         $member = new Member();
         $form = $this->createForm(new MembersFormType(), $member);
@@ -55,9 +60,6 @@ class MembersController extends Controller {
 
             return $this->redirectToRoute('msi_members_list');
         }
-
-
-
         return $this->render('MSIMembersBundle:Members:add.html.twig', array('form' => $form->createView()));
     }
 
@@ -89,6 +91,29 @@ class MembersController extends Controller {
         $session->set('module', 'members');
         $session->set('menu', 'com');
         return $this->render('MSIMembersBundle:Members:com.html.twig');
+    }
+
+    public function searchAction(Request $request) {
+        $session = $request->getSession();
+        $translator = $this->get('translator');
+        $ariane = $translator->trans('msi.members.members.fil.search', array(), 'Members');
+        $session->set('fileAriane', $ariane);
+        $session->set('module', 'members');
+        return $this->render('MSIMembersBundle:Members:search.html.twig');
+    }
+
+    public function viewAction(Request $request, $id) {
+        $session = $request->getSession();
+        $translator = $this->get('translator');
+        $ariane = $translator->trans('msi.members.members.fil.list', array(), 'Members');
+        $session->set('fileAriane', $ariane);
+        $session->set('module', 'members');
+        $session->set('menu', 'list');
+        $viewMember = $this->getDoctrine()
+                ->getManager()
+                ->getRepository('MSIMembersBundle:Members')
+                ->findOneBy(array('id' => $id));
+        return $this->render('MSIMembersBundle:Members:view.html.twig', array('viewMember' => $viewMember));
     }
 
 }
