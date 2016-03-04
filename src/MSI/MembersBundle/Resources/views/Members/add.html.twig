@@ -1,0 +1,501 @@
+{% extends "MSICoreBundle::layout.html.twig" %}
+
+{% block add_css %}
+    <link href="{{ asset('public/global/plugins/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/global/plugins/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/global/plugins/select2/css/select2-bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% use 'form_div_layout.html.twig' with form_label as base_form_label %}
+
+{% block form_label %}
+    {{ block('base_form_label') }}
+
+    {% if required %}
+        <span class="required" title="This field is required">*</span>
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light form-fit ">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-user-plus font-green"></i>
+                        <span class="caption-subject font-green sbold uppercase">{{ 'msi.members.members.add.comment'|trans({}, 'Members') }}</span>
+                    </div>
+                </div>
+                {{ form_start(form, { 'action': path('msi_members_add'), 'attr': { 'role': 'form', 'class':'form-horizontal form-bordered', 'id' : 'form-member-add' } }, form_enctype(form)) }}
+                <div class="portlet box blue">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-user"></i>{{ 'msi.members.members.add.profil'|trans({}, 'Members') }} </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                        </div>
+                    </div>
+                    <div class="portlet-body" style="display: block;">
+                        <div class="row">
+                            <br/><br/>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+
+                                <div class="form-group {% if not form.firstname.vars.valid %} has-error{% endif %}">
+                                    <label class="control-label col-md-3 " for="msi_member_add_firstname">{{ form.firstname.vars.label|trans({}, 'Profile') }}
+                                    <span class="required" aria-required="true"> * </span>
+                                    </label>
+                                    <div class="col-md-6">
+                                        <div class='input-group input-icon right'>
+                                            <span class="input-group-addon">
+                                                <i class="icon-user"></i>
+                                            </span>
+                                            <i class="icon-exclamation-sign"></i>
+                                            {{ form_widget(form.firstname, {'attr': {'class': 'form-control '}}) }}
+                                        </div>
+                                        <span class="help-block">
+                                            {{ form_errors(form.firstname) }}
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group {% if not form.lastname.vars.valid %} has-error{% endif %}">
+                                    <label class="control-label col-md-3 " for="msi_member_add_lastname">{{ form.lastname.vars.label|trans({}, 'Profile') }}
+                                    <span class="required" aria-required="true"> * </span>
+                                    </label>
+                                    <div class="col-md-6">
+                                        {{ form_widget(form.lastname, {'attr': {'class': 'form-control '}}) }}
+                                        <span class="help-block">
+                                            {{ form_errors(form.lastname) }}
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form_label(form.email, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
+                                    <div class="col-md-6">
+                                        {% if not form.email.vars.valid %}
+                                            <div class="input-icon right input-group">
+
+                                                <i class="fa fa-warning tooltips" data-original-title="{{ 'msi.user.register.email.error'|trans({}, 'Register')  }}" data-container="body"></i>
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-envelope"></i>
+                                                </span>
+                                                {{ form_widget(form.email, {'attr': {'class': 'form-control '}}) }} 
+                                            </div>
+                                            <span class="help-block">
+                                                {{ form_errors(form.email) }}
+                                            </span>
+                                        {% else %}
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-envelope"></i>
+                                                </span>
+                                                {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder' : 'email'}}) }}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="form-group {% if not form.phone.vars.valid %} has-error{% endif %}">
+                                    <label class="control-label col-md-3 " for="msi_member_add_phone">{{ form.phone.vars.label|trans({}, 'Profile') }}
+                                    <span class="required" aria-required="true"> * </span>
+                                    </label>
+                                    <div class="col-md-6">
+                                        <div class='input-group input-icon right'>
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-phone"></i>
+                                            </span>
+                                            <i class="icon-exclamation-sign"></i>
+                                            {{ form_widget(form.phone, {'attr': {'class': 'form-control '}}) }}
+                                        </div>
+                                        <span class="help-block">
+                                            {{ form_errors(form.phone) }}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.mobile, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
+                                    <div class="col-md-6">
+                                        <div class='input-group input-icon right'>
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-mobile-phone"></i>
+                                            </span>
+                                            <i class="icon-exclamation-sign"></i>
+                                            {{ form_widget(form.mobile, {'attr': {'class': 'form-control '}}) }}
+                                        </div>
+                                        <span class="help-block">
+                                            {{ form_errors(form.mobile) }}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group {% if not form.birth.vars.valid %} has-error{% endif %}">
+                                    <label class="control-label col-md-3 " for="msi_member_add_birth">{{ form.birth.vars.label|trans({}, 'Members') }}
+                                    <span class="required" aria-required="true"> * </span>
+                                    </label>
+                                    <div class="col-md-8">
+                                        {{ form_widget(form.birth.day,{'attr':{'class':'bs-select form-control input-small', 'data-style' : 'btn-info', 'tabindex' : '1'}}) }}
+                                        {{ form_widget(form.birth.month,{'attr':{'class':'bs-select form-control input-small', 'data-style' : 'btn-info', 'tabindex' : '2'}}) }}
+                                        {{ form_widget(form.birth.year,{'attr':{'class':'bs-select form-control input-small', 'data-style' : 'btn-info', 'tabindex' : '3'}}) }}
+                                        <span class="help-block">
+                                            {{ form_errors(form.birth) }}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group" id="legalResponsable">
+                                    {{ form_label(form.legalResponsable, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
+                                    <div class="col-md-6">
+                                        {{ form_widget(form.legalResponsable, {'attr': {'class': 'form-control '}}) }}
+                                        <span class="help-block">
+                                            {{ form_errors(form.legalResponsable) }}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <label class="control-label col-md-3 ">{{ 'msi.members.have.child'|trans({}, 'Members') }}</label>
+                                    <div class="col-md-8">
+                                        <input id="have_child" name="have_child" type="checkbox" class="make-switch" data-on-text="{{ 'msi.core.yes'|trans() }}" data-off-text="{{ 'msi.core.no'|trans() }}">
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    {{ form_label(form.imageFile, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
+                                    <div class="col-md-8">
+                                        {{ form_widget(form.imageFile) }}
+                                        <span class="help-block">
+                                            {{ form_errors(form.imageFile) }}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group {% if not form.sex.vars.valid %} has-error{% endif %}">
+                                    <label class="control-label col-md-3 " for="msi_member_add_sex">{{ form.sex.vars.label|trans({}, 'Profile') }}
+                                    <span class="required" aria-required="true"> * </span>
+                                    </label>
+                                    <div class="col-md-8 md-radio-inline">
+                                        {% for radio_button in form.sex %}
+                                            <div class="md-radio">
+                                                {{ form_widget(radio_button, {'attr':{'class':'md-radiobtn' }}) }}
+                                                <label for="{{ radio_button.vars.id }}">
+                                                    <span></span>
+                                                    <span class="check"></span>
+                                                    <span class="box"></span> {{ radio_button.vars.label | raw }}
+                                                </label>
+                                            </div>
+                                        {% endfor %}
+                                        <span class="help-block">
+                                            {{ form_errors(form.sex) }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <div class="form-group {% if not form.address.vars.valid %} has-error{% endif %}">
+                                    <label class="control-label col-md-3 " for="msi_member_add_address">{{ form.address.vars.label|trans({}, 'Profile') }}
+                                    <span class="required" aria-required="true"> * </span>
+                                    </label>
+                                    <div class="col-md-8">
+                                        {{ form_widget(form.address, {'attr': {'class': 'form-control ', 'rows' : '3'}}) }}
+                                        <span class="help-block">
+                                            {{ form_errors(form.address) }}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group {% if not form.city.vars.valid %} has-error{% endif %}">
+                                    <label class="control-label col-md-3 " for="msi_member_add_city">{{ form.city.vars.label|trans({}, 'Members') }}
+                                    <span class="required" aria-required="true"> * </span>
+                                    </label>
+                                    <div class="col-md-6">
+                                        <select id="msi_member_add_city" name="msi_member_add[city]" class="form-control input-sm select2-multiple" data="{{ form_widget(form.city)|e }}">
+                                            {{ render(controller("MSICoreBundle:Default:getCitySelect")) }}
+                                        </select>
+                                        <span class="help-block">
+                                            {{ form_errors(form.city) }}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group {% if not form.familySituation.vars.valid %} has-error{% endif %}">
+                                    {{ form_label(form.familySituation, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
+                                    <div class="col-md-8 md-radio">
+                                        <div class="col-md-9">
+                                            <div class="md-radio-list">
+                                                {% for radio_button in form.familySituation %}
+                                                    <div class="md-radio">
+                                                        {{ form_widget(radio_button, {'attr':{'class':'md-radiobtn' }}) }}
+                                                        <label for="{{ radio_button.vars.id }}">
+                                                            <span></span>
+                                                            <span class="check"></span>
+                                                            <span class="box"></span> 
+                                                            {{ radio_button.vars.label|trans({}, 'Members')}}
+                                                        </label>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                            <span class="help-block">
+                                                {{ form_errors(form.familySituation) }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group" id="marriedTo">
+                                    {{ form_label(form.marriedTo, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
+                                    <div class="col-md-6">
+                                        {{ form_errors(form.marriedTo) }}
+                                        {{ form_widget(form.marriedTo, {'attr': {'class': 'form-control '}}) }}
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    {{ form_label(form.imageGrant, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
+                                    <div class="col-md-8">
+                                        {{ form_widget(form.imageGrant, {'attr': {'class': 'make-switch' ,'data-on-text' : 'msi.core.yes'|trans() ,'data-off-text':'msi.core.no'|trans() }}) }}
+                                    </div>
+                                </div>
+                                <div class="form-group {% if not form.professional_social_category.vars.valid %} has-error{% endif %}">
+                                    <label class="control-label col-md-3 " for="msi_member_add_professional_social_category">{{ form.professional_social_category.vars.label|trans({}, 'Members') }}
+                                    <span class="required" aria-required="true"> * </span>
+                                    </label>
+                                    <div class="col-md-6">
+                                        {{ form_widget(form.professional_social_category, {'attr': {'class': 'form-control '}}) }}
+                                        <span class="help-block">
+                                            {{ form_errors(form.professional_social_category) }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="block_childs" class="portlet box blue ">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-child"></i>{{ 'msi.members.members.add.child'|trans({}, 'Members') }} </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                        </div>
+                    </div>
+                    <div class="portlet-body" style="display: block;">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div id="msi_member_add_childs"  data-prototype=" {% filter escape %}
+                                     {{ include('MSIMembersBundle:Form:_child_entry_widget.html.twig', { 'form':  form.childs.vars.prototype}) }}
+                                     {% endfilter %}" data="{{ form_widget(form.childs)|e }}" >
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="portlet box blue">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-fire"></i>{{ 'msi.members.members.add.spi'|trans({}, 'Members') }} </div>
+                            <div class="tools">
+                                <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                            </div>
+                        </div>
+                        <div class="portlet-body" style="display: block;">
+                            <div class="row">
+                                <br/><br/>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group ">
+                                        {{ form_label(form.born_again_date, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
+                                        <div class="col-md-6">
+                                            <div class="input-group input-medium date date-picker" data-date="{{ "now"|date("d-m-Y") }}" data-date-format="yyyy-mm-dd" data-date-viewmode="years">
+                                                {{ form_errors(form.born_again_date) }}
+                                                {{ form_widget(form.born_again_date, {'attr': {'class': 'form-control ', 'readonly':''}}) }}
+                                                <span class="input-group-btn">
+                                                    <button class="btn default" type="button">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form_label(form.baptism_date, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
+                                        <div class="col-md-6">
+                                            <div class="input-group input-medium date date-picker" data-date="{{ "now"|date("d-m-Y") }}" data-date-format="yyyy-mm-dd" data-date-viewmode="years">
+                                                {{ form_errors(form.baptism_date) }}
+                                                {{ form_widget(form.baptism_date, {'attr': {'class': 'form-control ', 'readonly':''}}) }}
+                                                <span class="input-group-btn">
+                                                    <button class="btn default" type="button">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group ">
+                                        {{ form_label(form.baptism_localisation, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
+                                        <div class="col-md-6">
+                                            {{ form_errors(form.baptism_localisation) }}
+                                            {{ form_widget(form.baptism_localisation, {'attr': {'class': 'form-control '}}) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="form-group ">
+                                        {{ form_label(form.services, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
+                                        <div class="col-md-6">
+                                            {{ form_errors(form.services) }}
+                                            {{ form_widget(form.services, {'attr': {'class': 'form-control '}}) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <div class="col-md-6"></div>
+                                        <div class="col-md-6">{{ form_widget(form.add, {'attr': {'class': 'btn blue '}}) }}</div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{ form_end(form) }}
+
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+
+            {% block add_js %}
+                <!-- BEGIN PAGE PLUGIN -->
+                <script src="{{ asset('public/global/plugins/bootstrap-select/js/bootstrap-select.min.js') }}" type="text/javascript"></script>
+                <script src="{{ asset('public/pages/scripts/components-bootstrap-select.min.js') }}" type="text/javascript"></script>
+                <script src="{{ asset('public/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}" type="text/javascript"></script>
+                <script src="{{ asset('public/global/plugins/select2/js/select2.full.min.js') }}" type="text/javascript"></script>
+                <script src="{{ asset('public/global/plugins/jquery-validation/js/jquery.validate.min.js') }}" type="text/javascript"></script>
+                <script src="{{ asset('public/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js') }}" type="text/javascript"></script>
+
+
+                <!-- END PAGE LEVEL PLUGINS -->
+                <script src="{{ asset('public/pages/scripts/components-date-time-pickers.min.js') }}" type="text/javascript"></script>
+                <script src="{{ asset('public/pages/scripts/components-select2.js') }}" type="text/javascript"></script>
+                <script src="{{ asset('public/pages/scripts/add-member.js') }}" type="text/javascript"></script>
+
+
+                {# src/OC/PlatformBundle/Resources/views/Advert/form.html.twig #}
+
+
+                {# Voici le script en question : #}
+                <script type="text/javascript">
+                    $(document).ready(function () {
+
+                        function getAge(d1, d2) {
+                            d2 = d2 || new Date();
+                            var diff = d2.getTime() - d1.getTime();
+                            return Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+                        }
+
+                        var day = $('button[data-id=msi_member_add_birth_day]');
+                        var month = $('button[data-id=msi_member_add_birth_month]');
+                        var year = $('button[data-id=msi_member_add_birth_year]');
+                        var divMonth = $('button[data-id=msi_member_add_birth_month]').next('div');
+                        var dateDay = new Date();
+                        $('.dropdown-menu').on('click', function () {
+                            if (day.attr("title") !== 'Day' && month.attr("title") !== 'Month' && year.attr("title") !== 'Year')
+                            {
+                                var birthday = new Date();
+                                birthday.setFullYear(parseInt(year.attr("title")), parseInt(divMonth.find('.selected').attr('data-original-index')) - 1, parseInt(day.attr("title")));
+                                if (getAge(birthday, dateDay) < 18)
+                                    $('#legalResponsable').show();
+                                else
+                                    $('#legalResponsable').hide();
+                            }
+                            day.attr("title");
+                            month.attr("title");
+                            year.attr("title");
+
+                        });
+
+                        $('#legalResponsable').hide();
+
+
+                        //je cache le block married
+                        $('#marriedTo').hide;
+
+                        $('#form-member-add input').on('change', function () {
+
+                        });
+
+                        // je cache le block child au chargement de la page
+                        $('#block_childs').hide();
+                        //j'affiche le block ou je cache le block au click
+                        $('#have_child').on('switchChange.bootstrapSwitch', function (event, state) {
+
+                            if (state == true) {
+                                $('#block_childs').show();
+                                addChild($container);
+                            } else {
+                                $('#block_childs').hide();
+                                $('.delete-link').click();
+                            }
+                        });
+                        // On récupère la balise <div> en question qui contient l'attribut « data-prototype » qui nous intéresse.
+                        var $container = $('div#msi_member_add_childs');
+
+                        // On ajoute un lien pour ajouter une nouvelle catégorie
+                        $container.append('<br/><div id="container-btn-add-child" class="col-md-12" style="height: 50px; "></div><br/>');
+                        var $containAddLink = $('div#container-btn-add-child');
+                        var $addLink = $('<a href="#" id="add_child" class="btn btn-default">Ajouter un enfant</a>');
+
+                        $containAddLink.append($addLink);
+
+                        // On ajoute un nouveau champ à chaque clic sur le lien d'ajout.
+                        $addLink.click(function (e) {
+                            addChild($container);
+                            e.preventDefault(); // évite qu'un # apparaisse dans l'URL
+                            return false;
+                        });
+
+                        // On définit un compteur unique pour nommer les champs qu'on va ajouter dynamiquement
+                        var index = $container.find(':input').length;
+
+                        // On ajoute un premier champ automatiquement s'il n'en existe pas déjà un (cas d'une nouvelle annonce par exemple).
+                        if (index == 0) {
+                            //addChild($container);
+                        } else {
+                            // Pour chaque catégorie déjà existante, on ajoute un lien de suppression
+                            $container.children('div').each(function () {
+                                addDeleteLink($(this));
+                            });
+                        }
+
+                        // La fonction qui ajoute un formulaire Categorie
+                        function addChild($container) {
+                            // Dans le contenu de l'attribut « data-prototype », on remplace :
+                            // - le texte "__name__label__" qu'il contient par le label du champ
+                            // - le texte "__name__" qu'il contient par le numéro du champ
+                            var $prototype = $($container.attr('data-prototype').replace(/__name__label__/g, 'Enfant n°' + (index + 1))
+                                    .replace(/__name__/g, index));
+
+                            // On ajoute au prototype un lien pour pouvoir supprimer la catégorie
+                            addDeleteLink($prototype);
+
+                            // On ajoute le prototype modifié à la fin de la balise <div>
+                            $container.append($prototype);
+
+                            // Enfin, on incrémente le compteur pour que le prochain ajout se fasse avec un autre numéro
+                            index++;
+                            // init css style for select
+                            ComponentsBootstrapSelect.init();
+                        }
+
+                        // La fonction qui ajoute un lien de suppression d'une catégorie
+                        function addDeleteLink($prototype) {
+                            // Création du lien
+                            $deleteLink = $('<a href="#" class="delete-link btn btn-danger">Supprimer</a>');
+
+                            // Ajout du lien
+                            $prototype.append($deleteLink);
+
+                            // Ajout du listener sur le clic du lien
+                            $deleteLink.click(function (e) {
+                                $prototype.remove();
+                                e.preventDefault(); // évite qu'un # apparaisse dans l'URL
+                                return false;
+                            });
+                        }
+                    });
+                </script>
+            {% endblock %}

@@ -1,0 +1,48 @@
+msi.members.members.title: Menu management members
+msi.members.members.list: Members
+msi.members.members.list.comment: Lists of all members
+msi.members.members.add: Add
+msi.members.members.add.comment: Add a new member
+msi.members.members.import: Import
+msi.members.members.import.comment: Import new members
+msi.members.members.stat: Statistics
+msi.members.members.stat.comment: Members statistics
+msi.members.members.com: Communication
+msi.members.members.com.comment: Members Communications
+msi.members.members.fil.index: '<li><span>Management members</span></li>'
+msi.members.members.fil.list: '<li><span>Management members</span><i class="fa fa-angle-right"></i></li><li><span>Members list</span></li>'
+msi.members.members.fil.add: '<li><span>Management members</span><i class="fa fa-angle-right"></i></li><li><span>Add a member</span></li>'
+msi.members.members.fil.import: '<li><span>Management members</span><i class="fa fa-angle-right"></i></li><li><span>Import a member</span></li>'
+msi.members.members.fil.stat: '<li><span>Management members</span><i class="fa fa-angle-right"></i></li><li><span>Statistics</span></li>'
+msi.members.members.fil.com: '<li><span>Management members</span><i class="fa fa-angle-right"></i></li><li><span>Communication</span></li>'
+msi.members.members.search: Search tools
+msi.members.members.fil.search: '<li><span>Management members</span><i class="fa fa-angle-right"></i></li><li><span>Search tools</span></li>'
+msi.members.members.search.broad: Broad
+msi.members.members.search.plus: Plus
+msi.members.members.search.updown: Up/Down
+msi.members.members.services: Services
+msi.members.birth: Date de naissance
+msi.members.have.child: Enfant à charge
+msi.members.family.situation: Situation familiale
+msi.members.civility.single: Célibataire
+msi.members.civility.maried: Marié(e)
+msi.members.civility.veuf: Veuf(e)
+msi.members.civility.divorce: Divorcé(e)
+msi.members.civility.remaried: Remarié(e)
+msi.members.city: Ville
+msi.members.marriedTo: Marié(e) à
+msi.members.members.add.profil: Général
+msi.members.members.add.child: Enfant
+msi.members.members.add.spi: Spirituel
+msi.members.scolar.category: Scolarité
+msi.members.year: Année
+msi.members.month: Mois
+msi.members.day: Jour
+msi.members.baptism.date: Date de baptême
+msi.members.born.again: Date de renaissance
+msi.members.baptism.localisation: Lieu de baptême
+msi.members.services: Service(s)
+msi.members.image.grant: Droit à l'image
+msi.members.psc: Profession et catégorie socioprofessionnelle
+msi.members.legalResponsable: Responsable légal
+msi.members.add: Ajouter

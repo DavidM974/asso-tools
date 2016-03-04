@@ -22,5 +22,8 @@ msi:
             email: Email
             roles: Role
             back: Back
+            male: Man
+            female: Woman
+            sex: Sex
 
             

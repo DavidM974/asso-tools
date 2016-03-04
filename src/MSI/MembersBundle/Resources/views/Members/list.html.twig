@@ -8,8 +8,13 @@
     <div class="portlet light portlet-fit portlet-datatable col-md-12" id="form_wizard_1">
         <div class="portlet-title">
             <div class="caption">
-                <i class=" fa fa-users font-green"></i>
-                <span class="caption-subject font-green sbold uppercase"> {{ 'msi.core.admin.users.comment'|trans({}, 'Admin') }} </span>
+                <i class="fa fa-users font-green"></i>
+                <span class="caption-subject font-green sbold uppercase">{{ 'msi.members.members.list.comment'|trans({}, 'Members') }}</span>
+            </div>
+            <div class="action" style="float:right">
+                <a href="{{ path('msi_members_search')}}" class="nav-link">
+                    <i class="fa fa-search-plus btn btn-outline btn-circle green">&nbsp;{{ 'msi.members.members.search'|trans({}, 'Members') }}</i>
+                </a>
             </div>
         </div>
         <div class="portlet-body">
@@ -19,9 +24,9 @@
                         <th class="table-checkbox">
                             <input type="checkbox" class="group-checkable" data-set="#sample_2 .checkboxes" /> 
                         </th>
+                        <th> Photo </th>
                         <th>{{ 'msi.core.admin.users.lastname'|trans({}, 'Admin') }}</th>
                         <th>{{ 'msi.core.admin.users.firstname'|trans({}, 'Admin') }}</th>
-                        <th>{{ 'msi.core.admin.users.role'|trans({}, 'Admin') }}</th>
                         <th>{{ 'msi.core.admin.users.birth'|trans({}, 'Admin') }}</th>
                         <th>{{ 'msi.core.admin.users.address'|trans({}, 'Admin') }}</th>
                         <th>{{ 'msi.core.admin.users.email'|trans({}, 'Admin') }}</th>
@@ -30,48 +35,42 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for user in listUsers %}
+                    {% for member in listMembers %}
                         <tr class="odd gradeX">
                             <td><input type="checkbox" class="checkboxes" value="1" /></td>
-                            <td>{{ user.lastname }}</td>
-                            <td>{{ user.firstname }}</td>
+                            <td style="text-align:center;">
+                                {% if  member.imageName %}
+                                    <img class="img-circle" src="{{ vich_uploader_asset( member, 'imageFile') }}" alt="{{  member.imageName }}" />
+                                {% else %}
+                                    <img class="img-circle" src="{{ asset('public/layouts/layout2/img/avatar.png') }}" alt="" class="img-responsive"  />
+                                {% endif %}
+                            </td>
+                            <td>{{ member.lastname }}</td>
+                            <td>{{ member.firstname }}</td> 
+                            <td>{{ member.birth|date('d/m/Y') }}</td>
+                            <td>{{ member.address }}</td>
+                            <td>{{ member.email }}</td>
                             <td>
-                                {% for role in user.roles %}
-                                    {% if role=='ROLE_SUPER_ADMIN' %}
-                                        <span class="label label-sm label-danger"> Super Administrateur </span>&nbsp;
-                                    {% elseif role=='ROLE_ADMIN' %}
-                                        <span class="label label-sm label-warning"> Administrateur </span>&nbsp;
-                                    {% elseif role=='ROLE_PASTEUR' %}
-                                        <span class="label label-sm label-success"> Pasteur </span>&nbsp;
-                                    {% elseif role=='ROLE_SECRETAIRE' %}
-                                        <span class="label label-sm label-success"> Secretaire </span>&nbsp;
-                                    {% endif %}
-                                {% endfor %}
-                            </td>    
-                            <td>{{ user.birth|date('d/m/Y') }}</td>
-                            <td>{{ user.address }}</td>
-                            <td>{{ user.email }}</td>
-                            <td>
-                                {% if user.phone %}
-                                    <a href="javascript:;" class="btn btn-circle btn-xs blue"> {{ user.phone }}
+                                {% if member.phone %}
+                                    <a href="javascript:;" class="btn btn-circle btn-xs blue"> {{ member.phone }}
                                         <i class="fa fa-phone"></i>
                                     </a>
                                 {% endif %}
                                 &nbsp;
-                                {% if user.mobile %}
-                                    <a href="javascript:;" class="btn btn-circle btn-xs purple"> {{ user.mobile }}
+                                {% if member.mobile %}
+                                    <a href="javascript:;" class="btn btn-circle btn-xs purple"> {{ member.mobile }}
                                         <i class="fa fa-mobile"></i>
                                     </a>
                                 {% endif %}
                             </td>
-                            <td style ="text-align:center;">                                
+                            <td style="text-align:center;">
                                 <a href="javascript:;" class="nav-link ">
-                                    <a href="{{ path('msi_user_admin_view_user',{'id' : user.id} ) }}" class="btn btn-circle btn-icon-only grey-cascade">
+                                    <a href="{{ path('msi_members_view_member',{'id' : member.id})}}" class="btn btn-circle btn-icon-only grey-cascade">
                                         <i class="fa fa-eye"></i>
                                     </a>
                                 </a>
                                 <a href="" class="nav-link ">
-                                    <a href="{{ path('msi_user_admin_edit_user',{'id' : user.id} ) }}" class="btn btn-circle btn-icon-only blue">
+                                    <a href="" class="btn btn-circle btn-icon-only blue">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                 </a>
@@ -99,3 +98,4 @@
     <script src="{{ asset('public/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') }}" type="text/javascript"></script>
     <script src="{{ asset('public/pages/scripts/table-datatables-managed.min.js') }}" type="text/javascript"></script>
 {% endblock%}
+

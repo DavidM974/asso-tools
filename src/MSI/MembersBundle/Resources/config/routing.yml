@@ -1,0 +1,34 @@
+msi_members_index:
+    path:     /members
+    defaults: { _controller: MSIMembersBundle:Members:index }
+    
+msi_members_list:
+    path:     /members/list
+    defaults: { _controller: MSIMembersBundle:Members:list }
+
+msi_members_add:
+    path:     /members/add
+    defaults: { _controller: MSIMembersBundle:Members:add }
+    
+msi_members_import:
+    path:     /members/import
+    defaults: { _controller: MSIMembersBundle:Members:import }
+    
+msi_members_stat:
+    path:     /members/stat
+    defaults: { _controller: MSIMembersBundle:Members:stat }
+    
+msi_members_com:
+    path:     /members/com
+    defaults: { _controller: MSIMembersBundle:Members:com }
+    
+msi_members_search:
+    path:      /members/search
+    defaults: { _controller: MSIMembersBundle:Members:search }
+    
+msi_members_view_member:
+    path:     /members/viewMember/{id}
+    defaults: { _controller: MSIMembersBundle:Members:view}
+    requirements: 
+        id: \d+
+
