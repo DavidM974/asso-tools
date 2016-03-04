@@ -46,3 +46,11 @@ msi.members.image.grant: Droit à l'image
 msi.members.psc: Profession et catégorie socioprofessionnelle
 msi.members.legalResponsable: Responsable légal
 msi.members.add: Ajouter
+msi.members.yes: Oui
+msi.members.no: Non
+msi.members.all: Tous
+msi.members.isbaptised: Baptisé
+msi.members.active: Membre actif
+msi.members.date: Date
+msi.members.date.to: Au
+msi.members.search: Rechercher

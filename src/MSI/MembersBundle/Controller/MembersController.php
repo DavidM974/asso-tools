@@ -6,6 +6,7 @@ use MSI\MembersBundle\Entity\Member;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use MSI\MembersBundle\Form\MembersFormType;
+use MSI\MembersBundle\Form\SearchFormType;
 
 class MembersController extends Controller {
 
@@ -100,13 +101,13 @@ class MembersController extends Controller {
         $session->set('fileAriane', $ariane);
         $session->set('module', 'members');
         
+        $form = $this->createForm(new SearchFormType());
         
         
         
         
         
-        
-        return $this->render('MSIMembersBundle:Members:search.html.twig');
+        return $this->render('MSIMembersBundle:Members:search.html.twig', array('form' => $form->createView()));
     }
 
     public function viewAction(Request $request, $id) {

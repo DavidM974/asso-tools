@@ -160,7 +160,6 @@ class Member {
     /**
      * @ORM\OneToOne(targetEntity="MSI\CoreBundle\Entity\Zipcode", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
-     * @Assert\NotBlank()
      */
     protected $zipcode;
 
