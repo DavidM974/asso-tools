@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 class SearchFormType extends AbstractType {
 
@@ -26,7 +27,7 @@ class SearchFormType extends AbstractType {
                     'label' => 'msi.members.family.situation',
                     'translation_domain' => 'Members',
                     'multiple' => true,
-                    'expanded' => true,
+                    'expanded' => false,
                     'choices' => array(
                         'S' => 'msi.members.civility.single',
                         'M' => 'msi.members.civility.maried',
@@ -35,38 +36,57 @@ class SearchFormType extends AbstractType {
                         'R' => 'msi.members.civility.remaried'
                     ),
                     'required' => false,
-                    'empty_value' => false // delete the none field
+                    'empty_value' => 'Tous' // delete the none field
                 ))
                 ->add('phone', NumberType::class, array('label' => 'msi.user.edit.phone', 'translation_domain' => 'Profile', 'required' => false))
                 ->add('mobile', NumberType::class, array('label' => 'msi.user.edit.mobile', 'translation_domain' => 'Profile', 'required' => false))
                 ->add('sex', ChoiceType::class, array('label' => 'Sexe ',
-                    'multiple' => true,
-                    'expanded' => false,
+                    'multiple' => false,
+                    'expanded' => true,
+                    'empty_value' => 'Tous', // delete the none field
                     'choices' => array(
                         0 => '<i class="fa fa-female" style = "font-size: 24px;"></i>',
                         1 => '<i class="fa fa-male" style = "font-size: 24px;"></i>',
                     ),
                     'required' => false,
-                    'empty_value' => false // delete the none field
                 ))
                 ->add('email', EmailType::class, array('label' => 'Email ', 'required' => false,))
                 ->add('address', TextareaType::class, array('label' => 'msi.user.edit.address', 'translation_domain' => 'Profile', 'required' => false))
                 ->add('zipcode', EntityType::class, array(
                     'class' => 'MSICoreBundle:Zipcode',
-                    'choice_label' => 'zipcode'
+                    'choice_label' => 'zipcode',
+                    'required' => false,
+                    'empty_value' => 'Tous'
                 ))
                 ->add('city', EntityType::class, array(
                     'class' => 'MSICoreBundle:City',
-                    'choice_label' => 'label'
+                    'choice_label' => 'label',
+                    'required' => false,
+                    'empty_value' => 'Tous'
                 ))
-                ->add('activeMember', CheckboxType::class, array('label' => 'msi.member.active', 'required' => false,))
-                ->add('age_start', TextType::class, array('label' => 'msi.members.tranche ', 'required' => false,))
-                ->add('age_end', TextType::class, array('label' => 'msi.members.tranche ', 'required' => false,))
+                ->add('activeMember', ChoiceType::class, array(
+                    'label' => 'msi.members.active',
+                    'translation_domain' => 'Members',
+                    'multiple' => false,
+                    'expanded' => true,
+                    'choices' => array(
+                        'ALL' => 'msi.members.all',
+                        'YES' => 'msi.members.yes',
+                        'NO' => 'msi.members.no',
+                    ),
+                    'data' => 'ALL',
+                    'required' => false,
+                    'empty_value' => false // delete the none field
+                ))
+                ->add('age_start', HiddenType::class, array('label' => 'msi.members.tranche ', 'required' => false,))
+                ->add('age_end', HiddenType::class, array('label' => 'msi.members.tranche ', 'required' => false,))
                 ->add('professional_social_category', EntityType::class, array(
                     'multiple' => true,
-                    'expanded' => true,
+                    'expanded' => false,
                     'class' => 'MSIMembersBundle:Pro_social_categories',
-                    'choice_label' => 'label'
+                    'choice_label' => 'label',
+                    'required' => false,
+                    'empty_value' => 'Tous'
                 ))
                 ->add('date_debut', TextType::class, array('label' => 'msi.members.date_debut ', 'required' => false,))
                 ->add('date_fin', TextType::class, array('label' => 'msi.members.date_fin', 'required' => false,))
@@ -83,41 +103,31 @@ class SearchFormType extends AbstractType {
                     'multiple' => false,
                     'expanded' => true,
                     'choices' => array(
-                        'ALL' => 'msi.members.civility.single',
-                        'YES' => 'msi.members.civility.maried',
-                        'NO' => 'msi.members.civility.veuf',
+                        'ALL' => 'msi.members.all',
+                        'YES' => 'msi.members.yes',
+                        'NO' => 'msi.members.no',
                     ),
+                    'data' => 'ALL',
                     'required' => false,
                     'empty_value' => false // delete the none field
                 ))
-                ->add('scolar_category', ChoiceType::class, array(
-                    'label' => 'msi.members.isbaptised',
-                    'translation_domain' => 'Members',
-                    'multiple' => false,
-                    'expanded' => true,
-                    'class' => 'MSIMembersBundle:Scolar_categories',
-                    'empty_value' => 'Tous',
-                    'choice_label' => 'label',
-                    'required' => false,
-                        )
-                )
                 ->add('result_type', ChoiceType::class, array(
                     'label' => 'msi.members.result_type',
                     'translation_domain' => 'Members',
                     'multiple' => false,
                     'expanded' => true,
                     'choices' => array(
-                        'list' => 'msi.members.result.list',
-                        'barChart' => 'msi.members.result.bar',
-                        'areaChart' => 'msi.members.result.area',
-                        'lineChart' => 'msi.members.result.line',
+                        'list' => '<i class="fa fa-list"></i>',
+                        'barChart' => '<i class="fa fa-area-chart"></i>',
+                        'areaChart' => '<i class="fa fa-bar-chart"></i>',
+                        'lineChart' => '<i class="fa fa-line-chart"></i>',
                     ),
                     'constraints' => array(
                         new NotBlank(),
                     ),
                     'empty_value' => false // delete the none field
                 ))
-                ->add('search', SubmitType::class, array('label' => 'msi.members.submit', 'translation_domain' => 'Members'))
+                ->add('search', SubmitType::class, array('label' => 'msi.members.search', 'translation_domain' => 'Members'))
         ;
     }
 
