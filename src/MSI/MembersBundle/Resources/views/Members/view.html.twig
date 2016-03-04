@@ -47,9 +47,9 @@
                                                 <div class="form-group">
                                                     <li>
                                                         <i class="fa fa-{% if viewMember.sex == 1 %}male{% else %}female{% endif %}"></i> {{ 'msi.user.edit.sex'|trans({}, 'Profile') }} : 
-                                                        {% if viewMember.sex== 0  %}
+                                                        {% if viewMember.sex== 1  %}
                                                             {{ 'msi.user.edit.male'|trans({}, 'Profile') }}
-                                                        {% elseif viewMember.sex == 1 %}
+                                                        {% elseif viewMember.sex == 0 %}
                                                             {{ 'msi.user.edit.female'|trans({}, 'Profile') }}
                                                         {% endif %} 
                                                     </li>

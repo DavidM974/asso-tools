@@ -106,7 +106,6 @@ class Member {
      * @var boolean
      * 
      * @ORM\Column(name="image_grant", type="boolean")
-     * @Assert\NotBlank()
      */
     protected $imageGrant;
 
@@ -259,8 +258,7 @@ class Member {
      /**
      * @var boolean
      * 
-     * @ORM\Column(name="is_active", type="boolean")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\Column(name="is_active", type="boolean", nullable=true)
      */
     protected $isActive;
 

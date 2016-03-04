@@ -10,7 +10,6 @@
 
 {% block form_label %}
     {{ block('base_form_label') }}
-
     {% if required %}
         <span class="required" title="This field is required">*</span>
     {% endif %}
@@ -39,10 +38,9 @@
                         <div class="row">
                             <br/><br/>
                             <div class="col-md-6 col-sm-6 col-xs-6">
-
                                 <div class="form-group {% if not form.firstname.vars.valid %} has-error{% endif %}">
                                     <label class="control-label col-md-3 " for="msi_member_add_firstname">{{ form.firstname.vars.label|trans({}, 'Profile') }}
-                                    <span class="required" aria-required="true"> * </span>
+                                        <span class="required" aria-required="true"> * </span>
                                     </label>
                                     <div class="col-md-6">
                                         <div class='input-group input-icon right'>
@@ -57,10 +55,9 @@
                                         </span>
                                     </div>
                                 </div>
-
                                 <div class="form-group {% if not form.lastname.vars.valid %} has-error{% endif %}">
                                     <label class="control-label col-md-3 " for="msi_member_add_lastname">{{ form.lastname.vars.label|trans({}, 'Profile') }}
-                                    <span class="required" aria-required="true"> * </span>
+                                        <span class="required" aria-required="true"> * </span>
                                     </label>
                                     <div class="col-md-6">
                                         {{ form_widget(form.lastname, {'attr': {'class': 'form-control '}}) }}
@@ -69,7 +66,6 @@
                                         </span>
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     {{ form_label(form.email, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
                                     <div class="col-md-6">
@@ -95,10 +91,9 @@
                                         {% endif %}
                                     </div>
                                 </div>
-
                                 <div class="form-group {% if not form.phone.vars.valid %} has-error{% endif %}">
                                     <label class="control-label col-md-3 " for="msi_member_add_phone">{{ form.phone.vars.label|trans({}, 'Profile') }}
-                                    <span class="required" aria-required="true"> * </span>
+                                        <span class="required" aria-required="true"> * </span>
                                     </label>
                                     <div class="col-md-6">
                                         <div class='input-group input-icon right'>
@@ -130,7 +125,7 @@
                                 </div>
                                 <div class="form-group {% if not form.birth.vars.valid %} has-error{% endif %}">
                                     <label class="control-label col-md-3 " for="msi_member_add_birth">{{ form.birth.vars.label|trans({}, 'Members') }}
-                                    <span class="required" aria-required="true"> * </span>
+                                        <span class="required" aria-required="true"> * </span>
                                     </label>
                                     <div class="col-md-8">
                                         {{ form_widget(form.birth.day,{'attr':{'class':'bs-select form-control input-small', 'data-style' : 'btn-info', 'tabindex' : '1'}}) }}
@@ -167,7 +162,7 @@
                                 </div>
                                 <div class="form-group {% if not form.sex.vars.valid %} has-error{% endif %}">
                                     <label class="control-label col-md-3 " for="msi_member_add_sex">{{ form.sex.vars.label|trans({}, 'Profile') }}
-                                    <span class="required" aria-required="true"> * </span>
+                                        <span class="required" aria-required="true"> * </span>
                                     </label>
                                     <div class="col-md-8 md-radio-inline">
                                         {% for radio_button in form.sex %}
@@ -189,7 +184,7 @@
                             <div class="col-md-6 col-sm-6 col-xs-6">
                                 <div class="form-group {% if not form.address.vars.valid %} has-error{% endif %}">
                                     <label class="control-label col-md-3 " for="msi_member_add_address">{{ form.address.vars.label|trans({}, 'Profile') }}
-                                    <span class="required" aria-required="true"> * </span>
+                                        <span class="required" aria-required="true"> * </span>
                                     </label>
                                     <div class="col-md-8">
                                         {{ form_widget(form.address, {'attr': {'class': 'form-control ', 'rows' : '3'}}) }}
@@ -200,7 +195,7 @@
                                 </div>
                                 <div class="form-group {% if not form.city.vars.valid %} has-error{% endif %}">
                                     <label class="control-label col-md-3 " for="msi_member_add_city">{{ form.city.vars.label|trans({}, 'Members') }}
-                                    <span class="required" aria-required="true"> * </span>
+                                        <span class="required" aria-required="true"> * </span>
                                     </label>
                                     <div class="col-md-6">
                                         <select id="msi_member_add_city" name="msi_member_add[city]" class="form-control input-sm select2-multiple" data="{{ form_widget(form.city)|e }}">
@@ -237,19 +232,24 @@
                                 <div class="form-group" id="marriedTo">
                                     {{ form_label(form.marriedTo, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
                                     <div class="col-md-6">
-                                        {{ form_errors(form.marriedTo) }}
                                         {{ form_widget(form.marriedTo, {'attr': {'class': 'form-control '}}) }}
+                                        <span class="help-block">
+                                            {{ form_errors(form.marriedTo) }}
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="form-group ">
                                     {{ form_label(form.imageGrant, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
                                     <div class="col-md-8">
                                         {{ form_widget(form.imageGrant, {'attr': {'class': 'make-switch' ,'data-on-text' : 'msi.core.yes'|trans() ,'data-off-text':'msi.core.no'|trans() }}) }}
+                                        <span class="help-block">
+                                            {{ form_errors(form.imageGrant) }}
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="form-group {% if not form.professional_social_category.vars.valid %} has-error{% endif %}">
                                     <label class="control-label col-md-3 " for="msi_member_add_professional_social_category">{{ form.professional_social_category.vars.label|trans({}, 'Members') }}
-                                    <span class="required" aria-required="true"> * </span>
+                                        <span class="required" aria-required="true"> * </span>
                                     </label>
                                     <div class="col-md-6">
                                         {{ form_widget(form.professional_social_category, {'attr': {'class': 'form-control '}}) }}
@@ -281,8 +281,6 @@
                             </div>
                         </div>
                     </div>
-
-
                     <div class="portlet box blue">
                         <div class="portlet-title">
                             <div class="caption">
@@ -323,8 +321,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                                     <div class="form-group ">
                                         {{ form_label(form.baptism_localisation, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
                                         <div class="col-md-6">
@@ -344,15 +340,12 @@
                                     <div class="form-group ">
                                         <div class="col-md-6"></div>
                                         <div class="col-md-6">{{ form_widget(form.add, {'attr': {'class': 'btn blue '}}) }}</div>
-
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     {{ form_end(form) }}
-
                 </div>
             </div>
         </div>
@@ -366,17 +359,11 @@
                 <script src="{{ asset('public/global/plugins/select2/js/select2.full.min.js') }}" type="text/javascript"></script>
                 <script src="{{ asset('public/global/plugins/jquery-validation/js/jquery.validate.min.js') }}" type="text/javascript"></script>
                 <script src="{{ asset('public/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js') }}" type="text/javascript"></script>
-
-
                 <!-- END PAGE LEVEL PLUGINS -->
                 <script src="{{ asset('public/pages/scripts/components-date-time-pickers.min.js') }}" type="text/javascript"></script>
                 <script src="{{ asset('public/pages/scripts/components-select2.js') }}" type="text/javascript"></script>
                 <script src="{{ asset('public/pages/scripts/add-member.js') }}" type="text/javascript"></script>
-
-
                 {# src/OC/PlatformBundle/Resources/views/Advert/form.html.twig #}
-
-
                 {# Voici le script en question : #}
                 <script type="text/javascript">
                     $(document).ready(function () {
