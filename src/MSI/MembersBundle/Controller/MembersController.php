@@ -106,15 +106,14 @@ class MembersController extends Controller {
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $data = $this->getRequest()->request->get('form-member-search');
+            $data =  $form->getData();
             //On récupère les données entrées dans le formulaire par l'utilisateur
-            $data = null;
             $result = $em->getRepository('MSIMembersBundle:Member')->findMembersByParametres($data);
             return $this->render('MSIMembersBundle:SearchResult:list.html.twig',  array(
                     'listMembers' => $result,
             ));
         }
-        return $this->render('MSIMembersBundle:Members:search.html.twig', array('form' => $form));
+        return $this->render('MSIMembersBundle:Members:search.html.twig', array('form' => $form->createView()));
     }
 
     public function viewAction(Request $request, $id) {

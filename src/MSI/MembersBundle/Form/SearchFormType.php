@@ -43,11 +43,13 @@ class SearchFormType extends AbstractType {
                 ->add('sex', ChoiceType::class, array('label' => 'Sexe ',
                     'multiple' => false,
                     'expanded' => true,
-                    'empty_value' => 'Tous', // delete the none field
                     'choices' => array(
+                        'ALL' =>'msi.members.all',
                         0 => '<i class="fa fa-female" style = "font-size: 24px;"></i>',
                         1 => '<i class="fa fa-male" style = "font-size: 24px;"></i>',
                     ),
+                    'empty_value' => false,
+                    'data' => 'ALL',
                     'required' => false,
                 ))
                 ->add('email', EmailType::class, array('label' => 'Email ', 'required' => false,))
@@ -122,9 +124,11 @@ class SearchFormType extends AbstractType {
                         'areaChart' => '<i class="fa fa-bar-chart"></i>',
                         'lineChart' => '<i class="fa fa-line-chart"></i>',
                     ),
+                    'data' => 'list',
                     'constraints' => array(
                         new NotBlank(),
                     ),
+                    
                     'empty_value' => false // delete the none field
                 ))
                 ->add('search', SubmitType::class, array('label' => 'msi.members.search', 'translation_domain' => 'Members'))

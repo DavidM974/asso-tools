@@ -255,6 +255,14 @@ class Member {
      * @ORM\ManyToMany(targetEntity="MSI\MembersBundle\Entity\Child", cascade={"persist"})
      */
     protected $childs;
+    
+     /**
+     * @var boolean
+     * 
+     * @ORM\Column(name="is_active", type="boolean")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    protected $isActive;
 
     public function __construct() {
         $this->childs = new ArrayCollection();
@@ -400,7 +408,7 @@ class Member {
     }
 
     /**
-     * Set sex
+     * Set imageGrant
      *
      * @param boolean $imageGrant
      * @return Members
@@ -418,6 +426,27 @@ class Member {
      */
     public function getImageGrant() {
         return $this->imageGrant;
+    }
+    
+     /**
+     * Set isActive
+     *
+     * @param boolean $isActive
+     * @return Members
+     */
+    public function setIsActive($isActive) {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    /**
+     * Get isActive
+     *
+     * @return boolean 
+     */
+    public function isActive() {
+        return $this->isActive;
     }
 
     /**

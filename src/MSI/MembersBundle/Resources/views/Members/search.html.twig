@@ -224,7 +224,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label">{{ 'msi.members.date'|trans({}, 'Members') }}</label>
                                                 <div class="col-md-9">
-                                                    <div class="input-group input-large date-picker input-daterange" data-date-format="dd/mm/yyyy">
+                                                    <div class="input-group input-large date-picker input-daterange" data-date-format="yyyy-mm-dd">
                                                         {{ form_widget(form.date_debut, {'attr': {'class': 'form-control '}}) }}
                                                         <span class="input-group-addon"> {{ 'msi.members.date.to'|trans({}, 'Members') }} </span>
                                                         {{ form_widget(form.date_fin, {'attr': {'class': 'form-control '}}) }}
@@ -244,7 +244,11 @@
                                                                         <span></span>
                                                                         <span class="check"></span>
                                                                         <span class="box"></span> 
-                                                                        {{ radio_button.vars.label | raw }}
+                                                                        {% if  radio_button.vars.label == 'msi.members.all' %}
+                                                                            {{ radio_button.vars.label |trans({}, 'Members') }}
+                                                                        {% else %}
+                                                                            {{ radio_button.vars.label | raw  }}
+                                                                        {% endif%}
                                                                     </label>
                                                                 </div>
                                                             {% endfor %}
@@ -298,10 +302,10 @@
                         </div>
                         <div class="col-md-8 btn-group" data-toggle="buttons">
                             {% for button in form.result_type%}
-                            <label class="btn blue active">
-                                {{ form_widget(button, {'attr': {'class': 'toggle'}} ) }} {{ button.vars.label | raw }}
-                            </label>    
-                            <div class="col-lg-1 mt-step-col"></div>                            
+                                <label class="btn blue active">
+                                    {{ form_widget(button, {'attr': {'class': 'toggle'}} ) }} {{ button.vars.label | raw }}
+                                </label>    
+                                <div class="col-lg-1 mt-step-col"></div>                            
                             {% endfor %}
                         </div>
                         <div class="col-md-2">

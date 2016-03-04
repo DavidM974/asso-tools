@@ -14,21 +14,24 @@ class MembersRepository extends EntityRepository {
 
     public function findMembersByParametres($data) {
         $query = $this->createQueryBuilder('m');
+        
+        
+        
         if ($data['firstname'] != '') {
             $query->andWhere('m.firstname LIKE :firstname')
                     ->setParameter('firstname', '%' . $data['firstname'] . '%');
         }
         if ($data['lastname'] != '') {
-            $query->andWhere('m.firstname LIKE :firstname')
-                    ->setParameter('firstname', '%' . $data['firstname'] . '%');
+            $query->andWhere('m.lastname LIKE :lastname')
+                    ->setParameter('lastname', '%' . $data['lastname'] . '%');
         }
         if ($data['email'] != '') {
-            $query->andWhere('m.firstname LIKE :firstname')
+            $query->andWhere('m.email LIKE :email')
                     ->setParameter('email', '%' . $data['email'] . '%');
         }
         if ($data['zipcode'] != '') {
             // this field is still not field voir pour un join avec city et zipcode
-            $query->orWhereWhere('m.zipcode = :zipcode')
+            $query->orWhere('m.zipcode = :zipcode')
                     ->setParameter('zipcode', $data['zipcode']);
         }
         if ($data['address'] != '') {
@@ -44,21 +47,76 @@ class MembersRepository extends EntityRepository {
                     ->setParameter('mobile', $data['mobile']);
         }
         if (!empty($data['familySituation'])) {
-            $query->andWhere('m.family_situation IN (:familySituation)')
+            $query->andWhere('m.familySituation IN (:familySituation)')
                     ->setParameter('familySituation', $data['familySituation']);
         }
-        if ($data['sex'] != '') {
-            $query->orWhereWhere('m.sex = :sex')
-                    ->setParameter('zipcode', $data['sex']);
+        if ($data['sex'] != 'ALL') {
+            $query->orWhere('m.sex = :sex')
+                    ->setParameter('sex', $data['sex']);
         }
-        if (!empty($data['city'])) {
+        if ($data['city'] != null) {
             $query->andWhere('m.city IN (:city)')
-                    ->setParameter('city', $data['city']);
+                    ->setParameter('city', $data['city']->getId());
         }
-        if ($data['activeMember'] != '') {
-            $query->orWhereWhere('m.sex = :sex')
-                    ->setParameter('zipcode', $data['activeMember']);
+        if ($data['activeMember'] != 'ALL') {
+            if ($data['activeMember'] == 'YES') {
+                $query->andWhere('m.isActive = 0 ');
+            }
+            if ($data['activeMember'] == 'NO') {
+                $query->andWhere('m.isActive IS NULL or m.isActive = 0');
+            }
         }
+        if ($data['age_start'] != '0' && $data['age_end'] != '100') {
+            $date_debut = new \DateTime();
+            $date_debut->sub(new DateInterval('P' . $data['age_start'] . 'Y'));
+            $dateDebutSql = $date_debut->format('Y-m-d');
+            $date_fin = new \DateTime();
+            $date_fin->sub(new DateInterval('P' . $data['age_end'] . 'Y'));
+            $dateFinSql = $date_fin->format('Y-m-d');
+
+            $query->andWhere('m.birth BETWEEN :dateDebut AND :dateFin')
+                    ->setParameter('dateDebut', $dateDebutSql)
+                    ->setParameter('dateFin', $dateFinSql);
+        }
+        if (!empty($data['professional_social_category']->toArray())) {
+
+            $tab = $data['professional_social_category']->toArray();
+            $idPsc = Array();
+            foreach ($tab as $psc) {
+                $idPsc[] = $psc->getId();
+            }
+            $query->andWhere('m.professional_social_category IN (:professional_social_category)')
+                    ->setParameter('professional_social_category', $idPsc);
+        }
+        if ($data['date_debut'] != null && $data['date_fin'] != null) {
+
+            $query->andWhere('m.first_register_date BETWEEN :dateDebut AND :dateFin')
+                    ->setParameter('dateDebut', $data['date_debut'])
+                    ->setParameter('dateFin', $data['date_fin']);
+        }
+
+        if ($data['baptised'] != 'ALL') {
+            if ($data['baptised'] == 'YES') {
+                $query->andWhere('m.baptism_date IS NOT NULL');
+            }
+            if ($data['baptised'] == 'NO') {
+                $query->andWhere('m.baptism_date IS NULL ');
+            }
+        }
+        /*
+        if (!empty($data['services']->toArray())) {
+
+            $tab = $data['services']->toArray();
+
+            $idServices = Array();
+            foreach ($tab as $service) {
+                $idServices[] = $service->getId();
+            }
+            $query->andWhere('m.services IN (:services)')
+                    ->setParameter('services', $idServices);
+        }
+*/
+
 
         return $query->getQuery()->getResult();
     }
