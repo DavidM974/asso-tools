@@ -6,6 +6,7 @@ use MSI\MembersBundle\Entity\Member;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use MSI\MembersBundle\Form\MembersFormType;
+use MSI\MembersBundle\Form\SearchFormType;
 
 class MembersController extends Controller {
 
@@ -99,14 +100,28 @@ class MembersController extends Controller {
         $ariane = $translator->trans('msi.members.members.fil.search', array(), 'Members');
         $session->set('fileAriane', $ariane);
         $session->set('module', 'members');
-        
-        
-        
-        
-        
-        
-        
-        return $this->render('MSIMembersBundle:Members:search.html.twig');
+        //$form = $this->createForm(new SearchFormType());
+
+        // 2) handle the submit (will only happen on POST)
+        //$form->handleRequest($request);
+        //if ($form->isSubmitted() && $form->isValid()) {
+        if (1){
+            $em = $this->getDoctrine()->getManager();
+
+            //$data = $this->getRequest()->request->get('');
+            //On récupère les données entrées dans le formulaire par l'utilisateur
+            $data = null;
+            $result = $em->getRepository('MSIMembersBundle:Member')->findMembersByParametres($data);
+
+
+            return $this->render('MSIMembersBundle:SearchResult:list.html.twig',  array(
+                    'listMembers' => $result,
+            ));
+        }
+
+
+
+        return $this->render('MSIMembersBundle:Members:search.html.twig', array('form' => $form));
     }
 
     public function viewAction(Request $request, $id) {
