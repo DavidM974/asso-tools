@@ -4,6 +4,7 @@ namespace MSI\MembersBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
+
 /**
  * MembersRepository
  *
@@ -15,7 +16,17 @@ class MembersRepository extends EntityRepository {
     public function findMembersByParametres($data) {
         $query = $this->createQueryBuilder('m');
         
-        
+        if (!empty($data['services']->toArray())) {
+
+            $tab = $data['services']->toArray();
+
+            $idServices = Array();
+            foreach ($tab as $service) {
+                $idServices[] = $service->getId();
+            }
+            $query->innerJoin('m.services', 's', 'WITH', 's.id IN (:services)')
+                    ->setParameter('services', $idServices);
+        }
         
         if ($data['firstname'] != '') {
             $query->andWhere('m.firstname LIKE :firstname')
@@ -50,9 +61,12 @@ class MembersRepository extends EntityRepository {
             $query->andWhere('m.familySituation IN (:familySituation)')
                     ->setParameter('familySituation', $data['familySituation']);
         }
-        if ($data['sex'] != 'ALL') {
-            $query->orWhere('m.sex = :sex')
-                    ->setParameter('sex', $data['sex']);
+
+        if ($data['sex'] !== 'ALL'){
+            if ($data['sex'] == 1)
+                $query->orWhere('m.sex = 1');
+            else
+             $query->orWhere('m.sex = 0');
         }
         if ($data['city'] != null) {
             $query->andWhere('m.city IN (:city)')
@@ -66,17 +80,19 @@ class MembersRepository extends EntityRepository {
                 $query->andWhere('m.isActive IS NULL or m.isActive = 0');
             }
         }
-        if ($data['age_start'] != '0' && $data['age_end'] != '100') {
+
+        if ($data['age_start'] != '0' or $data['age_end'] != '100') {
+
             $date_debut = new \DateTime();
-            $date_debut->sub(new DateInterval('P' . $data['age_start'] . 'Y'));
+            $date_debut->sub(new \DateInterval('P' . $data['age_start'] . 'Y'));
             $dateDebutSql = $date_debut->format('Y-m-d');
             $date_fin = new \DateTime();
-            $date_fin->sub(new DateInterval('P' . $data['age_end'] . 'Y'));
+            $date_fin->sub(new \DateInterval('P' . $data['age_end'] . 'Y'));
             $dateFinSql = $date_fin->format('Y-m-d');
-
+            
             $query->andWhere('m.birth BETWEEN :dateDebut AND :dateFin')
-                    ->setParameter('dateDebut', $dateDebutSql)
-                    ->setParameter('dateFin', $dateFinSql);
+                    ->setParameter('dateDebut', $dateFinSql)
+                    ->setParameter('dateFin', $dateDebutSql);
         }
         if (!empty($data['professional_social_category']->toArray())) {
 
@@ -103,21 +119,6 @@ class MembersRepository extends EntityRepository {
                 $query->andWhere('m.baptism_date IS NULL ');
             }
         }
-        /*
-        if (!empty($data['services']->toArray())) {
-
-            $tab = $data['services']->toArray();
-
-            $idServices = Array();
-            foreach ($tab as $service) {
-                $idServices[] = $service->getId();
-            }
-            $query->andWhere('m.services IN (:services)')
-                    ->setParameter('services', $idServices);
-        }
-*/
-
-
         return $query->getQuery()->getResult();
     }
 
