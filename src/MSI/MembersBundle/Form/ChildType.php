@@ -46,6 +46,7 @@ class ChildType extends AbstractType {
                     'class' => 'MSIMembersBundle:Scolar_categories',
                     'choice_label' => 'label',
                     'label' => 'msi.members.scolar.category',
+                    'required' => false,
                     'translation_domain' => 'Members'
                 )
                         )
