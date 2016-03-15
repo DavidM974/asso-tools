@@ -17,7 +17,12 @@ security:
         # Cette expression régulière permet de prendre /login (mais pas /login_check !)
             pattern:   ^/login$
             anonymous: true
-        
+        main_register:
+            pattern:   ^/register
+            anonymous: true
+        main_check_user:
+            pattern:   ^/check/checkUsername
+            anonymous: true
         main:
             pattern: ^/
             form_login:
@@ -29,6 +34,6 @@ security:
 
     access_control:
         - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, roles: ROLE_ADMIN }
+        - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, roles: ROLE_ADMIN }

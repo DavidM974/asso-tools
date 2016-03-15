@@ -1,145 +1,112 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 
-
-<div class="row">
-    <div class="col-md-12">
-        <!-- BEGIN PROFILE CONTENT -->
-        <div class="profile-content">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="portlet light ">
-                        <div class="portlet-title tabbable-line">
-                            <div class="caption caption-md">
-                                <i class="icon-globe theme-font hide"></i>
-                                <span class="caption-subject font-blue-madison bold uppercase">{{ 'msi.user.register.title'|trans({}, 'Register') }}</span>
-                            </div>
-                            <ul class="nav nav-tabs">
-                                <li class="active">
-                                    <a href="#tab_1_1" data-toggle="tab">{{ 'msi.user.register.tab.title'|trans({}, 'Register') }}</a>
-                                </li>
-                            </ul>
-                        </div>
-                        {% for message in app.session.flashbag.get('info_user_add') %}
-                            <div class="col-md-6">
-                                <div class="alert alert-success alert-dismissable">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-                                    <strong>{{ 'msi.user.register.flash'|trans({}, 'Register') }}</strong> {{ message }}
-                                </div>
-                            </div>
-                        {% endfor %}
-                        <div class="portlet-body">
-                            <div class="tab-content">
-                                <!-- PERSONAL INFO TAB -->
-                                <div class="tab-pane active" id="tab_1_1">
-                                    {{ form_start(form, { 'action': path('msi_user_admin_add_user'), 'attr': { 'role': 'form', 'class':'form-horizontal form-bordered', 'id' : 'form-register' } }, form_enctype(form)) }}
-
-                                    <div class="form-group {% if not form.username.vars.valid %} has-error{% endif %}">
-
-                                        {{ form_label(form.username, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
-                                        <div class="col-md-4">
-                                            {% if not form.username.vars.valid %}
-                                                <div class="input-icon right input-group">
-
-                                                    <i class="fa fa-warning tooltips" data-original-title="{{ 'msi.user.register.username.error'|trans({}, 'Register')  }}" data-container="body"></i>
-                                                    <span class="input-group-addon">
-                                                        <i class="fa fa-envelope"></i>
-                                                    </span>
-                                                    {{ form_widget(form.username, {'attr': {'class': 'form-control '}}) }} 
-                                                </div>
-                                                <span class="help-block">
-                                                    {{ form_errors(form.username) }}
-                                                </span>
-                                            {% else %}
-                                                <div class='input-group input-icon right'>
-                                                    <span class="input-group-addon">
-                                                        <i class="icon-user"></i>
-                                                    </span>
-                                                    <i class="icon-exclamation-sign"></i>
-                                                    {{ form_errors(form.username) }}
-                                                    {{ form_widget(form.username, {'attr': {'class': 'form-control '}}) }}
-                                                </div>
-                                            {% endif %}
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group {% if not form.email.vars.valid %} has-error{% endif %}">
-                                        {{ form_label(form.email, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
-                                        <div class="col-md-4">
-                                            {% if not form.email.vars.valid %}
-                                                <div class="input-icon right input-group">
-
-                                                    <i class="fa fa-warning tooltips" data-original-title="{{ 'msi.user.register.email.error'|trans({}, 'Register')  }}" data-container="body"></i>
-                                                    <span class="input-group-addon">
-                                                        <i class="fa fa-envelope"></i>
-                                                    </span>
-                                                    {{ form_widget(form.email, {'attr': {'class': 'form-control '}}) }} 
-                                                </div>
-                                                <span class="help-block">
-                                                    {{ form_errors(form.email) }}
-                                                </span>
-                                            {% else %}
-                                                <div class="input-group">
-                                                    <span class="input-group-addon">
-                                                        <i class="fa fa-envelope"></i>
-                                                    </span>
-                                                    {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder' : 'email'}}) }}
-                                                </div>
-                                            {% endif %}
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        {{ form_label(form.roles, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
-                                        <div class="col-md-4">
-                                            {{ form_errors(form.roles) }}
-                                            {{ form_widget(form.roles, {'attr': {'class': 'form-control '}}) }}
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        {{ form_errors(form.plainPassword.first) }}
-                                        {{ form_label(form.plainPassword.first, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
-                                        <div class="col-md-4">
-                                            {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control '}}) }}
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        {{ form_errors(form.plainPassword.second) }}
-                                        {{ form_label(form.plainPassword.second, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
-                                        <div class="col-md-4">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-lock"></i>
-                                                </span>
-                                                {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control '}}) }}
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-offset-6 col-md-6">
-                                            <button type="submit"  class="btn green ">
-                                                <i class="fa fa-check"></i>{{ 'registration.submit'|trans }}
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-9 right">
-
-                                    </div>
-                                </div>
-                                {{ form_end(form) }}
-                            </div>                        
-                            <!-- END PERSONAL INFO TAB -->
-
-                        </div>
-                    </div>
-                </div>
-            </div>
+<h3>{{ 'msi.user.registration.signup'|trans({}, 'Register') }} </h3>
+<p> {{ 'msi.user.registration.signup.subtitle'|trans({}, 'Register') }} </p>
+{% for message in app.session.flashbag.get('info_user_add') %}
+    <div class="form-group">
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+            <strong>{{ 'msi.user.register.flash'|trans({}, 'Register') }}</strong> {{ message }}
         </div>
     </div>
-    <!-- END PROFILE CONTENT -->
+{% endfor %}
+{{ form_start(form, { 'action': path('fos_user_registration_register'), 'attr': { 'role': 'form', 'class':'form-horizontal form-bordered', 'id' : 'form-register' } }, form_enctype(form)) }}
+
+
+<div class="form-group {% if not form.username.vars.valid %} has-error{% endif %}">
+
+    {{ form_label(form.username, null , {'label_attr': {'class': 'control-label visible-ie8 visible-ie9 '}}) }}
+    {% if not form.username.vars.valid %}
+        <div class="input-icon right input-group">
+
+            <i class="fa fa-warning tooltips" data-original-title="{{ 'msi.user.register.username.error'|trans({}, 'Register')  }}" data-container="body"></i>
+            <span class="input-group-addon">
+                <i class="fa fa-envelope"></i>
+            </span>
+            {{ form_widget(form.username, {'attr': {'class': 'form-control placeholder-no-fix', 'placeholder': 'Username'}}) }} 
+        </div>
+        <span class="help-block">
+            {{ form_errors(form.username) }}
+        </span>
+    {% else %}
+        <div class='input-group input-icon right'>
+            <span class="input-group-addon">
+                <i class="icon-user"></i>
+            </span>
+            <i class="icon-exclamation-sign"></i>
+            {{ form_errors(form.username) }}
+            {{ form_widget(form.username, {'attr': {'class': 'form-control placeholder-no-fix', 'placeholder': 'msi.user.registration.username'|trans({}, 'Register')}}) }}
+        </div>
+    {% endif %}
 </div>
+
+
+<div class="form-group {% if not form.email.vars.valid %} has-error{% endif %}">
+
+    {% if not form.email.vars.valid %}
+        <div class="input-icon right input-group">
+
+            <i class="fa fa-warning tooltips" data-original-title="{{ 'msi.user.register.email.error'|trans({}, 'Register')  }}" data-container="body"></i>
+            <span class="input-group-addon">
+                <i class="fa fa-envelope"></i>
+            </span>
+
+
+
+            {{ form_widget(form.email, {'attr': {'class': 'form-control  placeholder-no-fix'}}) }} 
+        </div>
+        <span class="help-block">
+            {{ form_errors(form.email) }}
+        </span>
+    {% else %}
+        <div class="input-group">
+            <span class="input-group-addon">
+                <i class="fa fa-envelope"></i>
+            </span>
+            {{ form_widget(form.email, {'attr': {'class': 'form-control  placeholder-no-fix', 'placeholder': 'msi.user.registration.email'|trans({}, 'Register')}}) }}
+        </div>
+    {% endif %}
 </div>
+<div class="form-group">
+    <label class="control-label visible-ie8 visible-ie9">Language</label>
+    {{ form_widget(form.locale, {'attr': {'class': 'select2 form-control'}}) }}
+</div>
+<div class="form-group">
+    {{ form_errors(form.plainPassword.first) }}
+    <div class="input-icon">
+        <i class="fa fa-lock"></i>
+        {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control placeholder-no-fix'}}) }}
+    </div>
+</div>
+<div class="form-group">
+    {{ form_errors(form.plainPassword.second) }}
+    <div class="input-group">
+        <span class="input-group-addon">
+            <i class="fa fa-check"></i>
+        </span>
+        {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control '}}) }}
+    </div>
+</div>
+
+<div class="form-group">
+    <label>
+        <input type="checkbox" name="tnc" required /> {{ 'msi.user.registration.agree'|trans({}, 'Register')  }}
+        <a href="javascript:;"> {{ 'msi.user.registration.terms'|trans({}, 'Register')  }}</a> {{ 'msi.user.registration.and'|trans({}, 'Register')  }}
+        <a href="javascript:;"> {{ 'msi.user.registration.privacy'|trans({}, 'Register')  }}</a>
+    </label>
+    <div id="register_tnc_error"> </div>
+</div>
+<div class="form-actions">
+    <button id="register-back-btn" type="button" class="btn grey-salsa btn-outline"> {{ 'msi.user.registration.back'|trans({}, 'Register') }} </button>
+    <button type="submit"  class="btn green pull-right">{{ 'registration.submit'|trans }}</button>
+</div>
+
+
+{{ form_end(form) }}
+
+
+
+
 
 

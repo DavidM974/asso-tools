@@ -12,7 +12,67 @@ use FOS\UserBundle\Event\FilterUserResponseEvent;
 
 class RegistrationController extends BaseController
 {
+    
     public function registerAction(Request $request)
+    {
+        $session = $request->getSession();
+        $translator = $this->get('translator');
+        $ariane = $translator->trans('msi.core.admin.fil.addUser',  array() , 'Admin');
+        $session->set('fileAriane', $ariane);
+        $session->set('module','admin');
+        $session->set('menu','register');
+       
+        $formFactory = $this->get('fos_user.registration.form.factory');
+
+        $userManager = $this->get('fos_user.user_manager');
+
+        $dispatcher = $this->get('event_dispatcher');
+
+        $user = $userManager->createUser();
+
+        $event = new GetResponseUserEvent($user, $request);
+        $dispatcher->dispatch(FOSUserEvents::REGISTRATION_INITIALIZE, $event);
+
+        if (null !== $event->getResponse()) {
+            return $event->getResponse();
+        }
+
+        $form = $formFactory->createForm();
+        $form->remove('roles');
+        $form->setData($user);
+        
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $event = new FormEvent($form, $request);
+            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
+            
+            $user->addRole('ROLE_ADMIN');
+
+            $userManager->updateUser($user);
+
+            if (null === $response = $event->getResponse()) {
+                $url = $this->generateUrl('msi_user_admin_add_user');
+                $response = new RedirectResponse($url);
+            }
+            $session = $request->getSession();
+            $session->getFlashBag()->add('info_user_add', 
+                    $this->get('translator')->trans('msi.core.admin.add.user.info',  array('%username%' => $user->getUsername()) , 'Admin')
+            );
+
+            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+
+            return $response;
+        }
+
+        return $this->render('MSIUserBundle:Registration:register.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
+    
+    
+     public function addUserAction(Request $request)
     {
         $session = $request->getSession();
         $translator = $this->get('translator');
@@ -38,6 +98,7 @@ class RegistrationController extends BaseController
         }
 
         $form = $formFactory->createForm();
+        $form->remove('locale');
         $form->setData($user);
 
         $form->handleRequest($request);
@@ -62,7 +123,7 @@ class RegistrationController extends BaseController
             return $response;
         }
 
-        return $this->render('MSIUserBundle:Registration:register.html.twig', array(
+        return $this->render('MSIUserBundle:Registration:addUser.html.twig', array(
             'form' => $form->createView(),
         ));
     }

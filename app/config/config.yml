@@ -74,23 +74,42 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: "%mailer_transport%"
-    host:      "%mailer_host%"
-    username:  "%mailer_user%"
-    password:  "%mailer_password%"
-    spool:     { type: memory }
+    transport: gmail
+    username:  '%mailer_user%'
+    password:  '%mailer_password%'
+#swiftmailer:
+#    transport: "%mailer_transport%"
+#    host:      "%mailer_host%"
+#    username:  "%mailer_user%"
+#   password:  "%mailer_password%"
+#    spool:     { type: memory }
 
 fos_user:
     db_driver: orm
     firewall_name: main
-    user_class: MSI\UserBundle\Entity\User
+    user_class: MSI\UserBundle\Entity\User 
+    from_email:
+        address:        registration@example.com
+        sender_name:    Demo Registration
     profile:
         form:
             type: MSI\UserBundle\Form\Type\ProfileFormType
     registration:
-        form:
-            type: MSI\UserBundle\Form\Type\RegistrationFormType
-            
+            form:
+                type: MSI\UserBundle\Form\Type\RegistrationFormType
+            confirmation:
+                enabled: true
+                from_email:
+                    address:        registration@example.com
+                    sender_name:    Demo Registration
+
+    resetting:
+        email:
+            from_email:
+                address:        resetting@example.com
+                sender_name:    Demo Resetting
+
+
 vich_uploader:
     db_driver: orm
     mappings:
