@@ -20,6 +20,9 @@ security:
         main_register:
             pattern:   ^/register
             anonymous: true
+        main_resetting:
+            pattern:   ^/resetting/*
+            anonymous: true
         main_check_user:
             pattern:   ^/check/checkUsername
             anonymous: true

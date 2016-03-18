@@ -101,13 +101,12 @@ fos_user:
                 enabled: true
                 from_email:
                     address:        registration@example.com
-                    sender_name:    Demo Registration
-
+                    sender_name:    Essential church
     resetting:
         email:
             from_email:
                 address:        resetting@example.com
-                sender_name:    Demo Resetting
+                sender_name:    Essential church
 
 
 vich_uploader:

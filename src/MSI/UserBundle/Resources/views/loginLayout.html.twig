@@ -3,13 +3,13 @@
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
-<html lang="en">
+<html lang="fr">
     <!--<![endif]-->
     <!-- BEGIN HEAD -->
-
+{% trans_default_domain 'FOSUserBundle' %}
     <head>
         <meta charset="utf-8" />
-        <title>Page de Login</title>
+        <title>{{ 'security.login.headtitle'|trans }}</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="" name="description" />
@@ -36,7 +36,7 @@
         <!-- END PAGE LEVEL STYLES -->
         <!-- BEGIN THEME LAYOUT STYLES -->
         <!-- END THEME LAYOUT STYLES -->
-        <link rel="shortcut icon" href="favicon.ico" /> </head>
+        <link rel="shortcut icon" href="{{ asset('public/pages/img/logos/ec-ico.png')}}" /> </head>
     <!-- END HEAD -->
     
     <body class=" login">
@@ -75,7 +75,7 @@
                             </div>
                             <div class="col-xs-7 bs-reset">
                                 <div class="login-copyright text-right">
-                                    <p>Copyright &copy; Keenthemes 2015</p>
+                                    <p>Copyright &copy; ESSENTIELCHURCH 2016</p>
                                 </div>
                             </div>
                         </div>

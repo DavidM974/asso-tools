@@ -7,6 +7,9 @@ group.flash.deleted: 'Le groupe a été supprimé'
 security.login.username: 'Nom d''utilisateur'
 security.login.password: 'Mot de passe'
 security.login.remember_me: 'Se souvenir de moi'
+security.login.headtitle: 'Essentiel Church Connéxion'
+security.login.text: Bienvenue sur Essentiel Church un outil qui vous permet de rester concentré sur l'essentiel, vous n'avez pas encore de compte? Pas de panique
+security.login.register: créer un compte ! 
 security.login.submit: Connexion
 profile.show.username: 'Nom d''utilisateur'
 profile.show.email: 'Adresse e-mail'
@@ -24,8 +27,10 @@ registration.email.message: "Bonjour %username% !\n\nPour valider votre compte u
 resetting.password_already_requested: 'Un nouveau mot de passe a déjà été demandé pour cet utilisateur dans les dernières 24 heures.'
 resetting.check_email: 'Un e-mail a été envoyé à l''adresse %email%. Il contient un lien sur lequel il vous faudra cliquer afin de réinitialiser votre mot de passe.'
 resetting.request.invalid_username: 'Le nom d''utilisateur ou l''adresse e-mail "%username%" n''existe pas.'
+resetting.request.text: 'Veuillez entrer votre nom d''utilisateur ou adresse email ci-dessous'
 resetting.request.username: 'Nom d''utilisateur ou adresse e-mail'
 resetting.request.submit: 'Réinitialiser le mot de passe'
+resetting.request.title: 'Mot de passe oublié?'
 resetting.reset.submit: 'Modifier le mot de passe'
 resetting.flash.success: 'Le mot de passe a été réinitialisé avec succès'
 resetting.email.subject: 'Réinitialisation de votre mot de passe'

@@ -3,8 +3,8 @@
 {% block fos_user_content %}          
 
     <div class="login-content">
-        <h1>Metronic Admin Login</h1>
-        <p> Lorem ipsum dolor sit amet, coectetuer adipiscing elit sed diam nonummy et nibh euismod aliquam erat volutpat. Lorem ipsum dolor sit amet, coectetuer adipiscing. </p>
+        <h1><b>ESSENTIEL</b><b style="color:#3B9796;">CHURCH</b></h1>
+        <p> {{ 'security.login.text'|trans }} <a href="{{ url('fos_user_registration_register') }}"  class="forget-password">{{ 'security.login.register'|trans }} </a></p>
 
         <form action="{{ path("fos_user_security_check") }}" class="login-form" method="post">
             <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />    
@@ -40,25 +40,12 @@
                 </div>
                 <div class="col-sm-8 text-right">
                     <div class="forgot-password">
-                        <a href="javascript:;" id="forget-password" class="forget-password">Forgot Password?</a>
+                        <a href="{{ url('fos_user_resetting_request') }}"  class="forget-password">{{ 'resetting.request.title'|trans }}</a>
                     </div>
                     <button class="btn blue" type="submit" id="_submit" name="_submit" >{{ 'security.login.submit'|trans }}</button>
                 </div>
             </div>
         </form>
-
-        <!-- BEGIN FORGOT PASSWORD FORM -->
-        <form class="forget-form" action="javascript:;" method="post">
-            <h3 class="font-green">Forgot Password ?</h3>
-            <p> Enter your e-mail address below to reset your password. </p>
-            <div class="form-group">
-                <input class="form-control placeholder-no-fix form-group" type="text" autocomplete="off" placeholder="Email" name="email" /> </div>
-            <div class="form-actions">
-                <button type="button" id="back-btn" class="btn grey btn-default">Back</button>
-                <button type="submit" class="btn blue btn-success uppercase pull-right">Submit</button>
-            </div>
-        </form>
-        <!-- END FORGOT PASSWORD FORM -->
     </div>    
                     
 {{ render(controller("MSIUserBundle:Setting:loginBackground")) }}
