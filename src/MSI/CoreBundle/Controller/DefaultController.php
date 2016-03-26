@@ -40,5 +40,8 @@ class DefaultController extends Controller {
             'listCities' => $listCities
         ));
     }
-
+    
+    public function firstConfigAction() {
+        return $this->render('MSICoreBundle:Config:first.html.twig',array());
+    }
 }
