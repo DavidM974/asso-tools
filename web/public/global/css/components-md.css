@@ -20450,3 +20450,14 @@ Color library demo
     border-top: 1px solid #eee;
     padding: 10px 10px;
     text-align: center; }
+.btn:not(.md-skip).btn-lg-fat {
+    font-size: 16px;
+    padding: 89px 81px 77px;
+}
+
+.big-ico {
+    font-size: 60px;
+    text-shadow: none;
+    font-weight: 300;
+    text-align: center;
+}

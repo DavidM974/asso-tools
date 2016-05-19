@@ -16,7 +16,7 @@ class Child {
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(type="integer", name="id")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -25,7 +25,7 @@ class Child {
     /**
      * @var string
      *
-     * @ORM\Column(name="firstname", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="firstname")
      * @Assert\Length(
      *      min = 3,
      *      max = 50,
@@ -38,7 +38,7 @@ class Child {
     /**
      * @var string
      *
-     * @ORM\Column(name="lastname", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="lastname")
      * @Assert\Length(
      *      min = 3,
      *      max = 50,
@@ -51,7 +51,7 @@ class Child {
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="birth", type="datetime", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true, name="birth")
      * @Assert\Date()
      */
     protected $birth = null;
@@ -59,14 +59,20 @@ class Child {
     /**
      * @var boolean
      * 
-     * @ORM\Column(name="sex", type="boolean")
+     * @ORM\Column(type="boolean", nullable=true, name="sex")
      */
     protected $sex;
 
     /**
      * @ORM\ManyToOne(targetEntity="MSI\MembersBundle\Entity\Scolar_categories", cascade={"persist"})
+     * @ORM\JoinColumn(name="scolar_category_id", referencedColumnName="id")
      */
     protected $scolar_category;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="MSI\MembersBundle\Entity\Member", mappedBy="childs")
+     */
+    private $member;
 
     /**
      * Get id

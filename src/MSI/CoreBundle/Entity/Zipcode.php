@@ -15,7 +15,7 @@ class Zipcode
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(type="integer", name="id")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -24,14 +24,14 @@ class Zipcode
     /**
      * @var int
      *
-     * @ORM\Column(name="zipcode", type="integer")
+     * @ORM\Column(type="integer", nullable=true, name="zipcode")
      */
     protected $zipcode;
 
     
     /**
      * @ORM\ManyToOne(targetEntity="MSI\CoreBundle\Entity\Country", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(name="country_id", referencedColumnName="id", nullable=false)
      */
     protected  $country;
 
