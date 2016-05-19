@@ -15,7 +15,7 @@ class City
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(type="integer", name="id")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -23,14 +23,14 @@ class City
     
     /**
      * @ORM\ManyToOne(targetEntity="MSI\CoreBundle\Entity\Zipcode", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(name="zipcode_id", referencedColumnName="id", nullable=false)
      */
     protected $zipcode;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="label", type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true, name="label")
      */
     private $label;
 

@@ -28,3 +28,11 @@ msi.core.admin.settings.logo: 'Change the site logo'
 msi.core.admin.settings.image.1: 'Change the image # 1 of login page'
 msi.core.admin.settings.image.1: 'change the image # 2 of login page'
 msi.core.admin.settings.image.1: 'Change the image # 3 of login page'
+msi.core.firstconf.step1: L'association
+msi.core.firstconf.step2: 'L''église'
+msi.core.firstconf.step3: Les utilisateurs
+msi.core.firstconf.step4: Departements et Missions
+msi.core.firstconf.title: Formulaire de premère configuration
+msi.core.firstconf.step1.title: Informations sur l'association
+msi.core.firstconf.step1.errors: You have some form errors. Please check below.
+msi.core.firstconf.step1.success:  Your form validation is successful!

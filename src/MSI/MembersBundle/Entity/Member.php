@@ -20,7 +20,7 @@ class Member {
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(type="integer", name="id")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -29,7 +29,7 @@ class Member {
     /**
      * @var string
      *
-     * @ORM\Column(name="firstname", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="firstname")
      * @Assert\Length(
      *      min = 3,
      *      max = 50,
@@ -48,7 +48,7 @@ class Member {
     /**
      * @var string
      *
-     * @ORM\Column(name="lastname", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="lastname")
      * @Assert\Length(
      *      min = 3,
      *      max = 50,
@@ -67,7 +67,7 @@ class Member {
     /**
      * @var string
      *
-     * @ORM\Column(name="legalResponsable", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="legalResponsable")
      * @Assert\Length(
      *      min = 3,
      *      max = 50,
@@ -80,7 +80,7 @@ class Member {
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="birth", type="datetime", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true, name="birth")
      * @Assert\Date()
      * @Assert\NotBlank()
      */
@@ -89,7 +89,13 @@ class Member {
     /**
      * @var string
      *
-     * @ORM\Column(name="family_situation", type="string", length=16, columnDefinition="ENUM('S', 'M', 'V', 'D', 'R')")
+     * @ORM\Column(
+     *     type="string",
+     *     length=16,
+     *     nullable=true,
+     *     name="family_situation",
+     *     columnDefinition="ENUM('S', 'M', 'V', 'D', 'R')"
+     * )
      * @Assert\NotBlank()
      */
     protected $familySituation;
@@ -97,7 +103,7 @@ class Member {
     /**
      * @var boolean
      * 
-     * @ORM\Column(name="sex", type="boolean")
+     * @ORM\Column(type="boolean", nullable=true, name="sex")
      * @Assert\NotBlank()
      */
     protected $sex;
@@ -105,14 +111,14 @@ class Member {
     /**
      * @var boolean
      * 
-     * @ORM\Column(name="image_grant", type="boolean")
+     * @ORM\Column(type="boolean", nullable=true, name="image_grant")
      */
     protected $imageGrant;
 
     /**
      * @var string
      * 
-     * @ORM\Column(name="phone", type="string", length=16, nullable=true)
+     * @ORM\Column(type="string", length=16, nullable=true, name="phone")
      * @Assert\Length(
      *      min = 10,
      *      minMessage = "Your number must be at least {{ limit }} characters long",
@@ -128,7 +134,7 @@ class Member {
     /**
      * @var string
      * 
-     * @ORM\Column(name="mobile", type="string", length=16, nullable=true)
+     * @ORM\Column(type="string", length=16, nullable=true, name="mobile")
      * @Assert\Length(
      *      min = 10,
      *      minMessage = "Your number must be at least {{ limit }} characters long",
@@ -143,7 +149,7 @@ class Member {
     /**
      * @var string
      * 
-     * @ORM\Column(name="email", type="string", length=16, nullable=true)
+     * @ORM\Column(type="string", length=16, nullable=true, name="email")
      * @Assert\Email
      */
     protected $email;
@@ -151,20 +157,20 @@ class Member {
     /**
      * @var string
      *
-     * @ORM\Column(name="address", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="address")
      * @Assert\NotBlank()
      */
     protected $address = null;
 
     /**
      * @ORM\OneToOne(targetEntity="MSI\CoreBundle\Entity\Zipcode", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinColumn(name="zipcode_id", referencedColumnName="id", unique=true)
      */
     protected $zipcode;
 
     /**
      * @ORM\ManyToOne(targetEntity="MSI\CoreBundle\Entity\City", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(name="city_id", referencedColumnName="id", nullable=false)
      * @Assert\NotBlank()
      */
     protected $city;
@@ -172,7 +178,7 @@ class Member {
     /**
      * @var string
      *
-     * @ORM\Column(name="baptism_date", type="string", nullable=true)
+     * @ORM\Column(type="string", nullable=true, name="baptism_date")
      * @Assert\Date()
      */
     protected $baptism_date = null;
@@ -180,7 +186,7 @@ class Member {
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="first_register_date", type="datetime", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true, name="first_register_date")
      * @Assert\Date()
      */
     protected $first_register_date = null;
@@ -211,7 +217,7 @@ class Member {
     private $imageName;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      *
      * @var \DateTime
      */
@@ -219,14 +225,24 @@ class Member {
 
     /**
      * @ORM\ManyToOne(targetEntity="MSI\MembersBundle\Entity\Pro_social_categories", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(name="professional_social_category_id", referencedColumnName="id", nullable=false)
      */
     protected $professional_social_category;
 
     /**
+     * @ORM\ManyToMany(targetEntity="MSI\MembersBundle\Entity\Department", cascade={"persist"})
+     * @ORM\JoinTable(
+     *     name="MemberDepartment",
+     *     joinColumns={@ORM\JoinColumn(name="Member_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="Department_id", referencedColumnName="id")}
+     * )
+     */
+    private $department;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="born_again_date", type="string", nullable=true)
+     * @ORM\Column(type="string", nullable=true, name="born_again_date")
      * @Assert\Date()
      */
     protected $born_again_date;
@@ -234,31 +250,41 @@ class Member {
     /**
      * @var string
      *
-     * @ORM\Column(name="baptism_localisation", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="baptism_localisation")
      */
     protected $baptism_localisation;
 
     /**
      * @ORM\ManyToMany(targetEntity="MSI\MembersBundle\Entity\Services", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinTable(
+     *     name="MemberServices",
+     *     joinColumns={@ORM\JoinColumn(name="Member_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="Services_id", referencedColumnName="id")}
+     * )
+     * 
      */
     protected $services;
 
     /**
      * @ORM\OneToOne(targetEntity="MSI\MembersBundle\Entity\Member", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinColumn(name="marriedTo_id", referencedColumnName="id", unique=true)
      */
     protected $marriedTo;
 
     /**
-     * @ORM\ManyToMany(targetEntity="MSI\MembersBundle\Entity\Child", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="MSI\MembersBundle\Entity\Child", inversedBy="member")
+     * @ORM\JoinTable(
+     *     name="MemberChilds",
+     *     joinColumns={@ORM\JoinColumn(name="member_id", referencedColumnName="id", nullable=false)},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="child_id", referencedColumnName="id", nullable=false)}
+     * )
      */
     protected $childs;
     
      /**
      * @var boolean
      * 
-     * @ORM\Column(name="is_active", type="boolean", nullable=true)
+     * @ORM\Column(type="boolean", nullable=true, name="is_active")
      */
     protected $isActive;
 
