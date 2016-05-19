@@ -28,3 +28,15 @@ msi.core.admin.settings.logo: 'Changer le logo du site'
 msi.core.admin.settings.image.1: 'Changer l''image n°1 de la page de connection'
 msi.core.admin.settings.image.2: 'Changer l''image n°2 de la page de connection'
 msi.core.admin.settings.image.3: 'Changer l''image n°3 de la page de connection'
+msi.core.firstconf.step1: L'association
+msi.core.firstconf.step2: 'L''église'
+msi.core.firstconf.step3: Les utilisateurs
+msi.core.firstconf.step4: Departements et Services
+msi.core.firstconf.title: Formulaire de premère configuration
+msi.core.firstconf.step1.title: Informations sur l'association
+msi.core.firstconf.step1.errors: Vous avez des erreurs. Veuillez vérifier les champs.
+msi.core.firstconf.step1.success:  Formulaire validé avec succé!
+msi.core.firstconf.step1.name: Nom de l'association
+msi.core.firstconf.step1.adress: Adresse
+msi.core.firstconf.step1.phone: Téléphone
+msi.core.firstconf.step1.id: Numéro RNA

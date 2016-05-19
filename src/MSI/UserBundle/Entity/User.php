@@ -31,7 +31,7 @@ class User extends BaseUser {
     /**
      * @var string
      *
-     * @ORM\Column(name="firstname", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="firstname")
      * @Assert\Length(
      *      min = 3,
      *      max = 50,
@@ -44,7 +44,7 @@ class User extends BaseUser {
     /**
      * @var string
      *
-     * @ORM\Column(name="lastname", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="lastname")
      * @Assert\Length(
      *      min = 3,
      *      max = 50,
@@ -57,7 +57,7 @@ class User extends BaseUser {
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="birth", type="datetime", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true, name="birth")
      * @Assert\Date()
      */
     protected $birth = null;
@@ -65,13 +65,13 @@ class User extends BaseUser {
     /**
      * @var string
      *
-     * @ORM\Column(name="civility", type="string", length=16, columnDefinition="ENUM('M', 'MME', 'MLLE')")
+     * @ORM\Column(type="string", length=16, nullable=true, name="civility", columnDefinition="ENUM('M', 'MME', 'MLLE')")
      */
     protected $civility;
 
     /**
      * @var string
-     * @ORM\Column(name="phone", type="string", length=16, nullable=true)
+     * @ORM\Column(type="string", length=16, nullable=true, name="phone")
      * @Assert\Length(
      *      min = 10,
      *      minMessage = "Your number must be at least {{ limit }} characters long",
@@ -81,7 +81,7 @@ class User extends BaseUser {
 
     /**
      * @var string
-     * @ORM\Column(name="mobile", type="string", length=16, nullable=true)
+     * @ORM\Column(type="string", length=16, nullable=true, name="mobile")
      * @Assert\Length(
      *      min = 10,
      *      minMessage = "Your number must be at least {{ limit }} characters long",
@@ -92,19 +92,25 @@ class User extends BaseUser {
     /**
      * @var string
      *
-     * @ORM\Column(name="address", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="address")
      */
     protected $address = null;
     
     
     /**
      * @ORM\OneToOne(targetEntity="MSI\CoreBundle\Entity\Zipcode", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinColumn(name="zipcode_id", referencedColumnName="id", unique=true)
      */
     protected $zipcode;
+
+    /**
+     * @ORM\OneToOne(targetEntity="MSI\CoreBundle\Entity\Association", cascade={"persist"})
+     * @ORM\JoinColumn(name="main_id", referencedColumnName="id", unique=true)
+     */
+    private $main;
     
     /**
-    * @ORM\Column(name="locale", type="string", length=16)
+    * @ORM\Column(type="string", length=16, nullable=true, name="locale")
     */
   protected $locale = 'fr';
   
@@ -137,11 +143,16 @@ class User extends BaseUser {
      
     
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      *
      * @var \DateTime
      */
     private $updatedAt;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $association_id;
     
 
     /**

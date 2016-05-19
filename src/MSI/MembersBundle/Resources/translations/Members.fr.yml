@@ -21,3 +21,40 @@ msi.members.members.search.broad: Général
 msi.members.members.search.plus: Plus
 msi.members.members.search.updown: Agrandir/Réduire
 msi.members.members.services: Services
+msi.members.birth: Date de naissance
+msi.members.have.child: Enfant à charge
+msi.members.family.situation: Situation familiale
+msi.members.civility.single: Célibataire
+msi.members.civility.maried: Marié(e)
+msi.members.civility.veuf: Veuf(e)
+msi.members.civility.divorce: Divorcé(e)
+msi.members.civility.remaried: Remarié(e)
+msi.members.city: Ville
+msi.members.marriedTo: Marié(e) à
+msi.members.members.add.profil: Général
+msi.members.members.add.child: Enfant
+msi.members.members.add.spi: Spirituel
+msi.members.scolar.category: Scolarité
+msi.members.year: Année
+msi.members.month: Mois
+msi.members.day: Jour
+msi.members.baptism.date: Date de baptême
+msi.members.born.again: Date de renaissance
+msi.members.baptism.localisation: Lieu de baptême
+msi.members.services: Service(s)
+msi.members.image.grant: Droit à l'image
+msi.members.psc: Profession et catégorie socioprofessionnelle
+msi.members.legalResponsable: Responsable légal
+msi.members.add: Ajouter
+msi.members.yes: Oui
+msi.members.no: Non
+msi.members.all: Tous
+msi.members.isbaptised: Baptisé
+msi.members.active: Membre actif
+msi.members.date: Date 
+msi.members.date.help: (Inscription du membre)
+msi.members.date.to: Au
+msi.members.search: Rechercher
+msi.members.members.search.comment: Faites une recherche poussé sur vos membres
+msi.members.tranche: Tranche d'âge
+msi.members.tranche.help: (Actif année courante)

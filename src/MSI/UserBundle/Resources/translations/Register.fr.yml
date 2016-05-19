@@ -8,5 +8,18 @@ msi.user.register.tab.title: Information basique
 msi.user.register.flash: 'Message flash : '
 msi.user.register.checkusername.valid: 'Le nom d''utilisateur <b> %username% </b> est disponible!'
 msi.user.register.checkusername.error: 'Le nom d''utilisateur <b>%username%</b> est déjà utilisé. Veuillez en choisir un autre'
+msi.user.registration.email: 'Em@il'
 msi.user.register.email.error: 'L''adresse e-mail est invalide'
 msi.user.register.username.error: 'Ce nom d''utilisateur est déjà utilisé'
+msi.user.registration.signup: Inscription
+msi.user.registration.signup.subtitle:  Veuillez remplir les champs ci-dessous
+msi.user.registration.username : Nom d'utilisateur
+msi.user.registration.agree: J'accepte 
+msi.user.registration.terms: les conditions d'utilisation
+msi.user.registration.and: et
+msi.user.registration.privacy: droit
+msi.user.registration.back: Retour
+msi.user.registration.locale.fr: Français
+msi.user.registration.locale.en: Anglais
+msi.user.registration.select.lang: Sélectionner une langue
+    

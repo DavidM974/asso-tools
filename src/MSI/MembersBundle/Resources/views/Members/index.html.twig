@@ -37,27 +37,29 @@
                                 <div class="mt-step-title uppercase font-grey-cascade">{{ 'msi.members.members.import'|trans({}, 'Members') }}</div>
                                 <div class="mt-step-content font-grey-cascade">{{ 'msi.members.members.import.comment'|trans({}, 'Members') }}</div>
                             </div>
-                            <div class="col-lg-2">
+                            <div class="col-lg-4 mt-step-col active">
+                                <a href="{{ path('msi_members_search')}}" class="nav-link ">
+                                    <button type="button" class="btn btn-circle default btn-lg-fat"><i class="fa fa-search-plus big-ico"></i></button>
+                                    <p></p>
+                                </a>
+                                <div class="mt-step-title uppercase font-grey-cascade">{{ 'msi.members.members.search'|trans({}, 'Members') }}</div>
+                                <div class="mt-step-content font-grey-cascade">{{ 'msi.members.members.search.comment'|trans({}, 'Members') }}</div>
                             </div>
-                            <div class="col-lg-8">
-                                <div class="col-lg-6 mt-step-col active">
-                                    <a href="{{ path('msi_members_stat')}}" class="nav-link ">
-                                        <button type="button" class="btn btn-circle default btn-lg-fat"><i class="fa fa-line-chart big-ico"></i></button>
-                                        <p></p>
-                                    </a>
-                                    <div class="mt-step-title uppercase font-grey-cascade">{{ 'msi.members.members.stat'|trans({}, 'Members') }}</div>
-                                    <div class="mt-step-content font-grey-cascade">{{ 'msi.members.members.stat.comment'|trans({}, 'Members') }}</div>
-                                </div>
-                                <div class="col-lg-6 mt-step-col active">
-                                    <a href="{{ path('msi_members_com')}}" class="nav-link ">
-                                        <button type="button" class="btn btn-circle default btn-lg-fat"><i class="fa fa-comments-o big-ico"></i></button>
-                                        <p></p>
-                                    </a>
-                                    <div class="mt-step-title uppercase font-grey-cascade">{{ 'msi.members.members.com'|trans({}, 'Members') }}</div>
-                                    <div class="mt-step-content font-grey-cascade">{{ 'msi.members.members.com.comment'|trans({}, 'Members') }}</div>
-                                </div>
+                            <div class="col-lg-4 mt-step-col active">
+                                <a href="{{ path('msi_members_stat')}}" class="nav-link ">
+                                    <button type="button" class="btn btn-circle default btn-lg-fat"><i class="fa fa-line-chart big-ico"></i></button>
+                                    <p></p>
+                                </a>
+                                <div class="mt-step-title uppercase font-grey-cascade">{{ 'msi.members.members.stat'|trans({}, 'Members') }}</div>
+                                <div class="mt-step-content font-grey-cascade">{{ 'msi.members.members.stat.comment'|trans({}, 'Members') }}</div>
                             </div>
-                            <div class="col-lg-2">
+                            <div class="col-lg-4 mt-step-col active">
+                                <a href="{{ path('msi_members_com')}}" class="nav-link ">
+                                    <button type="button" class="btn btn-circle default btn-lg-fat"><i class="fa fa-comments-o big-ico"></i></button>
+                                    <p></p>
+                                </a>
+                                <div class="mt-step-title uppercase font-grey-cascade">{{ 'msi.members.members.com'|trans({}, 'Members') }}</div>
+                                <div class="mt-step-content font-grey-cascade">{{ 'msi.members.members.com.comment'|trans({}, 'Members') }}</div>
                             </div>
                         </div>
                     </div>

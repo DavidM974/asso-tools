@@ -22,4 +22,7 @@ msi:
             email: Adresse email
             roles: Rôle
             back: Retour
+            male: Homme
+            female: Femme
+            sex: Sexe
             

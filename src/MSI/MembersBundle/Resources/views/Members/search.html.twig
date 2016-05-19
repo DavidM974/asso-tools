@@ -5,6 +5,7 @@
     <link href="{{ asset('public/global/plugins/nouislider/nouislider.pips.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('public/global/css/plugins-md.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('public/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('public/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 {% block body %}
@@ -17,6 +18,7 @@
                         <span class="caption-subject font-green sbold uppercase">{{ 'msi.members.members.search'|trans({}, 'Members') }}</span>
                     </div>
                 </div>
+                {{ form_start(form, { 'action': path('msi_members_search'), 'attr': { 'role': 'form', 'id' : 'form-member-search' } }, form_enctype(form)) }}
                 <div class="portlet box green">
                     <div class="portlet-title">
                         <div class="caption">
@@ -33,45 +35,57 @@
                                     <div class="col-md-6">
                                         <div class="form-body">
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label">Nom</label>
+                                                {{ form_label(form.lastname, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
                                                 <div class="col-md-9">
-                                                    <input type="text" class="form-control" placeholder="Entrer un nom de famille">
+                                                    {{ form_widget(form.lastname, {'attr': {'class': 'form-control '}}) }}
+                                                    <span class="help-block">
+                                                        {{ form_errors(form.lastname) }}
+                                                    </span>
                                                     <br/>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label">Prénom</label>
+                                                {{ form_label(form.firstname, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
                                                 <div class="col-md-9">
-                                                    <input type="text" class="form-control" placeholder="Entrer un prénom">
+                                                    {{ form_widget(form.firstname, {'attr': {'class': 'form-control '}}) }}
+                                                    <span class="help-block">
+                                                        {{ form_errors(form.firstname) }}
+                                                    </span>
                                                     <br/>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label">Email</label>
+                                                {{ form_label(form.email, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
                                                 <div class="col-md-9">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">
                                                             <i class="fa fa-envelope"></i>
                                                         </span>
-                                                        <input type="email" class="form-control" placeholder="Entrer une adresse email"> 
+                                                        {{ form_widget(form.email, {'attr': {'class': 'form-control '}}) }}
                                                     </div>
+                                                    <span class="help-block">
+                                                        {{ form_errors(form.email) }}
+                                                    </span>
                                                     <br/>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label">Code postal</label>
+                                                {{ form_label(form.zipcode, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
                                                 <div class="col-md-9">
-                                                    <input type="text" class="form-control" placeholder="Entrer un code postal">
+                                                    {{ form_widget(form.zipcode, {'attr': {'class': 'form-control '}}) }}
+                                                    <span class="help-block">
+                                                        {{ form_errors(form.zipcode) }}
+                                                    </span>
                                                     <br/>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="control-label col-md-3">Ville</label>
+                                                {{ form_label(form.city, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
                                                 <div class="col-md-9">
-                                                    <select class="form-control">
-                                                        <option value="">Sainte-Marie</option>
-                                                        <option value="">Saint-Paul</option>
-                                                    </select>
+                                                    {{ form_widget(form.city, {'attr': {'class': 'form-control '}}) }}
+                                                    <span class="help-block">
+                                                        {{ form_errors(form.city) }}
+                                                    </span>
                                                 </div>
                                             </div>
                                         </div>
@@ -79,46 +93,52 @@
                                     <div class="col-md-6">
                                         <div class="form-body">
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label">Adresse</label>
+                                                {{ form_label(form.address, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
                                                 <div class="col-md-9">
-                                                    <input type="text" class="form-control" placeholder="Entrer une adresse">
+                                                    {{ form_widget(form.address, {'attr': {'class': 'form-control '}}) }}
+                                                    <span class="help-block">
+                                                        {{ form_errors(form.address) }}
+                                                    </span>
                                                     <br/>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label">Téléphone fixe</label>
+                                                {{ form_label(form.phone, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
                                                 <div class="col-md-9">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">
                                                             <i class="fa fa-phone"></i>
                                                         </span>
-                                                        <input type="text" class="form-control" placeholder="Entrer un numéro">
+                                                        {{ form_widget(form.phone, {'attr': {'class': 'form-control '}}) }}
+                                                        <span class="help-block">
+                                                            {{ form_errors(form.phone) }}
+                                                        </span>
                                                     </div>
                                                     <br/>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label">Téléphone portable</label>
+                                                {{ form_label(form.mobile, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
                                                 <div class="col-md-9">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">
                                                             <i class="fa fa-mobile"></i>
                                                         </span>
-                                                        <input type="text" class="form-control" placeholder="Entrer un numéro">
+                                                        {{ form_widget(form.mobile, {'attr': {'class': 'form-control '}}) }}
+                                                        <span class="help-block">
+                                                            {{ form_errors(form.mobile) }}
+                                                        </span>
                                                     </div>
                                                     <br/>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="control-label col-md-3">Situation familiale</label>
+                                                {{ form_label(form.familySituation, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
                                                 <div class="col-md-9">
-                                                    <select class="form-control" multiple>
-                                                        <option value="">Célibataire</option>
-                                                        <option value="">Marié</option>
-                                                        <option value="">Veuf</option>
-                                                        <option value="">Divorcé</option>
-                                                        <option value="">Remarié</option>
-                                                    </select>
+                                                    {{ form_widget(form.familySituation, {'attr': {'class': 'form-control '}}) }}
+                                                    <span class="help-block">
+                                                        {{ form_errors(form.familySituation) }}
+                                                    </span>
                                                 </div>
                                             </div>
                                         </div>
@@ -144,68 +164,102 @@
                                     <div class="col-md-6">
                                         <div class="form-body">
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label">Membre</label>
-                                                <div class="col-md-9">
-                                                    <div class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-animate bootstrap-switch-off">
-                                                        <input type="checkbox" class="make-switch" data-on-text="&nbsp;Oui&nbsp;" data-off-text="&nbsp;Non&nbsp;">
-                                                    </div>
-                                                </div>
-                                                <span class="help-block"> (Actif année courante) </span>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label">Tranche d'âge</label>
+                                                <label class="col-md-3 control-label">{{ 'msi.members.tranche'|trans({}, 'Members') }}</label>
                                                 <div class="col-md-9">
                                                     <div class="form-group">
                                                         <div id="demo8" class="noUi-success"></div>
+                                                        {{ form_widget(form.age_start)}}
+                                                        {{ form_widget(form.age_end)}}
                                                     </div>
                                                     <br/>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="control-label col-md-3">Catégorie scolaire</label>
+                                                <label class="col-md-3 control-label">{{ form_label(form.activeMember) }}</label>
                                                 <div class="col-md-9">
-                                                    <select class="form-control">
-                                                        <option value="">Tous</option>
-                                                        <option value="">Non scolarisé</option>
-                                                        <option value="">Crêche</option>
-                                                        <option value="">Maternelle</option>
-                                                        <option value="">Primaire</option>
-                                                        <option value="">Collège</option>
-                                                        <option value="">Lycée</option>
-                                                    </select>
-                                                    <br/>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3">Baptisé</label>
-                                                <div class="col-md-9">
-                                                    <div class="form-group">
-                                                        <div class="radio-list">
-                                                            <div class="md-radio-inline">
+                                                    <div class="radio-list">
+                                                        <div class="md-radio-inline">
+                                                            {% for radio_button in form.activeMember %}
                                                                 <div class="md-radio">
-                                                                    <input type="radio" id="checkbox2_8" name="radio2" class="md-radiobtn">
-                                                                    <label for="checkbox2_8">
-                                                                        <span class="inc"></span>
-                                                                        <span class="check"></span>
-                                                                        <span class="box"></span> Tous </label>
-                                                                </div>
-                                                                <div class="md-radio">
-                                                                    <input type="radio" id="checkbox2_9" name="radio2" class="md-radiobtn" checked="">
-                                                                    <label for="checkbox2_9">
-                                                                        <span class="inc"></span>
-                                                                        <span class="check"></span>
-                                                                        <span class="box"></span> Oui </label>
-                                                                </div>
-                                                                <div class="md-radio">
-                                                                    <input type="radio" id="checkbox2_10" name="radio2" class="md-radiobtn">
-                                                                    <label for="checkbox2_10">
+                                                                    {{ form_widget(radio_button, {'attr':{'class':'md-radiobtn' }}) }}
+                                                                    <label for="{{ radio_button.vars.id }}">
                                                                         <span></span>
                                                                         <span class="check"></span>
-                                                                        <span class="box"></span> Non </label>
+                                                                        <span class="box"></span> 
+                                                                        {{ radio_button.vars.label|trans({}, 'Members') }}
+                                                                    </label>
                                                                 </div>
-                                                            </div>
+                                                            {% endfor %}
                                                         </div>
+                                                        <span class="help-block">
+                                                            {{ form_errors(form.activeMember) }}
+                                                        </span>
                                                     </div>
+                                                </div>
+                                                <span class="help-block"> {{ 'msi.members.tranche.help'|trans({}, 'Members') }} </span>
+                                            </div>
+                                            <div class="form-group">
+                                                {{ form_label(form.baptised, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
+                                                <div class="col-md-9">
+                                                    <div class="radio-list">
+                                                        <div class="md-radio-inline">
+                                                            {% for radio_button in form.baptised %}
+                                                                <div class="md-radio">
+                                                                    {{ form_widget(radio_button, {'attr':{'class':'md-radiobtn' }}) }}
+                                                                    <label for="{{ radio_button.vars.id }}">
+                                                                        <span></span>
+                                                                        <span class="check"></span>
+                                                                        <span class="box"></span> 
+                                                                        {{ radio_button.vars.label|trans({}, 'Members') }}
+                                                                    </label>
+                                                                </div>
+                                                            {% endfor %}
+                                                        </div>
+                                                        <span class="help-block">
+                                                            {{ form_errors(form.baptised) }}
+                                                        </span>
+                                                    </div>
+                                                    <br/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">{{ 'msi.members.date'|trans({}, 'Members') }}</label>
+                                                <div class="col-md-9">
+                                                    <div class="input-group input-large date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                                        {{ form_widget(form.date_debut, {'attr': {'class': 'form-control '}}) }}
+                                                        <span class="input-group-addon"> {{ 'msi.members.date.to'|trans({}, 'Members') }} </span>
+                                                        {{ form_widget(form.date_fin, {'attr': {'class': 'form-control '}}) }}
+                                                    </div>
+                                                    <br/>
+                                                </div>
+                                                <span class="help-block"> {{ 'msi.members.date.help'|trans({}, 'Members') }} </span>
+                                            </div>
+                                            <div class="form-group">
+                                                {{ form_label(form.sex, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
+                                                <div class="col-md-9">
+                                                    <div class="radio-list">
+                                                        <div class="md-radio-inline">
+                                                            {% for radio_button in form.sex %}
+                                                                <div class="md-radio">
+                                                                    {{ form_widget(radio_button, {'attr':{'class':'md-radiobtn' }}) }}
+                                                                    <label for="{{ radio_button.vars.id }}">
+                                                                        <span></span>
+                                                                        <span class="check"></span>
+                                                                        <span class="box"></span> 
+                                                                        {% if  radio_button.vars.label == 'msi.members.all' %}
+                                                                            {{ radio_button.vars.label |trans({}, 'Members') }}
+                                                                        {% else %}
+                                                                            {{ radio_button.vars.label | raw  }}
+                                                                        {% endif%}
+                                                                    </label>
+                                                                </div>
+                                                            {% endfor %}
+                                                        </div>
+                                                        <span class="help-block">
+                                                            {{ form_errors(form.sex) }}
+                                                        </span>
+                                                    </div>
+                                                    <br/>
                                                 </div>
                                             </div>
                                         </div>
@@ -213,127 +267,62 @@
                                     <div class="col-md-6">
                                         <div class="form-body">
                                             <div class="form-group">
-                                                <label class="control-label col-md-3">Mission</label>
+                                                {{ form_label(form.services, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
                                                 <div class="col-md-9">
-                                                    <select class="form-control" multiple>
-                                                        <option value="">Tous</option>
-                                                        <option value="">Mission pastoral</option>
-                                                        <option value="">Mission évangélisation</option>
-                                                        <option value="">etc</option>
-                                                    </select>
-                                                    <br/>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3">PCS</label>
-                                                <div class="col-md-9">
-                                                    <select class="form-control">
-                                                        <option value="">Agriculteurs exploitants</option>
-                                                        <option value="">Artisans, commerçants et chefs d'entreprise</option>
-                                                        <option value="">Cadres et prof. intellec. supérieurs</option>
-                                                        <option value="">Prof. intermédiaires</option>
-                                                        <option value="">Employés</option>
-                                                        <option value="">Ouvriers</option>
-                                                        <option value="">Sans profession</option>
-                                                    </select>
-                                                    <br/>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label">Sexe</label>
-                                                <div class="col-md-9">
-                                                    <div class="radio-list">
-                                                        <div class="md-radio-inline">
-                                                            <div class="md-radio">
-                                                                <input type="radio" id="checkbox3_8" name="radio3" class="md-radiobtn">
-                                                                <label for="checkbox3_8">
-                                                                    <span class="inc"></span>
-                                                                    <span class="check"></span>
-                                                                    <span class="box"></span> Tous </label>
-                                                            </div>
-                                                            <div class="md-radio">
-                                                                <input type="radio" id="checkbox3_9" name="radio3" class="md-radiobtn" checked="">
-                                                                <label for="checkbox3_9">
-                                                                    <span class="inc"></span>
-                                                                    <span class="check"></span>
-                                                                    <span class="box"></span> <i class="fa fa-male"></i> </label>
-                                                            </div>
-                                                            <div class="md-radio">
-                                                                <input type="radio" id="checkbox3_10" name="radio3" class="md-radiobtn">
-                                                                <label for="checkbox3_10">
-                                                                    <span></span>
-                                                                    <span class="check"></span>
-                                                                    <span class="box"></span> <i class="fa fa-female"></i> </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    {{ form_widget(form.services, {'attr': {'class': 'form-control '}}) }}
+                                                    <span class="help-block">
+                                                        {{ form_errors(form.services) }}
+                                                    </span>
                                                     <br/>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-body">
-                                            <div class="form-group">
-                                                <label class="col-md-1 control-label">Date</label>
-                                                <div class="col-md-11">
-                                                    <div class="col-md-6">
-                                                        <div class="input-group input-large date-picker input-daterange" data-date-format="dd/mm/yyyy">
-                                                            <input type="text" class="form-control" name="Du">
-                                                            <span class="input-group-addon"> to </span>
-                                                            <input type="text" class="form-control" name="au"> </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                    </div>
-                                                </div>
+                                        <div class="form-group">
+                                            {{ form_label(form.professional_social_category, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
+                                            <div class="col-md-9">
+                                                {{ form_widget(form.professional_social_category, {'attr': {'class': 'form-control '}}) }}
+                                                <span class="help-block">
+                                                    {{ form_errors(form.professional_social_category) }}
+                                                </span>
+                                                <br/>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-body">
-                            <div class="form-group">
-                                <div class="col-md-2">
-                                    Type de résultats
-                                </div>
-                                <div class="col-md-8 btn-group" data-toggle="buttons">
-                                    <label class="btn blue active">
-                                        <input type="radio" class="toggle"><i class="fa fa-list"></i>
-                                    </label>    
-                                    <div class="col-lg-1 mt-step-col"></div>
-                                    <label class="btn blue active">
-                                        <input type="radio" class="toggle"><i class="fa fa-area-chart"></i>
-                                    </label>
-                                    <div class="col-lg-1 mt-step-col"></div>
-                                    <label class="btn blue active">
-                                        <input type="radio" class="toggle"><i class="fa fa-bar-chart"></i>
-                                    </label>
-                                    <div class="col-lg-1 mt-step-col"></div>
-                                    <label class="btn blue active">
-                                        <input type="radio" class="toggle"><i class="fa fa-line-chart"></i> 
-                                    </label>
-                                </div>
-                                <div class="col-md-2">
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <a href="" style="float: right">
-                                    <button type="button" class="btn green" data-toggle="button" aria-pressed="true"> 
-                                        Rechercher
-                                    </button>
-                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-body">
+                    <div class="form-group">
+                        <div class="col-md-2" style="height: 60px;text-align: center;line-height: 3;">
+                            Type de résultats
+                        </div>
+                        <div class="col-md-8 btn-group" data-toggle="buttons">
+                            {% for button in form.result_type%}
+                                <label class="btn blue {% if button.vars.checked == true %} active {%endif%}" style="font-size: 30px;">
+                                    {{ form_widget(button, {'attr': {'class': 'toggle'}} ) }} {{ button.vars.label | raw }}
+                                </label>    
+                                <div class="col-lg-1 mt-step-col"></div>                            
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-2" style="height: 60px;text-align: center;line-height: 4;">
+                            <a href="" style="float: initial;">
+                                {{ form_widget(form.search, {'attr': {'class': 'btn green', 'aria-pressed' : 'true'}} ) }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{ form_end(form) }}
     </div>
+</div>
+</div>
 {% endblock %}
 
 {% block add_js %}
@@ -348,7 +337,7 @@
                 var tooltipSlider = document.getElementById('demo8');
 
                 noUiSlider.create(tooltipSlider, {
-                    start: [40, 60],
+                    start: [0, 100],
                     connect: true,
                     range: {
                         'min': [0, 1],
@@ -381,7 +370,11 @@
 
                 // When the slider changes, write the value to the tooltips.
                 tooltipSlider.noUiSlider.on('update', function (values, handle) {
-                    tooltips[handle].innerHTML = values[handle];
+                    tooltips[handle].innerHTML = Math.floor(values[handle]);
+                    if (handle == 0)
+                        $('#msi_member_search_age_start').val(Math.floor(values[handle]));
+                    if (handle == 1)
+                        $('#msi_member_search_age_end').val(Math.floor(values[handle]));
                 });
             }
             demo8();

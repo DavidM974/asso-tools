@@ -8,7 +8,7 @@ var ComponentsSelect2 = function() {
         // @see https://github.com/select2/select2/issues/2927
         $.fn.select2.defaults.set("theme", "bootstrap");
 
-        var placeholder = "Select a State";
+        var placeholder = "Tapez votre texte ici";
 
         $(".select2, .select2-multiple").select2({
             placeholder: placeholder,
@@ -105,7 +105,7 @@ var ComponentsSelect2 = function() {
         });
 
         $(".js-btn-set-scaling-classes").on("click", function() {
-            $("#select2-multiple-input-sm, #select2-single-input-sm").next(".select2-container--bootstrap").addClass("input-sm");
+            $("#select2-multiple-input-sm, #msi_member_add_city").next(".select2-container--bootstrap").addClass("input-sm");
             $("#select2-multiple-input-lg, #select2-single-input-lg").next(".select2-container--bootstrap").addClass("input-lg");
             $(this).removeClass("btn-primary btn-outline").prop("disabled", true);
         });
