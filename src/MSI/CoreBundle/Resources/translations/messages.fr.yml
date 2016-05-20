@@ -24,3 +24,5 @@ msi.core.header.home: 'Accueil'
 msi.core.submit: 'Envoyer'
 msi.core.yes: Oui
 msi.core.no: Non
+msi.core.menu.management.communication.listEmail: 'Liste des emails'
+msi.core.menu.management.communication.sendEmail: 'Envoyer un email'

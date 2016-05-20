@@ -18,17 +18,40 @@ msi_members_stat:
     path:     /members/stat
     defaults: { _controller: MSIMembersBundle:Members:stat }
     
-msi_members_com:
-    path:     /members/com
-    defaults: { _controller: MSIMembersBundle:Members:com }
-    
 msi_members_search:
     path:      /members/search
     defaults: { _controller: MSIMembersBundle:Members:search }
     
 msi_members_view_member:
     path:     /members/viewMember/{id}
-    defaults: { _controller: MSIMembersBundle:Members:view}
+    defaults: { _controller: MSIMembersBundle:Members:view }
     requirements: 
         id: \d+
 
+msi_members_stat_evo_members:
+    path:     /members/stat/evoMembers
+    defaults: { _controller: MSIMembersBundle:Statistic:evoMembers }
+    
+msi_members_stat_active_members:
+    path:     /members/stat/activeMembers
+    defaults: { _controller: MSIMembersBundle:Statistic:activeMembers }
+    
+msi_members_stat_new_members:
+    path:     /members/stat/newMembers
+    defaults: { _controller: MSIMembersBundle:Statistic:newMembers }
+    
+msi_members_stat_members_per_district:
+    path:     /members/stat/membersPerDistrict
+    defaults: { _controller: MSIMembersBundle:Statistic:membersPerDistrict }
+    
+msi_members_stat_evo_bapt:
+    path:     /members/stat/evoBapt
+    defaults: { _controller: MSIMembersBundle:Statistic:evoBapt }
+    
+msi_members_com_listEmail:
+    path:     /members/communication/listEmail
+    defaults: { _controller: MSIMembersBundle:Communication:listEmail }
+    
+msi_members_com_sendEmail:
+    path:     /members/communication/sendEmail
+    defaults: { _controller: MSIMembersBundle:Communication:sendEmail }

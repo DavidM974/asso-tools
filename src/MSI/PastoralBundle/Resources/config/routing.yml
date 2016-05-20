@@ -1,0 +1,15 @@
+msi_pastoral_index:
+    path:     /pastoral
+    defaults: { _controller: MSIPastoralBundle:Pastoral:index }
+    
+msi_pastoral_report:
+    path:     /pastoral/report
+    defaults: { _controller: MSIPastoralBundle:Pastoral:report }
+    
+msi_pastoral_my_report:
+    path:     /pastoral/my_report
+    defaults: { _controller: MSIPastoralBundle:Pastoral:myReport }
+    
+msi_pastoral_new_report:
+    path:     /pastoral/new_report
+    defaults: { _controller: MSIPastoralBundle:Pastoral:newReport }

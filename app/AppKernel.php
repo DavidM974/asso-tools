@@ -21,7 +21,8 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(), //user gest bundle
             new Vich\UploaderBundle\VichUploaderBundle(), // upload fil bundle,
             new MSI\MembersBundle\MSIMembersBundle(),
-            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle()
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new MSI\PastoralBundle\MSIPastoralBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

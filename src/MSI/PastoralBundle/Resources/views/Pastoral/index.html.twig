@@ -1,0 +1,47 @@
+{% extends "MSICoreBundle::layout.html.twig" %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light portlet-fit ">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class=" icon-layers font-green"></i>
+                        <span class="caption-subject font-green bold uppercase">{{ 'msi.menu.pastoral.title'|trans({}, 'Pastoral') }}</span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="mt-element-step">
+                        <div class="row step-no-background">
+                            <div class="col-lg-4 mt-step-col active">
+                                <a href="{{ path('msi_pastoral_report')}}" class="nav-link ">
+                                    <button type="button" class="btn btn-circle default btn-lg-fat"> <i class="fa fa-list big-ico"></i></button>
+                                    <p></p>
+                                </a>
+                                <div class="mt-step-title uppercase font-grey-cascade">{{ 'msi.core.menu.pastoral.followed.list'|trans() }}</div>
+                                <div class="mt-step-content font-grey-cascade">{{ 'msi.core.menu.pastoral.followed.list.comment'|trans({}, 'Pastoral') }}</div>
+                            </div>
+                            <div class="col-lg-4 mt-step-col active">
+                                <a href="{{ path('msi_pastoral_new_report')}}" class="nav-link ">
+                                    <button type="button" class="btn btn-circle default btn-lg-fat"><i class="fa fa-file-text-o big-ico"></i></button>
+                                    <p></p>
+                                </a>
+                                <div class="mt-step-title uppercase font-grey-cascade">{{ 'msi.core.menu.pastoral.report'|trans() }}</div>
+                                <div class="mt-step-content font-grey-cascade">{{ 'msi.core.menu.pastoral.report.comment'|trans({}, 'Pastoral') }}</div>
+                            </div>
+                            <div class="col-lg-4 mt-step-col active">
+                                <a href="{{ path('msi_pastoral_my_report')}}" class="nav-link ">
+                                    <button type="button" class="btn btn-circle default btn-lg-fat"><i class="fa fa-th-list big-ico"></i></button>
+                                    <p></p>
+                                </a>
+                                <div class="mt-step-title uppercase font-grey-cascade">{{ 'msi.core.menu.pastoral.followed.mine'|trans() }}</div>
+                                <div class="mt-step-content font-grey-cascade">{{ 'msi.core.menu.pastoral.followed.mine.comment'|trans({}, 'Pastoral') }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
