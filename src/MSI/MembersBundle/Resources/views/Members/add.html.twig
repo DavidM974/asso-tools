@@ -5,9 +5,10 @@
     <link href="{{ asset('public/global/plugins/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('public/global/plugins/select2/css/select2-bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('public/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet" type="text/css" />
-{% endblock %}
 
 {% use 'form_div_layout.html.twig' with form_label as base_form_label %}
+
+{% endblock %}
 
 {% block form_label %}
     {{ block('base_form_label') }}
@@ -233,15 +234,7 @@
                                 <div class="form-group" id="marriedTo">
                                     {{ form_label(form.marriedTo, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
                                     <div class="col-md-6">
-                                        <div class="input-group select2-bootstrap-prepend">
-                                            <span class="input-group-btn">
-                                                <button class="btn btn-default" type="button" data-select2-open="single-prepend-text">
-                                                    <span class="glyphicon glyphicon-search"></span>
-                                                </button>
-                                            </span>
-                                            {{ form_widget(form.marriedTo, {'attr': {'class': 'form-control select2', 'id':'single-prepend-text'}}) }}
-                                        </div>
-                                        
+                                        {{ form_widget(form.marriedTo, {'attr': {'class': 'form-control '}}) }}
                                         <span class="help-block">
                                             {{ form_errors(form.marriedTo) }}
                                         </span>
@@ -305,7 +298,7 @@
                                     <div class="form-group ">
                                         {{ form_label(form.born_again_date, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
                                         <div class="col-md-6">
-                                            <div class="input-group input-medium date date-picker" data-date="{{ "now"|date("Y-m-d") }}" data-date-format="yyyy-mm-dd" data-date-viewmode="years">
+                                            <div class="input-group input-medium date date-picker" data-date="{{ "now"|date("d-m-Y") }}" data-date-format="yyyy-mm-dd" data-date-viewmode="years">
                                                 {{ form_errors(form.born_again_date) }}
                                                 {{ form_widget(form.born_again_date, {'attr': {'class': 'form-control ', 'readonly':''}}) }}
                                                 <span class="input-group-btn">
@@ -319,7 +312,7 @@
                                     <div class="form-group">
                                         {{ form_label(form.baptism_date, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
                                         <div class="col-md-6">
-                                            <div class="input-group input-medium date date-picker" data-date="{{ "now"|date("Y-m-d") }}" data-date-format="yyyy-mm-dd" data-date-viewmode="years">
+                                            <div class="input-group input-medium date date-picker" data-date="{{ "now"|date("d-m-Y") }}" data-date-format="yyyy-mm-dd" data-date-viewmode="years">
                                                 {{ form_errors(form.baptism_date) }}
                                                 {{ form_widget(form.baptism_date, {'attr': {'class': 'form-control ', 'readonly':''}}) }}
                                                 <span class="input-group-btn">
@@ -408,13 +401,10 @@
 
 
                         //je cache le block married
-                        $('#marriedTo').hide();
+                        $('#marriedTo').hide;
 
-                        $('input[type=radio][name="msi_member_add[familySituation]"]').on('change', function () {
-                                if (this.value ==  'M') 
-                                    $('#marriedTo').show();
-                                else
-                                    $('#marriedTo').hide();
+                        $('#form-member-add input').on('change', function () {
+
                         });
 
                         // je cache le block child au chargement de la page
