@@ -1,0 +1,4 @@
+services:
+#    msi_pastoral.example:
+#        class: MSI\PastoralBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

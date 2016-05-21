@@ -59,7 +59,7 @@
                         <span class="title">{{ 'msi.core.menu.management'|trans }}</span>
                         {% if app.session.get('module') == 'members' %}
                             <span class="selected"></span>
-                            {% endif %}
+                        {% endif %}
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
@@ -84,31 +84,43 @@
                             </a>
                         </li>
                         <li class="nav-item {% if app.session.get('menu') == 'com' %}active open{% endif %} ">
-                            <a href="{{ path('msi_members_com')}}" class="nav-link ">
-                                <span class="title">{{ 'msi.core.menu.management.communication'|trans }}</span>
+                            <a href="#" class="nav-link">
+                                {{ 'msi.core.menu.management.communication'|trans }}
+                                <span class="arrow nav-toggle"></span>
                             </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item {% if app.session.get('submenu') == 'listEmail' %}active open{% endif %} ">
+                                    <a href="{{ path('msi_members_com_listEmail')}}" class="nav-link">{{ 'msi.core.menu.management.communication.listEmail'|trans }}</a>
+                                </li>
+                                <li class="nav-item {% if app.session.get('submenu') == 'sendEmail' %}active open{% endif %} ">
+                                    <a href="{{ path('msi_members_com_sendEmail')}}" class="nav-link">{{ 'msi.core.menu.management.communication.sendEmail'|trans }}</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item  ">
-                    <a href="javascript:;" class="nav-link nav-toggle">
+                    <a href="{{ path('msi_pastoral_index')}}" class="nav-link nav-toggle">
                         <i class="fa fa-book"></i>
                         <span class="title">{{ 'msi.core.menu.pastoral'|trans }}</span>
+                        {% if app.session.get('module') == 'pastoral' %}
+                            <span class="selected"></span>
+                        {% endif %}
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
-                        <li class="nav-item  ">
-                            <a href="form_controls.html" class="nav-link ">
+                        <li class="nav-item  {% if app.session.get('menu') == 'report' %}active open{% endif %}">
+                            <a href="{{ path('msi_pastoral_report')}}" class="nav-link ">
                                 <span class="title">{{ 'msi.core.menu.pastoral.followed.list'|trans }}</span>
                             </a>
                         </li>
-                        <li class="nav-item  ">
-                            <a href="form_controls_md.html" class="nav-link ">
+                        <li class="nav-item  {% if app.session.get('menu') == 'newReport' %}active open{% endif %}">
+                            <a href="{{ path('msi_pastoral_new_report')}}" class="nav-link ">
                                 <span class="title">{{ 'msi.core.menu.pastoral.report'|trans }}</span>
                             </a>
                         </li>
-                        <li class="nav-item  ">
-                            <a href="form_validation.html" class="nav-link ">
+                        <li class="nav-item  {% if app.session.get('menu') == 'myReport' %}active open{% endif %}">
+                            <a href="{{ path('msi_pastoral_my_report')}}" class="nav-link ">
                                 <span class="title">{{ 'msi.core.menu.pastoral.followed.mine'|trans }}</span>
                             </a>
                         </li>
