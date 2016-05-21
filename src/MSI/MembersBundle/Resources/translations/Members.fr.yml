@@ -54,3 +54,6 @@ msi.members.active: Membre actif
 msi.members.date: Date
 msi.members.date.to: Au
 msi.members.search: Rechercher
+msi.members.members.search.comment: Faites une recherche poussé sur vos membres
+msi.members.tranche: Tranche d'âge
+msi.members.tranche.help: (Actif année courante)

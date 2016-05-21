@@ -13,3 +13,7 @@ msi_core_administration_users:
 msi_core_administration_settings:
     path:     /settings
     defaults: { _controller: MSICoreBundle:Administration:settings }
+    
+msi_core_first_config:
+    path:     /firstconfig
+    defaults: { _controller: MSICoreBundle:Default:firstConfig }

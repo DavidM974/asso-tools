@@ -1,6 +1,6 @@
 msi_user_admin_add_user:
     path:     /admin/addUser
-    defaults: { _controller: MSIUserBundle:Registration:register }
+    defaults: { _controller: MSIUserBundle:Registration:addUser }
 msi_user_admin_edit_user:
     path:     /admin/editUser/{id}
     defaults: { _controller: MSIUserBundle:EditUser:edit}
@@ -27,7 +27,7 @@ msi_user_edit_pwd_user:
     path:     /myprofile/pwd
     defaults: { _controller: MSIUserBundle:ProfileUser:editPassword}
 msi_user_admin_check_username:
-    path: /admin/checkUsername
+    path: /check/checkUsername
     defaults: { _controller: MSIUserBundle:Default:checkUsername}
 msi_user_admin_view_user:
     path:     /admin/viewUser/{id}
