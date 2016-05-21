@@ -1,0 +1,7 @@
+msi.members.com.object: Sujet
+msi.members.com.statut: Etat
+msi.members.com.modif.date: Modifié le 
+msi.members.com.send.date: Envoyé le
+msi.members.com.duplicate: Dupliquer
+msi.members.members.fil.listEmail: '<li><span>Gestion de membres</span><i class="fa fa-angle-right"></i></li><li><span>Communication</span><i class="fa fa-angle-right"></i></li><li><span>Liste des emails</span></li>'
+msi.members.members.fil.sendEmail: '<li><span>Gestion de membres</span><i class="fa fa-angle-right"></i></li><li><span>Communication</span><i class="fa fa-angle-right"></i></li><li><span>Envoyer un email</span></li>'

@@ -1,3 +1,7 @@
+msi_pastoral:
+    resource: "@MSIPastoralBundle/Resources/config/routing.yml"
+    prefix:   /
+
 msi_members:
     resource: "@MSIMembersBundle/Resources/config/routing.yml"
     prefix:   /

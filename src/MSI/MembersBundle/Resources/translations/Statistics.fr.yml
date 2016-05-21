@@ -1,0 +1,11 @@
+msi.members.stat.search: Statistiques personnalisées
+msi.members.stat.evo.members: Evolution des membres
+msi.members.stat.active.members: Membres actif
+msi.members.stat.new.members: Nouveaux membres
+msi.members.stat.district.members: Membres par régions
+msi.members.stat.evo.bapt: Evolution des baptisés
+msi.members.members.fil.evoMembers: '<li><span>Gestion de membres</span><i class="fa fa-angle-right"></i></li><li><span>Statistiques</span><i class="fa fa-angle-right"></i></li><li><span>Evolution des membres</span></li>'
+msi.members.members.fil.activeMembers: '<li><span>Gestion de membres</span><i class="fa fa-angle-right"></i></li><li><span>Statistiques</span><i class="fa fa-angle-right"></i></li><li><span>Membres actif</span></li>'
+msi.members.members.fil.newMembers: '<li><span>Gestion de membres</span><i class="fa fa-angle-right"></i></li><li><span>Statistiques</span><i class="fa fa-angle-right"></i></li><li><span>Nouveaux membres</span></li>'
+msi.members.members.fil.membersPerDistrict: '<li><span>Gestion de membres</span><i class="fa fa-angle-right"></i></li><li><span>Statistiques</span><i class="fa fa-angle-right"></i></li><li><span>Membres par régions</span></li>'
+msi.members.members.fil.evoBapt: '<li><span>Gestion de membres</span><i class="fa fa-angle-right"></i></li><li><span>Statistiques</span><i class="fa fa-angle-right"></i></li><li><span>Evolution des baptisés</span></li>'

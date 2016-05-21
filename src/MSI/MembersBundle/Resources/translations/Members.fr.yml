@@ -51,8 +51,7 @@ msi.members.no: Non
 msi.members.all: Tous
 msi.members.isbaptised: Baptisé
 msi.members.active: Membre actif
-msi.members.date: Date 
-msi.members.date.help: (Inscription du membre)
+msi.members.date: Date
 msi.members.date.to: Au
 msi.members.search: Rechercher
 msi.members.members.search.comment: Faites une recherche poussé sur vos membres

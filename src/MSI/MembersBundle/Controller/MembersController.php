@@ -84,16 +84,6 @@ class MembersController extends Controller {
         return $this->render('MSIMembersBundle:Members:stat.html.twig');
     }
 
-    public function comAction(Request $request) {
-        $session = $request->getSession();
-        $translator = $this->get('translator');
-        $ariane = $translator->trans('msi.members.members.fil.com', array(), 'Members');
-        $session->set('fileAriane', $ariane);
-        $session->set('module', 'members');
-        $session->set('menu', 'com');
-        return $this->render('MSIMembersBundle:Members:com.html.twig');
-    }
-
     public function searchAction(Request $request) {
         $session = $request->getSession();
         $translator = $this->get('translator');

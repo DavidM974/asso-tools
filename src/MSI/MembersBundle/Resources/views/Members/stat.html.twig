@@ -10,8 +10,55 @@
                         <span class="caption-subject font-green sbold uppercase">{{ 'msi.members.members.stat.comment'|trans({}, 'Members') }}</span>
                     </div>
                 </div>
-                <div class="portlet-body form">
-                    TEST
+                <div class="portlet-body">
+                    <div class="mt-element-step">
+                        <div class="row step-no-background">
+                            <div class="col-lg-3 mt-step-col active">
+                                <a href="{{ path('msi_members_search')}}" class="nav-link ">
+                                    <button type="button" class="btn btn-circle default btn-lg-fat"> <i class="fa fa-search-plus big-ico"></i><div>{{ 'msi.members.stat.search'|trans({}, 'Statistics') }}</div></button>
+                                    <p></p>
+                                </a>
+                            </div>
+                            <div class="col-lg-3 mt-step-col active">
+                                <a href="{{ path('msi_members_stat_evo_members')}}" class="nav-link ">
+                                    <button type="button" class="btn btn-circle default btn-lg-fat"><i class="fa fa-area-chart big-ico"></i><div>{{ 'msi.members.stat.evo.members'|trans({}, 'Statistics') }}</div></button>
+                                    <p></p>
+                                </a>
+                            </div>
+                            <div class="col-lg-3 mt-step-col active">
+                                <a href="{{ path('msi_members_stat_active_members')}}" class="nav-link ">
+                                    <button type="button" class="btn btn-circle default btn-lg-fat"><i class="fa fa-pie-chart big-ico"></i><div>{{ 'msi.members.stat.active.members'|trans({}, 'Statistics') }}</div></button>
+                                    <p></p>
+                                </a>
+                            </div>
+                            <div class="col-lg-3 mt-step-col active">
+                                <a href="{{ path('msi_members_stat_new_members')}}" class="nav-link ">
+                                    <button type="button" class="btn btn-circle default btn-lg-fat"><i class="fa fa-bar-chart big-ico"></i><div>{{ 'msi.members.stat.new.members'|trans({}, 'Statistics') }}</div></button>
+                                    <p></p>
+                                </a>
+                            </div>
+                            <div class="col-lg-2">
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="col-lg-3 mt-step-col active">
+                                    <a href="{{ path('msi_members_stat_members_per_district')}}" class="nav-link ">
+                                        <button type="button" class="btn btn-circle default btn-lg-fat"><i class="fa fa-pie-chart big-ico"></i><div>{{ 'msi.members.stat.district.members'|trans({}, 'Statistics') }}</div></button>
+                                        <p></p>
+                                    </a>
+                                </div>
+                                <div class="col-lg-6">
+                                </div>
+                                <div class="col-lg-3 mt-step-col active">
+                                    <a href="{{ path('msi_members_stat_evo_bapt')}}" class="nav-link ">
+                                        <button type="button" class="btn btn-circle default btn-lg-fat"><i class="fa fa-line-chart big-ico"></i><div>{{ 'msi.members.stat.evo.bapt'|trans({}, 'Statistics') }}</div></button>
+                                        <p></p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

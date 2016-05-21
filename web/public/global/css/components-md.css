@@ -1855,7 +1855,7 @@ Custom color buttons
   .btn.blue:not(.btn-outline).active,
   .open > .btn.blue:not(.btn-outline).dropdown-toggle {
     color: #FFFFFF;
-    background-color: #2C5672;
+    background-color: #217ebd;
     border-color: #1f78b5; }
     .btn.blue:not(.btn-outline):active:hover,
     .btn.blue:not(.btn-outline):active:focus,

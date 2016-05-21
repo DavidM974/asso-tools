@@ -1,5 +1,5 @@
 <?php
-
+/**
 namespace MSI\MembersBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
@@ -25,3 +25,5 @@ class LoadServices implements FixtureInterface {
     }
 
 }
+ * 
+ */

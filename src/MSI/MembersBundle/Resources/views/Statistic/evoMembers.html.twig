@@ -1,0 +1,38 @@
+{% extends "MSICoreBundle::layout.html.twig" %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light form-fit ">
+                <div class="portlet-title">
+                    <div class="caption">                        
+                        <i class="fa fa-area-chart font-green"></i>
+                        <span class="caption-subject font-green sbold uppercase">{{ 'msi.members.stat.evo.members'|trans({}, 'Members') }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div id="chart_12" class="chart" style="height: 500px;"> </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block add_js %}
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script src="{{ asset('public/global/plugins/amcharts/amcharts/amcharts.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/global/plugins/amcharts/amcharts/serial.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/global/plugins/amcharts/amcharts/pie.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/global/plugins/amcharts/amcharts/radar.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/global/plugins/amcharts/amcharts/themes/light.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/global/plugins/amcharts/amcharts/themes/patterns.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/global/plugins/amcharts/amcharts/themes/chalk.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/global/plugins/amcharts/ammap/ammap.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/global/plugins/amcharts/ammap/maps/js/worldLow.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('public/global/plugins/amcharts/amstockcharts/amstock.js') }}" type="text/javascript"></script>
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <script src="{{ asset('public/pages/scripts/charts-amcharts.min.js') }}" type="text/javascript"></script>
+    <!-- END PAGE LEVEL SCRIPTS -->
+{% endblock %}

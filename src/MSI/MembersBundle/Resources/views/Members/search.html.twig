@@ -5,7 +5,6 @@
     <link href="{{ asset('public/global/plugins/nouislider/nouislider.pips.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('public/global/css/plugins-md.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('public/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('public/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 {% block body %}
@@ -164,7 +163,7 @@
                                     <div class="col-md-6">
                                         <div class="form-body">
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label">{{ 'msi.members.tranche'|trans({}, 'Members') }}</label>
+                                                <label class="col-md-3 control-label">Tranche d'âge</label>
                                                 <div class="col-md-9">
                                                     <div class="form-group">
                                                         <div id="demo8" class="noUi-success"></div>
@@ -196,7 +195,7 @@
                                                         </span>
                                                     </div>
                                                 </div>
-                                                <span class="help-block"> {{ 'msi.members.tranche.help'|trans({}, 'Members') }} </span>
+                                                <span class="help-block"> (Actif année courante) </span>
                                             </div>
                                             <div class="form-group">
                                                 {{ form_label(form.baptised, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
@@ -232,7 +231,6 @@
                                                     </div>
                                                     <br/>
                                                 </div>
-                                                <span class="help-block"> {{ 'msi.members.date.help'|trans({}, 'Members') }} </span>
                                             </div>
                                             <div class="form-group">
                                                 {{ form_label(form.sex, null , {'label_attr': {'class': 'control-label col-md-3 '}}) }}
@@ -299,22 +297,24 @@
             <div class="col-md-12">
                 <div class="form-body">
                     <div class="form-group">
-                        <div class="col-md-2" style="height: 60px;text-align: center;line-height: 3;">
+                        <div class="col-md-2">
                             Type de résultats
                         </div>
                         <div class="col-md-8 btn-group" data-toggle="buttons">
                             {% for button in form.result_type%}
-                                <label class="btn blue {% if button.vars.checked == true %} active {%endif%}" style="font-size: 30px;">
+                                <label class="btn blue active">
                                     {{ form_widget(button, {'attr': {'class': 'toggle'}} ) }} {{ button.vars.label | raw }}
                                 </label>    
                                 <div class="col-lg-1 mt-step-col"></div>                            
                             {% endfor %}
                         </div>
-                        <div class="col-md-2" style="height: 60px;text-align: center;line-height: 4;">
-                            <a href="" style="float: initial;">
-                                {{ form_widget(form.search, {'attr': {'class': 'btn green', 'aria-pressed' : 'true'}} ) }}
-                            </a>
+                        <div class="col-md-2">
                         </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <a href="" style="float: right">
+                            {{ form_widget(form.search, {'attr': {'class': 'btn green', 'aria-pressed' : 'true'}} ) }}
+                        </a>
                     </div>
                 </div>
             </div>
