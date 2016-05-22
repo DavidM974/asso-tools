@@ -13,3 +13,11 @@ msi_pastoral_my_report:
 msi_pastoral_new_report:
     path:     /pastoral/new_report
     defaults: { _controller: MSIPastoralBundle:Pastoral:newReport }
+    
+msi_pastoral_view_report:
+    path:     /pastoral/view_report
+    defaults: { _controller: MSIPastoralBundle:Pastoral:viewReport }
+    
+msi_pastoral_edit_report:
+    path:     /pastoral/edit_report
+    defaults: { _controller: MSIPastoralBundle:Pastoral:editReport }

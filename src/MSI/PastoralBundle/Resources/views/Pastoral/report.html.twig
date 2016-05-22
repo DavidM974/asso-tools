@@ -8,7 +8,7 @@
     <div class="portlet light portlet-fit portlet-datatable col-md-12" id="form_wizard_1">
         <div class="portlet-title">
             <div class="caption">
-                <i class=" fa fa-users font-green"></i>
+                <i class=" fa fa-list font-green"></i>
                 <span class="caption-subject font-green sbold uppercase"> {{ 'msi.core.menu.pastoral.followed.list.comment'|trans({}, 'Pastoral') }} </span>
             </div>
         </div>
@@ -35,15 +35,15 @@
                         <td>Date du suivi</td>    
                         <td>Extrait du suivi</td>
                         <td style ="text-align:center;">
-                            <a href="javascript:;" class="nav-link ">
-                                <a href="" class="btn btn-circle btn-icon-only grey-cascade">
+                            <a href="" class="nav-link ">
+                                <a href="{{ path('msi_pastoral_view_report')}}" class="btn btn-circle btn-icon-only grey-cascade">
                                     <i class="fa fa-eye"></i>
                                 </a>
                             </a>                            
                         </td>
                         <td style ="text-align:center;">    
-                            <a href="javascript:;" class="nav-link ">
-                                <a href="" class="btn btn-circle btn-icon-only grey-cascade">
+                            <a href="" class="nav-link ">
+                                <a href="{{ path('msi_pastoral_edit_report')}}" class="btn btn-circle btn-icon-only grey-cascade">
                                     <i class="fa fa-edit"></i>
                                 </a>
                             </a>                            
