@@ -45,5 +45,25 @@ class PastoralController extends Controller {
         $session->set('menu', 'newReport');
         return $this->render('MSIPastoralBundle:Pastoral:newReport.html.twig');
     }
+    
+    public function viewReportAction(Request $request) {
+        $session = $request->getSession();
+        $translator = $this->get('translator');
+        $ariane = $translator->trans('msi.pastoral.fil.card.report', array(), 'Pastoral');
+        $session->set('fileAriane', $ariane);
+        $session->set('module', 'pastoral');
+        $session->set('menu', 'report');
+        return $this->render('MSIPastoralBundle:Pastoral:viewReport.html.twig');
+    }
+    
+    public function editReportAction(Request $request) {
+        $session = $request->getSession();
+        $translator = $this->get('translator');
+        $ariane = $translator->trans('msi.pastoral.fil.card.report', array(), 'Pastoral');
+        $session->set('fileAriane', $ariane);
+        $session->set('module', 'pastoral');
+        $session->set('menu', 'report');
+        return $this->render('MSIPastoralBundle:Pastoral:editReport.html.twig');
+    }
 
 }
